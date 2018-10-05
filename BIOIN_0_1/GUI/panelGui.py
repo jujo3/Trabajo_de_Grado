@@ -19,11 +19,6 @@ class PanelWindow(ttk.Frame):
         self.panel_window = panel_window
         self.stepsList = stepsList
         super().__init__(self.panel_window)
-        self.panel_window.title("BIOIN - PANEL PRINCIPAL")
-        self.panel_window.geometry("800x700")
-        self.place(relwidth=1, relheight=1)
-        self.panel_window.resizable(0, 0)
-        self.panel_window.protocol("WM_DELETE_WINDOW", self.onClosing)
 
         # menu de la pantalla de inicio
         self.menubar = tk.Menu(self.panel_window)
@@ -131,6 +126,17 @@ class PanelWindow(ttk.Frame):
         self.progress = ttk.Progressbar(self).place(x=10, y=110 + add, width=450)
 
         self.buttonReport = ttk.Button(self, text="Leer reporte").place(x=500, y=110 + add)
+
+        # Ajustes de pantalla
+        add += 150
+        screen_size = "800x"+str(add)
+
+        self.panel_window.title("BIOIN - PANEL PRINCIPAL")
+        self.panel_window.geometry(screen_size)
+        self.place(relwidth=1, relheight=1)
+        self.panel_window.resizable(0, 0)
+        self.panel_window.protocol("WM_DELETE_WINDOW", self.onClosing)
+
 
     def newProyect(self):
 
