@@ -8,22 +8,19 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import font
+from proyect import Proyect
 import webbrowser
 
 
 class PanelWindow(ttk.Frame):
 
-    def __init__(self, panel_window, stepsList):
+    def __init__(self, panel_window, proyect, main_window):
 
         # Intancias y configuraciones de la ventana
         self.panel_window = panel_window
-        self.stepsList = stepsList
+        self.proyect = proyect
+        self.main_window = main_window
         super().__init__(self.panel_window)
-        self.panel_window.title("BIOIN - PANEL PRINCIPAL")
-        self.panel_window.geometry("800x700")
-        self.place(relwidth=1, relheight=1)
-        self.panel_window.resizable(0, 0)
-        self.panel_window.protocol("WM_DELETE_WINDOW", self.onClosing)
 
         # menu de la pantalla de inicio
         self.menubar = tk.Menu(self.panel_window)
@@ -61,7 +58,7 @@ class PanelWindow(ttk.Frame):
 
         # Implantación de los pasos:
 
-        if self.stepsList[0]:
+        if self.proyect.steps_list[0]:
             self.labelStep = ttk.Label(self, text="Paso 1", font=self.titleFont).place(x=10, y=70 + add)
 
             self.labelDescription = ttk.Label(self, text="Esta es la descripcion del paso 1.").place(x=10, y=90 + add)
@@ -74,7 +71,7 @@ class PanelWindow(ttk.Frame):
 
             add += 100
 
-        if self.stepsList[1]:
+        if self.proyect.steps_list[1]:
             self.labelStep = ttk.Label(self, text="Paso 2", font=self.titleFont).place(x=10, y=70 + add)
 
             self.labelDescription = ttk.Label(self, text="Esta es la descripcion del paso 2.").place(x=10, y=90 + add)
@@ -87,7 +84,7 @@ class PanelWindow(ttk.Frame):
 
             add += 100
 
-        if self.stepsList[2]:
+        if self.proyect.steps_list[2]:
             self.labelStep = ttk.Label(self, text="Paso 3", font=self.titleFont).place(x=10, y=70 + add)
 
             self.labelDescription = ttk.Label(self, text="Esta es la descripcion del paso 3.").place(x=10, y=90 + add)
@@ -100,7 +97,7 @@ class PanelWindow(ttk.Frame):
 
             add += 100
 
-        if self.stepsList[3]:
+        if self.proyect.steps_list[3]:
             self.labelStep = ttk.Label(self, text="Paso 4", font=self.titleFont).place(x=10, y=70 + add)
 
             self.labelDescription = ttk.Label(self, text="Esta es la descripcion del paso 4.").place(x=10, y=90 + add)
@@ -113,7 +110,7 @@ class PanelWindow(ttk.Frame):
 
             add += 100
 
-        if self.stepsList[4]:
+        if self.proyect.steps_list[4]:
             self.labelStep = ttk.Label(self, text="Paso 5", font=self.titleFont).place(x=10, y=70 + add)
 
             self.labelDescription = ttk.Label(self, text="Esta es la descripcion del paso 5.").place(x=10, y=90 + add)
@@ -132,8 +129,17 @@ class PanelWindow(ttk.Frame):
 
         self.buttonReport = ttk.Button(self, text="Leer reporte").place(x=500, y=110 + add)
 
-    def newProyect(self):
+        # Ajustes de pantalla
+        add += 150
+        screen_size = "800x"+str(add)
 
+        self.panel_window.title("BIOIN - PANEL PRINCIPAL")
+        self.panel_window.geometry(screen_size)
+        self.place(relwidth=1, relheight=1)
+        self.panel_window.resizable(0, 0)
+        self.panel_window.protocol("WM_DELETE_WINDOW", self.onClosing)
+
+    def newProyect(self):
         self.top = tk.Toplevel(self.panel_window)
         self.top.title("Iniciar un nuevo proyecto")
 
@@ -145,7 +151,7 @@ class PanelWindow(ttk.Frame):
         self.button2.grid(row=1, column=1, padx=5, pady=5)
 
     def startNewProyect(self):
-        print("si si funciona, ya lo sabias y ahora que?")
+        self.main_window.deiconify()
         self.top.destroy()
         self.panel_window.destroy()
 

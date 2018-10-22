@@ -9,6 +9,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import font
 from panelGui import PanelWindow
+from proyect import Proyect
 import webbrowser
 
 
@@ -91,12 +92,11 @@ class BuildProyectWindow(ttk.Frame):
         stepsList += [self.step4Value.get()]
         stepsList += [self.step5Value.get()]
 
-        print(stepsList)
+        proyect = Proyect(stepsList)
 
         self.build_proyect_window.destroy()
-        self.main_window.destroy()
         new_window = tk.Tk()
-        panelwindow = PanelWindow(new_window, stepsList)
+        panelwindow = PanelWindow(new_window, proyect, self.main_window)
         panelwindow.mainloop()
 
     def onClosing(self):
