@@ -6,11 +6,14 @@
 # Universidad del Valle
 
 import tkinter as tk
+from tkinter import filedialog
 from tkinter import ttk
 from tkinter import font
 from proyect import Proyect
 import webbrowser
 import pickle
+import os
+import sys
 
 
 class PanelWindow(ttk.Frame):
@@ -157,17 +160,25 @@ class PanelWindow(ttk.Frame):
         self.panel_window.destroy()
 
     def openProyect(self):
-        with open("archivo.bin", "br") as archivo:
-            self.proyect = pickle.load(archivo)
-
-
+        dirRoute = filedialog.askopenfilename()
+        if dirRoute!=():
+            self.panel_window.destroy()
+            with open(dirRoute, "br") as archivo:
+                proyect = pickle.load(archivo)
+            new_window = tk.Tk()
+            panelwindow = PanelWindow(new_window, proyect, self.main_window)
+            panelwindow.mainloop()
 
     def saveProyect(self):
-        with open("archivo.bin", "bw") as archivo:
+        with open(self.proyect.route, "bw") as archivo:
             pickle.dump(self.proyect, archivo)
 
     def saveProyectAs(self):
-        pass
+        dirRoute = filedialog.asksaveasfilename()
+        os.mkdir(dirRoute)
+        self.proyect.route = dirRoute+"/archivo.bin"
+        with open(dirRoute, "bw") as archivo:
+            pickle.dump(self.proyect, archivo)
 
     def onClosing(self):
 
@@ -184,6 +195,7 @@ class PanelWindow(ttk.Frame):
     def salir(self):
         self.top.destroy()
         self.panel_window.destroy()
+        sys.exit()
 
     def cancelar(self):
         self.top.destroy()

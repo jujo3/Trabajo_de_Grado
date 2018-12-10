@@ -8,9 +8,12 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import font
+from tkinter import filedialog
 from panelGui import PanelWindow
 from proyect import Proyect
 import webbrowser
+import os
+import pickle
 
 
 class BuildProyectWindow(ttk.Frame):
@@ -30,7 +33,7 @@ class BuildProyectWindow(ttk.Frame):
         # menu de la pantalla de inicio
         self.menubar = tk.Menu(self.build_proyect_window)
         self.fileMenu = tk.Menu(self.menubar, tearoff=0)
-        self.fileMenu.add_command(label="Abrir...")
+        self.fileMenu.add_command(label="Abrir...", command=self.openProyect)
 
         self.fileMenu.add_separator()
 
@@ -92,7 +95,9 @@ class BuildProyectWindow(ttk.Frame):
         stepsList += [self.step4Value.get()]
         stepsList += [self.step5Value.get()]
 
-        proyect = Proyect(stepsList)
+        dirRoute = filedialog.asksaveasfilename()
+        os.mkdir(dirRoute)
+        proyect = Proyect(stepsList, dirRoute+"/archivo.bin")
 
         self.build_proyect_window.destroy()
         new_window = tk.Tk()
@@ -109,6 +114,16 @@ class BuildProyectWindow(ttk.Frame):
         self.button2 = tk.Button(self.top, text="Cancelar", command=self.cancelar)
         self.button1.grid(row=1, column=0, padx=5, pady=5)
         self.button2.grid(row=1, column=1, padx=5, pady=5)
+
+    def openProyect(self):
+        dirRoute = filedialog.askopenfilename()
+        if dirRoute != ():
+            self.build_proyect_window.destroy()
+            with open(dirRoute, "br") as archivo:
+                proyect = pickle.load(archivo)
+            new_window = tk.Tk()
+            panelwindow = PanelWindow(new_window, proyect, self.main_window)
+            panelwindow.mainloop()
 
     def salir(self):
         self.main_window.deiconify()
