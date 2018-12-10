@@ -8,8 +8,12 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import font
+from tkinter import filedialog
 from buildProyectGui import BuildProyectWindow
+from panelGui import PanelWindow
 import webbrowser
+import sys
+import pickle
 
 
 class MainWindow(ttk.Frame):
@@ -29,7 +33,7 @@ class MainWindow(ttk.Frame):
         self.menubar = tk.Menu(self.main_window)
         self.fileMenu = tk.Menu(self.menubar, tearoff=0)
         self.fileMenu.add_command(label="Nuevo Proyecto", command=self.newProyectWindow)
-        self.fileMenu.add_command(label="Abrir...")
+        self.fileMenu.add_command(label="Abrir...", command=self.openProyect)
 
         self.fileMenu.add_separator()
 
@@ -55,7 +59,7 @@ class MainWindow(ttk.Frame):
         self.startNewProyectButton = ttk.Button(self, text="Nuevo Proyecto", width=15, command=self.newProyectWindow)
         self.startNewProyectButton.place(x=200, y=210)
 
-        self.loadProyectButton = ttk.Button(self, text="Cargar Proyecto", width=15)
+        self.loadProyectButton = ttk.Button(self, text="Cargar Proyecto", width=15, command=self.openProyect)
         self.loadProyectButton.place(x=200, y=240)
 
         self.settingsButton = ttk.Button(self, text="Ajustes", width=15)
@@ -82,9 +86,20 @@ class MainWindow(ttk.Frame):
         self.button1.grid(row=1, column=0, padx=5, pady=5)
         self.button2.grid(row=1, column=1, padx=5, pady=5)
 
+    def openProyect(self):
+        dirRoute = filedialog.askopenfilename()
+        if dirRoute!=():
+            self.main_window.withdraw()
+            with open(dirRoute, "br") as archivo:
+                proyect = pickle.load(archivo)
+            new_window = tk.Tk()
+            panelwindow = PanelWindow(new_window, proyect, self.main_window)
+            panelwindow.mainloop()
+
     def salir(self):
         self.top.destroy()
         self.main_window.destroy()
+        sys.exit()
 
     def cancelar(self):
         self.top.destroy()
