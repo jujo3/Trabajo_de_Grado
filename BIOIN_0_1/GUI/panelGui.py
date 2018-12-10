@@ -10,6 +10,7 @@ from tkinter import ttk
 from tkinter import font
 from proyect import Proyect
 import webbrowser
+import pickle
 
 
 class PanelWindow(ttk.Frame):
@@ -156,10 +157,14 @@ class PanelWindow(ttk.Frame):
         self.panel_window.destroy()
 
     def openProyect(self):
-        pass
+        with open("archivo.bin", "br") as archivo:
+            self.proyect = pickle.load(archivo)
+
+
 
     def saveProyect(self):
-        pass
+        with open("archivo.bin", "bw") as archivo:
+            pickle.dump(self.proyect, archivo)
 
     def saveProyectAs(self):
         pass
