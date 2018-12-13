@@ -26,6 +26,9 @@ class PanelWindow(ttk.Frame):
         self.main_window = main_window
         super().__init__(self.panel_window)
 
+        # Se guarda el proyecto
+        self.saveProyect()
+
         # menu de la pantalla de inicio
         self.menubar = tk.Menu(self.panel_window)
         self.fileMenu = tk.Menu(self.menubar, tearoff=0)
@@ -177,7 +180,7 @@ class PanelWindow(ttk.Frame):
         dirRoute = filedialog.asksaveasfilename()
         os.mkdir(dirRoute)
         self.proyect.route = dirRoute+"/archivo.bin"
-        with open(dirRoute, "bw") as archivo:
+        with open(self.proyect.route, "bw") as archivo:
             pickle.dump(self.proyect, archivo)
 
     def onClosing(self):
