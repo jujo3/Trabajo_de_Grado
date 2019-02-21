@@ -10,6 +10,7 @@ from tkinter import filedialog
 from tkinter import ttk
 from tkinter import font
 from proyect import Proyect
+from step import Step
 import webbrowser
 import pickle
 import os
