@@ -11,6 +11,7 @@ from tkinter import font
 from tkinter import filedialog
 from panelGui import PanelWindow
 from proyect import Proyect
+from step import Step
 import webbrowser
 import os
 import pickle
@@ -97,7 +98,25 @@ class BuildProyectWindow(ttk.Frame):
 
         dirRoute = filedialog.asksaveasfilename()
         os.mkdir(dirRoute)
-        proyect = Proyect(stepsList, dirRoute+"/archivo.bin")
+
+        steps = []
+        if self.step1Value.get():
+            os.mkdir(dirRoute+"/Ensamblaje")
+            steps += [Step("Ensamblaje", "script", "config", dirRoute+"/Ensamblaje")]
+        if self.step2Value.get():
+            os.mkdir(dirRoute+"/Alineamiento")
+            steps += [Step("Alineamiento", "script", "config", dirRoute+"/Alineamiento")]
+        if self.step3Value.get():
+            os.mkdir(dirRoute+"/Predictor")
+            steps += [Step("Predictor", "script", "config", dirRoute+"/Predictor")]
+        if self.step4Value.get():
+            os.mkdir(dirRoute+"/GenomeBrowser")
+            steps += [Step("GenomeBrowser", "script", "config", dirRoute+"/GenomeBrowser")]
+        if self.step5Value.get():
+            os.mkdir(dirRoute+"/Filogenia")
+            steps += [Step("Filogenia", "script", "config", dirRoute+"/Filogenia")]
+
+        proyect = Proyect(stepsList, steps, dirRoute+"/archivo.bin")
 
         self.build_proyect_window.destroy()
         new_window = tk.Tk()
