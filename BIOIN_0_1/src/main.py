@@ -9,8 +9,8 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import font
 from tkinter import filedialog
-from buildProyectGui import BuildProyectWindow
-from panelGui import PanelWindow
+from buildProyect import BuildProyectWindow
+from panel import PanelWindow
 import webbrowser
 import sys
 import pickle
@@ -48,7 +48,7 @@ class MainWindow(ttk.Frame):
         main_window.config(menu=self.menubar)
 
         # Cargar la imagen del logo
-        self.logo = tk.PhotoImage(file="images/logo.png")
+        self.logo = tk.PhotoImage(file="res/images/logo.png")
         self.logo = self.logo.subsample(2)
 
         # Label del Logo
@@ -88,7 +88,7 @@ class MainWindow(ttk.Frame):
 
     def openProyect(self):
         dirRoute = filedialog.askopenfilename()
-        if dirRoute!=():
+        if dirRoute != () and dirRoute != '':
             self.main_window.withdraw()
             with open(dirRoute, "br") as archivo:
                 proyect = pickle.load(archivo)

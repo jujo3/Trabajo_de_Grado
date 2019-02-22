@@ -9,7 +9,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import font
 from tkinter import filedialog
-from panelGui import PanelWindow
+from panel import PanelWindow
 from proyect import Proyect
 from step import Step
 import webbrowser
@@ -136,7 +136,7 @@ class BuildProyectWindow(ttk.Frame):
 
     def openProyect(self):
         dirRoute = filedialog.askopenfilename()
-        if dirRoute != ():
+        if dirRoute != () and dirRoute != '':
             self.build_proyect_window.destroy()
             with open(dirRoute, "br") as archivo:
                 proyect = pickle.load(archivo)

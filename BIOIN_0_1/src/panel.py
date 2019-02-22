@@ -61,85 +61,97 @@ class PanelWindow(ttk.Frame):
         self.labelSecond = ttk.Label(self, text="Desde este panel puede revisar y chequear el progreso de su proyecto:")
         self.labelSecond.place(x=10, y=40)
 
-        # variables de entorno
-        add = 0
+        # Creacion de Tabs
+        tabControl = ttk.Notebook(self)
 
         # Implantación de los pasos:
-
         if self.proyect.steps_list[0]:
-            self.labelStep = ttk.Label(self, text="Paso 1", font=self.titleFont).place(x=10, y=70 + add)
 
-            self.labelDescription = ttk.Label(self, text="Esta es la descripcion del paso 1.").place(x=10, y=90 + add)
+            self.tab1 = ttk.Frame(tabControl)
+            tabControl.add(self.tab1, text="Ensamblaje")
 
-            self.button = ttk.Button(self, text="Evaluar").place(x=10, y=110 + add)
+            self.labelStep = ttk.Label(self.tab1, text="Ensamblaje", font=self.titleFont).place(x=10, y=50)
 
-            self.progress = ttk.Progressbar(self).place(x=90, y=110 + add, width=200)
+            self.labelDescription = ttk.Label(self.tab1, text="Esta es la descripcion del paso 1.").place(x=10, y=90)
 
-            self.buttonReport = ttk.Button(self, text="Leer reporte").place(x=300, y=110 + add)
+            self.button = ttk.Button(self.tab1, text="Evaluar").place(x=10, y=110)
 
-            add += 100
+            self.progress = ttk.Progressbar(self.tab1).place(x=90, y=110, width=200)
+
+            self.buttonReport = ttk.Button(self.tab1, text="Leer reporte").place(x=300, y=110)
 
         if self.proyect.steps_list[1]:
-            self.labelStep = ttk.Label(self, text="Paso 2", font=self.titleFont).place(x=10, y=70 + add)
 
-            self.labelDescription = ttk.Label(self, text="Esta es la descripcion del paso 2.").place(x=10, y=90 + add)
+            self.tab2 = ttk.Frame(tabControl)
+            tabControl.add(self.tab2, text="Alineamiento")
 
-            self.button = ttk.Button(self, text="Evaluar").place(x=10, y=110 + add)
+            self.labelStep = ttk.Label(self.tab2, text="Alineamiento", font=self.titleFont).place(x=10, y=50)
 
-            self.progress = ttk.Progressbar(self).place(x=90, y=110 + add, width=200)
+            self.labelDescription = ttk.Label(self.tab2, text="Esta es la descripcion del paso 2.").place(x=10, y=90)
 
-            self.buttonReport = ttk.Button(self, text="Leer reporte").place(x=300, y=110 + add)
+            self.button = ttk.Button(self.tab2, text="Evaluar").place(x=10, y=110)
 
-            add += 100
+            self.progress = ttk.Progressbar(self.tab2).place(x=90, y=110, width=200)
+
+            self.buttonReport = ttk.Button(self.tab2, text="Leer reporte").place(x=300, y=110)
 
         if self.proyect.steps_list[2]:
-            self.labelStep = ttk.Label(self, text="Paso 3", font=self.titleFont).place(x=10, y=70 + add)
 
-            self.labelDescription = ttk.Label(self, text="Esta es la descripcion del paso 3.").place(x=10, y=90 + add)
+            self.tab3 = ttk.Frame(tabControl)
+            tabControl.add(self.tab3, text="Predictor")
 
-            self.button = ttk.Button(self, text="Evaluar").place(x=10, y=110 + add)
+            self.labelStep = ttk.Label(self.tab3, text="Predictor", font=self.titleFont).place(x=10, y=50)
 
-            self.progress = ttk.Progressbar(self).place(x=90, y=110 + add, width=200)
+            self.labelDescription = ttk.Label(self.tab3, text="Esta es la descripcion del paso 3.").place(x=10, y=90)
 
-            self.buttonReport = ttk.Button(self, text="Leer reporte").place(x=300, y=110 + add)
+            self.button = ttk.Button(self.tab3, text="Evaluar").place(x=10, y=110)
 
-            add += 100
+            self.progress = ttk.Progressbar(self.tab3).place(x=90, y=110, width=200)
+
+            self.buttonReport = ttk.Button(self.tab3, text="Leer reporte").place(x=300, y=110)
 
         if self.proyect.steps_list[3]:
-            self.labelStep = ttk.Label(self, text="Paso 4", font=self.titleFont).place(x=10, y=70 + add)
 
-            self.labelDescription = ttk.Label(self, text="Esta es la descripcion del paso 4.").place(x=10, y=90 + add)
+            self.tab4 = ttk.Frame(tabControl)
+            tabControl.add(self.tab4, text="Genome Browser")
 
-            self.button = ttk.Button(self, text="Evaluar").place(x=10, y=110 + add)
+            self.labelStep = ttk.Label(self.tab4, text="Genome Browser", font=self.titleFont).place(x=10, y=50)
 
-            self.progress = ttk.Progressbar(self).place(x=90, y=110 + add, width=200)
+            self.labelDescription = ttk.Label(self.tab4, text="Esta es la descripcion del paso 4.").place(x=10, y=90)
 
-            self.buttonReport = ttk.Button(self, text="Leer reporte").place(x=300, y=110 + add)
+            self.button = ttk.Button(self.tab4, text="Evaluar").place(x=10, y=110)
 
-            add += 100
+            self.progress = ttk.Progressbar(self.tab4).place(x=90, y=110, width=200)
+
+            self.buttonReport = ttk.Button(self.tab4, text="Leer reporte").place(x=300, y=110)
 
         if self.proyect.steps_list[4]:
-            self.labelStep = ttk.Label(self, text="Paso 5", font=self.titleFont).place(x=10, y=70 + add)
 
-            self.labelDescription = ttk.Label(self, text="Esta es la descripcion del paso 5.").place(x=10, y=90 + add)
+            self.tab5 = ttk.Frame(tabControl)
+            tabControl.add(self.tab5, text="Filogenia")
 
-            self.button = ttk.Button(self, text="Evaluar").place(x=10, y=110 + add)
+            self.labelStep = ttk.Label(self.tab5, text="Filogenia", font=self.titleFont).place(x=10, y=50)
 
-            self.progress = ttk.Progressbar(self).place(x=90, y=110 + add, width=200)
+            self.labelDescription = ttk.Label(self.tab5, text="Esta es la descripcion del paso 5.").place(x=10, y=90)
 
-            self.buttonReport = ttk.Button(self, text="Leer reporte").place(x=300, y=110 + add)
+            self.button = ttk.Button(self.tab5, text="Evaluar").place(x=10, y=110)
 
-            add += 100
+            self.progress = ttk.Progressbar(self.tab5).place(x=90, y=110, width=200)
 
-        self.labelStep = ttk.Label(self, text="Progreso general", font=self.titleFont).place(x=10, y=70 + add)
+            self.buttonReport = ttk.Button(self.tab5, text="Leer reporte").place(x=300, y=110)
 
-        self.progress = ttk.Progressbar(self).place(x=10, y=110 + add, width=450)
+        self.tab6 = ttk.Frame(tabControl)
+        tabControl.add(self.tab6, text="Reporte Final")
 
-        self.buttonReport = ttk.Button(self, text="Leer reporte").place(x=500, y=110 + add)
+        self.labelStep = ttk.Label(self.tab6, text="Progreso general", font=self.titleFont).place(x=10, y=50)
+
+        self.progress = ttk.Progressbar(self.tab6).place(x=10, y=110, width=450)
+
+        self.buttonReport = ttk.Button(self.tab6, text="Leer reporte").place(x=500, y=110)
 
         # Ajustes de pantalla
-        add += 150
-        screen_size = "800x"+str(add)
+        tabControl.pack(expan=1, fill="both")
+        screen_size = "1024x768"
 
         self.panel_window.title("BIOIN - PANEL PRINCIPAL")
         self.panel_window.geometry(screen_size)
@@ -165,7 +177,7 @@ class PanelWindow(ttk.Frame):
 
     def openProyect(self):
         dirRoute = filedialog.askopenfilename()
-        if dirRoute!=():
+        if dirRoute != () and dirRoute != '':
             self.panel_window.destroy()
             with open(dirRoute, "br") as archivo:
                 proyect = pickle.load(archivo)
@@ -179,10 +191,27 @@ class PanelWindow(ttk.Frame):
 
     def saveProyectAs(self):
         dirRoute = filedialog.asksaveasfilename()
-        os.mkdir(dirRoute)
-        self.proyect.route = dirRoute+"/archivo.bin"
-        with open(self.proyect.route, "bw") as archivo:
-            pickle.dump(self.proyect, archivo)
+        if dirRoute != () and dirRoute != '':
+            os.mkdir(dirRoute)
+            self.proyect.steps = []
+            if self.proyect.steps_list[0]:
+                os.mkdir(dirRoute+"/Ensamblaje")
+                self.proyect.steps += [Step("Ensamblaje", "script", "config", dirRoute+"/Ensamblaje")]
+            if self.proyect.steps_list[1]:
+                os.mkdir(dirRoute+"/Alineamiento")
+                self.proyect.steps += [Step("Alineamiento", "script", "config", dirRoute+"/Alineamiento")]
+            if self.proyect.steps_list[2]:
+                os.mkdir(dirRoute+"/Predictor")
+                self.proyect.steps += [Step("Predictor", "script", "config", dirRoute+"/Predictor")]
+            if self.proyect.steps_list[3]:
+                os.mkdir(dirRoute+"/GenomeBrowser")
+                self.proyect.steps += [Step("GenomeBrowser", "script", "config", dirRoute+"/GenomeBrowser")]
+            if self.proyect.steps_list[4]:
+                os.mkdir(dirRoute+"/Filogenia")
+                self.proyect.steps += [Step("Filogenia", "script", "config", dirRoute+"/Filogenia")]
+            self.proyect.route = dirRoute+"/archivo.bin"
+            with open(self.proyect.route, "bw") as archivo:
+                pickle.dump(self.proyect, archivo)
 
     def onClosing(self):
 
