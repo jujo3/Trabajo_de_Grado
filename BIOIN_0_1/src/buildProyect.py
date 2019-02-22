@@ -8,9 +8,13 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import font
-from panelGui import PanelWindow
+from tkinter import filedialog
+from panel import PanelWindow
 from proyect import Proyect
+from step import Step
 import webbrowser
+import os
+import pickle
 
 
 class BuildProyectWindow(ttk.Frame):
@@ -30,7 +34,7 @@ class BuildProyectWindow(ttk.Frame):
         # menu de la pantalla de inicio
         self.menubar = tk.Menu(self.build_proyect_window)
         self.fileMenu = tk.Menu(self.menubar, tearoff=0)
-        self.fileMenu.add_command(label="Abrir...")
+        self.fileMenu.add_command(label="Abrir...", command=self.openProyect)
 
         self.fileMenu.add_separator()
 
@@ -92,7 +96,27 @@ class BuildProyectWindow(ttk.Frame):
         stepsList += [self.step4Value.get()]
         stepsList += [self.step5Value.get()]
 
-        proyect = Proyect(stepsList)
+        dirRoute = filedialog.asksaveasfilename()
+        os.mkdir(dirRoute)
+
+        steps = []
+        if self.step1Value.get():
+            os.mkdir(dirRoute+"/Ensamblaje")
+            steps += [Step("Ensamblaje", "script", "config", dirRoute+"/Ensamblaje")]
+        if self.step2Value.get():
+            os.mkdir(dirRoute+"/Alineamiento")
+            steps += [Step("Alineamiento", "script", "config", dirRoute+"/Alineamiento")]
+        if self.step3Value.get():
+            os.mkdir(dirRoute+"/Predictor")
+            steps += [Step("Predictor", "script", "config", dirRoute+"/Predictor")]
+        if self.step4Value.get():
+            os.mkdir(dirRoute+"/GenomeBrowser")
+            steps += [Step("GenomeBrowser", "script", "config", dirRoute+"/GenomeBrowser")]
+        if self.step5Value.get():
+            os.mkdir(dirRoute+"/Filogenia")
+            steps += [Step("Filogenia", "script", "config", dirRoute+"/Filogenia")]
+
+        proyect = Proyect(stepsList, steps, dirRoute+"/archivo.bin")
 
         self.build_proyect_window.destroy()
         new_window = tk.Tk()
@@ -109,6 +133,16 @@ class BuildProyectWindow(ttk.Frame):
         self.button2 = tk.Button(self.top, text="Cancelar", command=self.cancelar)
         self.button1.grid(row=1, column=0, padx=5, pady=5)
         self.button2.grid(row=1, column=1, padx=5, pady=5)
+
+    def openProyect(self):
+        dirRoute = filedialog.askopenfilename()
+        if dirRoute != () and dirRoute != '':
+            self.build_proyect_window.destroy()
+            with open(dirRoute, "br") as archivo:
+                proyect = pickle.load(archivo)
+            new_window = tk.Tk()
+            panelwindow = PanelWindow(new_window, proyect, self.main_window)
+            panelwindow.mainloop()
 
     def salir(self):
         self.main_window.deiconify()
