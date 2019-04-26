@@ -54,80 +54,80 @@ class PanelWindow(ttk.Frame):
         self.titleFont = font.Font(family="Times", size=14)
 
         # Label principal
-        self.labelPrincipal = ttk.Label(self, text="Panel principal:", font=self.titleFont)
-        self.labelPrincipal.place(x=10, y=10)
+        # self.labelPrincipal = ttk.Label(self, text="Panel principal:", font=self.titleFont)
+        # self.labelPrincipal.place(x=10, y=10)
 
         # label secundario
-        self.labelSecond = ttk.Label(self, text="Desde este panel puede revisar y chequear el progreso de su proyecto:")
-        self.labelSecond.place(x=10, y=40)
+        # self.labelSecond = ttk.Label(self, text="Desde este panel puede revisar y chequear el progreso de su proyecto:")
+        # self.labelSecond.place(x=10, y=40)
 
         # Creacion de Tabs
         tabControl = ttk.Notebook(self)
 
         # Implantación de los pasos:
         self.tab1 = ttk.Frame(tabControl)
-        tabControl.add(self.tab1, text="Ensamblaje")
+        tabControl.add(self.tab1, text="Alineamiento")
 
         if not self.proyect.steps_list[0]:
             tabControl.tab(0, state="disable")
 
-        self.labelStep = ttk.Label(self.tab1, text="Ensamblaje", font=self.titleFont).place(x=10, y=50)
+        self.labelStep = ttk.Label(self.tab1, text="Alineamiento", font=self.titleFont).place(x=10, y=50)
 
-        self.labelDescription = ttk.Label(self.tab1, text="Esta es la descripcion del paso 1.").place(x=10, y=90)
+        self.labelDescription = ttk.Label(self.tab1, text="Desde este panel puedes revisar y ejecutar el proceso de alineamiento").place(x=10, y=90)
 
         self.button = ttk.Button(self.tab1, text="Evaluar").place(x=10, y=110)
 
-        self.progress = ttk.Progressbar(self.tab1).place(x=90, y=110, width=200)
+        self.progress = ttk.Button(self.tab1, text="Configurar").place(x=10, y=150)
 
-        self.buttonReport = ttk.Button(self.tab1, text="Leer reporte").place(x=300, y=110)
+        self.buttonReport = ttk.Button(self.tab1, text="Leer Reporte").place(x=10, y=180)
 
         self.tab2 = ttk.Frame(tabControl)
-        tabControl.add(self.tab2, text="Alineamiento")
+        tabControl.add(self.tab2, text="Ensamblaje")
 
         if not self.proyect.steps_list[1]:
             tabControl.tab(1, state="disable")
 
-        self.labelStep = ttk.Label(self.tab2, text="Alineamiento", font=self.titleFont).place(x=10, y=50)
+        self.labelStep = ttk.Label(self.tab2, text="Ensamblaje", font=self.titleFont).place(x=10, y=50)
 
-        self.labelDescription = ttk.Label(self.tab2, text="Esta es la descripcion del paso 2.").place(x=10, y=90)
+        self.labelDescription = ttk.Label(self.tab2, text="Desde este panel puedes revisar y ejecutar el proceso de ensamblaje").place(x=10, y=90)
 
         self.button = ttk.Button(self.tab2, text="Evaluar").place(x=10, y=110)
 
-        self.progress = ttk.Progressbar(self.tab2).place(x=90, y=110, width=200)
+        self.progress = ttk.Button(self.tab2, text="Configurar").place(x=10, y=150)
 
-        self.buttonReport = ttk.Button(self.tab2, text="Leer reporte").place(x=300, y=110)
+        self.buttonReport = ttk.Button(self.tab2, text="Leer reporte").place(x=10, y=180)
 
         self.tab3 = ttk.Frame(tabControl)
-        tabControl.add(self.tab3, text="Predictor")
+        tabControl.add(self.tab3, text="Homologia")
 
         if not self.proyect.steps_list[2]:
             tabControl.tab(2, state="disable")
 
-        self.labelStep = ttk.Label(self.tab3, text="Predictor", font=self.titleFont).place(x=10, y=50)
+        self.labelStep = ttk.Label(self.tab3, text="Homologia", font=self.titleFont).place(x=10, y=50)
 
-        self.labelDescription = ttk.Label(self.tab3, text="Esta es la descripcion del paso 3.").place(x=10, y=90)
+        self.labelDescription = ttk.Label(self.tab3, text="Desde este panel puedes revisar y ejecutar el proceso de Homologia").place(x=10, y=90)
 
         self.button = ttk.Button(self.tab3, text="Evaluar").place(x=10, y=110)
 
-        self.progress = ttk.Progressbar(self.tab3).place(x=90, y=110, width=200)
+        self.progress = ttk.Button(self.tab3, text="Configurar").place(x=10, y=150)
 
-        self.buttonReport = ttk.Button(self.tab3, text="Leer reporte").place(x=300, y=110)
+        self.buttonReport = ttk.Button(self.tab3, text="Leer reporte").place(x=10, y=180)
 
         self.tab4 = ttk.Frame(tabControl)
-        tabControl.add(self.tab4, text="Genome Browser")
+        tabControl.add(self.tab4, text="Predicción")
 
         if not self.proyect.steps_list[3]:
             tabControl.tab(3, state="disable")
 
-        self.labelStep = ttk.Label(self.tab4, text="Genome Browser", font=self.titleFont).place(x=10, y=50)
+        self.labelStep = ttk.Label(self.tab4, text="Predicción", font=self.titleFont).place(x=10, y=50)
 
-        self.labelDescription = ttk.Label(self.tab4, text="Esta es la descripcion del paso 4.").place(x=10, y=90)
+        self.labelDescription = ttk.Label(self.tab4, text="Desde este panel puedes revisar y ejecutar el proceso de predicción").place(x=10, y=90)
 
         self.button = ttk.Button(self.tab4, text="Evaluar").place(x=10, y=110)
 
-        self.progress = ttk.Progressbar(self.tab4).place(x=90, y=110, width=200)
+        self.progress = ttk.Button(self.tab4, text="Configurar").place(x=10, y=150)
 
-        self.buttonReport = ttk.Button(self.tab4, text="Leer reporte").place(x=300, y=110)
+        self.buttonReport = ttk.Button(self.tab4, text="Leer reporte").place(x=10, y=180)
 
         self.tab5 = ttk.Frame(tabControl)
         tabControl.add(self.tab5, text="Filogenia")
@@ -137,13 +137,13 @@ class PanelWindow(ttk.Frame):
 
         self.labelStep = ttk.Label(self.tab5, text="Filogenia", font=self.titleFont).place(x=10, y=50)
 
-        self.labelDescription = ttk.Label(self.tab5, text="Esta es la descripcion del paso 5.").place(x=10, y=90)
+        self.labelDescription = ttk.Label(self.tab5, text="Desde este panel puedes revisar y ejecutar el proceso de filogenia").place(x=10, y=90)
 
         self.button = ttk.Button(self.tab5, text="Evaluar").place(x=10, y=110)
 
-        self.progress = ttk.Progressbar(self.tab5).place(x=90, y=110, width=200)
+        self.progress = ttk.Button(self.tab5, text="Configurar").place(x=10, y=150)
 
-        self.buttonReport = ttk.Button(self.tab5, text="Leer reporte").place(x=300, y=110)
+        self.buttonReport = ttk.Button(self.tab5, text="Leer reporte").place(x=10, y=180)
 
         self.tab6 = ttk.Frame(tabControl)
         tabControl.add(self.tab6, text="Reporte Final")
@@ -152,11 +152,11 @@ class PanelWindow(ttk.Frame):
 
         self.progress = ttk.Progressbar(self.tab6).place(x=10, y=110, width=450)
 
-        self.buttonReport = ttk.Button(self.tab6, text="Leer reporte").place(x=500, y=110)
+        self.buttonReport = ttk.Button(self.tab6, text="Leer reporte").place(x=10, y=150)
 
         # Ajustes de pantalla
         tabControl.pack(expan=1, fill="both")
-        screen_size = "1024x768"
+        screen_size = "600x300"
 
         self.panel_window.title("BIOIN - PANEL PRINCIPAL")
         self.panel_window.geometry(screen_size)

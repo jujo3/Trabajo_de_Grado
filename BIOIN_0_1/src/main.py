@@ -9,7 +9,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import font
 from tkinter import filedialog
-from buildProyect import BuildProyectWindow
+from newProyect import NewProyectWindow
 from panel import PanelWindow
 import webbrowser
 import sys
@@ -72,8 +72,8 @@ class MainWindow(ttk.Frame):
     def newProyectWindow(self):
         self.main_window.withdraw()
         new_window = tk.Tk()
-        buildProyectWindow = BuildProyectWindow(new_window, self.main_window)
-        buildProyectWindow.mainloop()
+        newProyectWindow = NewProyectWindow(new_window, self.main_window)
+        newProyectWindow.mainloop()
 
     def onClosing(self):
         self.top = tk.Toplevel(self.main_window)

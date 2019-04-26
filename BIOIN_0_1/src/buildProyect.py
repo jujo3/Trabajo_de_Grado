@@ -19,14 +19,14 @@ import pickle
 
 class BuildProyectWindow(ttk.Frame):
 
-    def __init__(self, build_proyect_window, main_window):
+    def __init__(self, build_proyect_window, proyectType, fileRoute, main_window):
 
         # Intancias y configuraciones de la ventana
         self.build_proyect_window = build_proyect_window
         self.main_window = main_window
         super().__init__(self.build_proyect_window)
         self.build_proyect_window.title("BIOIN - NUEVO PROYECTO")
-        self.build_proyect_window.geometry("500x400")
+        self.build_proyect_window.geometry("300x300")
         self.place(relwidth=1, relheight=1)
         self.build_proyect_window.resizable(0, 0)
         self.build_proyect_window.protocol("WM_DELETE_WINDOW", self.onClosing)
@@ -61,32 +61,52 @@ class BuildProyectWindow(ttk.Frame):
 
         # check buttons
         self.step1Value = tk.BooleanVar(self)
-        self.step1 = ttk.Checkbutton(self, text="Paso 1", variable=self.step1Value)
+        self.step1 = ttk.Checkbutton(self, text="Alineamiento", variable=self.step1Value)
         self.step1.place(x=15, y=70)
 
+        # botón para añadir la ruta por medio de una ventana
+        self.configButton1 = ttk.Button(self, text="...", width=3)
+        self.configButton1.place(x=150, y=68)
+
         self.step2Value = tk.BooleanVar(self)
-        self.step2 = ttk.Checkbutton(self, text="Paso 2", variable=self.step2Value)
-        self.step2.place(x=15, y=90)
+        self.step2 = ttk.Checkbutton(self, text="Ensamblaje", variable=self.step2Value)
+        self.step2.place(x=15, y=100)
+
+        # botón para añadir la ruta por medio de una ventana
+        self.configButton2 = ttk.Button(self, text="...", width=3)
+        self.configButton2.place(x=150, y=98)
 
         self.step3Value = tk.BooleanVar(self)
-        self.step3 = ttk.Checkbutton(self, text="Paso 3", variable=self.step3Value)
-        self.step3.place(x=15, y=110)
+        self.step3 = ttk.Checkbutton(self, text="Homologia", variable=self.step3Value)
+        self.step3.place(x=15, y=140)
+
+        # botón para añadir la ruta por medio de una ventana
+        self.configButton3 = ttk.Button(self, text="...", width=3)
+        self.configButton3.place(x=150, y=138)
 
         self.step4Value = tk.BooleanVar(self)
-        self.step4 = ttk.Checkbutton(self, text="Paso 4", variable=self.step4Value)
-        self.step4.place(x=15, y=130)
+        self.step4 = ttk.Checkbutton(self, text="Prediccion", variable=self.step4Value)
+        self.step4.place(x=15, y=170)
+
+        # botón para añadir la ruta por medio de una ventana
+        self.configButton4 = ttk.Button(self, text="...", width=3)
+        self.configButton4.place(x=150, y=168)
 
         self.step5Value = tk.BooleanVar(self)
-        self.step5 = ttk.Checkbutton(self, text="Paso 5", variable=self.step5Value)
-        self.step5.place(x=15, y=150)
+        self.step5 = ttk.Checkbutton(self, text="Filogenia", variable=self.step5Value)
+        self.step5.place(x=15, y=200)
+
+        # botón para añadir la ruta por medio de una ventana
+        self.configButton5 = ttk.Button(self, text="...", width=3)
+        self.configButton5.place(x=150, y=198)
 
         # boton de inicio de proyecto
         self.confirmButton = ttk.Button(self, text="Iniciar Proyecto", command=self.onStartProyect)
-        self.confirmButton.place(x=10, y=190)
+        self.confirmButton.place(x=10, y=250)
 
         # boton de regreso
         self.confirmButton = ttk.Button(self, text="Regresar", command=self.onClosing)
-        self.confirmButton.place(x=200, y=190)
+        self.confirmButton.place(x=200, y=250)
 
     def onStartProyect(self):
         stepsList = []
@@ -107,11 +127,11 @@ class BuildProyectWindow(ttk.Frame):
             os.mkdir(dirRoute+"/Alineamiento")
             steps += [Step("Alineamiento", "script", "config", dirRoute+"/Alineamiento")]
         if self.step3Value.get():
-            os.mkdir(dirRoute+"/Predictor")
-            steps += [Step("Predictor", "script", "config", dirRoute+"/Predictor")]
+            os.mkdir(dirRoute+"/Homologia")
+            steps += [Step("Predictor", "script", "config", dirRoute+"/Homologia")]
         if self.step4Value.get():
-            os.mkdir(dirRoute+"/GenomeBrowser")
-            steps += [Step("GenomeBrowser", "script", "config", dirRoute+"/GenomeBrowser")]
+            os.mkdir(dirRoute+"/Prediccion")
+            steps += [Step("GenomeBrowser", "script", "config", dirRoute+"/Prediccion")]
         if self.step5Value.get():
             os.mkdir(dirRoute+"/Filogenia")
             steps += [Step("Filogenia", "script", "config", dirRoute+"/Filogenia")]
