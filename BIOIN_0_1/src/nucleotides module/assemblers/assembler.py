@@ -20,7 +20,7 @@ class Assembler:
 
     def ejecutCommand(self):
         # guardamos en una variable el comando a ejecutar
-        comando = "sudo"
+        comando = "./velveth /home/juan/answerVelvet 1 /home/juan/1.fasta"
 
         # convertimos el string en una lista para poder pasar de manera adecuada los comandos desde python
         args = sl.split(comando)

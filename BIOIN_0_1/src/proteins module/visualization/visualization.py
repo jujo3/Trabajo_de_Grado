@@ -10,7 +10,7 @@ import subprocess as sp
 import shlex as sl
 
 
-class Step:
+class Visualization:
 
     def __init__(self, name, script, config, route):
         self.name = name

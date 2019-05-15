@@ -20,7 +20,7 @@ class Aligner:
 
     def ejecutCommand(self):
         # guardamos en una variable el comando a ejecutar
-        comando = "sudo"
+        comando = "./blastn -query /home/juan/1.fasta -db nr -remote"
 
         # convertimos el string en una lista para poder pasar de manera adecuada los comandos desde python
         args = sl.split(comando)
