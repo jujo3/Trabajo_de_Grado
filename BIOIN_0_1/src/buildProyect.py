@@ -23,6 +23,8 @@ class BuildProyectWindow(ttk.Frame):
 
         # Intancias y configuraciones de la ventana
         self.build_proyect_window = build_proyect_window
+        self.proyectType = proyectType
+        self.fileRoute = fileRoute
         self.main_window = main_window
         super().__init__(self.build_proyect_window)
         self.build_proyect_window.title("BIOIN - NUEVO PROYECTO")
@@ -121,27 +123,38 @@ class BuildProyectWindow(ttk.Frame):
 
         steps = []
         if self.step1Value.get():
-            os.mkdir(dirRoute+"/Ensamblaje")
-            steps += [Step("Ensamblaje", "script", "config", dirRoute+"/Ensamblaje")]
-        if self.step2Value.get():
             os.mkdir(dirRoute+"/Alineamiento")
-            steps += [Step("Alineamiento", "script", "config", dirRoute+"/Alineamiento")]
+            steps += [dirRoute+"/Alineamiento"]
+        if self.step2Value.get():
+            os.mkdir(dirRoute+"/Ensamblaje")
+            steps += [dirRoute+"/Ensamblaje"]
         if self.step3Value.get():
-            os.mkdir(dirRoute+"/Homologia")
-            steps += [Step("Predictor", "script", "config", dirRoute+"/Homologia")]
+            os.mkdir(dirRoute+"/GenomeBrowser")
+            steps += [dirRoute+"/GenomeBrowser"]
         if self.step4Value.get():
             os.mkdir(dirRoute+"/Prediccion")
-            steps += [Step("GenomeBrowser", "script", "config", dirRoute+"/Prediccion")]
+            steps += [dirRoute+"/Prediccion"]
         if self.step5Value.get():
             os.mkdir(dirRoute+"/Filogenia")
-            steps += [Step("Filogenia", "script", "config", dirRoute+"/Filogenia")]
+            steps += [dirRoute+"/Filogenia"]
 
-        proyect = Proyect(stepsList, steps, dirRoute+"/archivo.bin")
+        if self.fileRoute != "":
+            sequenceRoute = self.fileRoute
+            proyect = Proyect(stepsList, steps, dirRoute+"/archivo.bin", sequenceRoute)
 
-        self.build_proyect_window.destroy()
-        new_window = tk.Tk()
-        panelwindow = PanelWindow(new_window, proyect, self.main_window)
-        panelwindow.mainloop()
+            self.build_proyect_window.destroy()
+            new_window = tk.Tk()
+            panelwindow = PanelWindow(new_window, proyect, self.main_window)
+            panelwindow.mainloop()
+        else:
+            self.top = tk.Toplevel(self.build_proyect_window)
+            self.top.title("Alerta")
+            tk.Label(self.top,
+                     text="No ha seleccionado un archivo para analizar, por favor seleccione un archivo").grid(row=0,
+                                                                                                               column=0,
+                                                                                                               columnspan=2)
+            self.button2 = tk.Button(self.top, text="Cancelar", command=self.cancelar)
+            self.button2.grid(row=1, column=0, padx=5, pady=5)
 
     def onClosing(self):
         self.top = tk.Toplevel(self.build_proyect_window)

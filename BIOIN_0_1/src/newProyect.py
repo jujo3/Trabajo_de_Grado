@@ -90,7 +90,7 @@ class NewProyectWindow(ttk.Frame):
             new_window = tk.Tk()
             buildProyect = BuildProyectWindow(new_window, proyectType, fileRoute, self.main_window)
             buildProyect.mainloop()
-        else :
+        else:
             self.top = tk.Toplevel(self.build_proyect_window)
             self.top.title("Alerta")
             tk.Label(self.top, text="No ha seleccionado un archivo para analizar, por favor seleccione un archivo").grid(row=0, column=0, columnspan=2)

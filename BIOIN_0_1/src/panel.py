@@ -10,6 +10,7 @@ from tkinter import filedialog
 from tkinter import ttk
 from tkinter import font
 from proyect import Proyect
+from nucleotidesModule.aligners.aligner import Aligner
 from step import Step
 import webbrowser
 import pickle
@@ -75,11 +76,12 @@ class PanelWindow(ttk.Frame):
 
         self.labelDescription = ttk.Label(self.tab1, text="Desde este panel puedes revisar y ejecutar el proceso de alineamiento").place(x=10, y=90)
 
-        self.button = ttk.Button(self.tab1, text="Evaluar").place(x=10, y=110)
+        self.buttonAlign = ttk.Button(self.tab1, text="Evaluar", command=self.evaluateAlign).place(x=10, y=110)
 
-        self.progress = ttk.Button(self.tab1, text="Configurar").place(x=10, y=150)
+        # self.configButtonAlign = ttk.Button(self.tab1, text="Configurar", command=self.configAlign).place(x=10, y=150)
 
-        self.buttonReport = ttk.Button(self.tab1, text="Leer Reporte").place(x=10, y=180)
+        self.buttonReportAlign = ttk.Button(self.tab1, text="Leer Reporte", command=self.readAlignReport, state="disabled")
+        self.buttonReportAlign.place(x=10, y=180)
 
         self.tab2 = ttk.Frame(tabControl)
         tabControl.add(self.tab2, text="Ensamblaje")
@@ -245,3 +247,21 @@ class PanelWindow(ttk.Frame):
     def openWebHelp(self):
         url = "http://bioinformatica.univalle.edu.co/"
         webbrowser.open(url)
+
+    def evaluateAlign(self):
+        alignTool = Aligner(self.proyect.sequenceRoute, self.proyect.steps[0])
+        alignTool.ejecutCommand()
+        if alignTool.fileExist():
+            self.buttonReportAlign.state(["!disabled"])
+
+    def configAlign(self):
+        return
+
+    def readAlignReport(self):
+        self.topAlign = tk.Toplevel(self.panel_window)
+        self.topAlign.title("Reporte Alineamiento")
+
+        self.alignerTextBox = tk.Text(self.topAlign, height=100, width=100)
+        self.alignerTextBox.pack()
+        f = open(self.proyect.steps[0] + "/output", "r")
+        self.alignerTextBox.insert(tk.INSERT, f.buffer.read())
