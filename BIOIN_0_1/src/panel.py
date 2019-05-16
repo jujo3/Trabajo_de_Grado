@@ -11,6 +11,8 @@ from tkinter import ttk
 from tkinter import font
 from proyect import Proyect
 from nucleotidesModule.aligners.aligner import Aligner
+from nucleotidesModule.assemblers.assembler import Assembler
+from nucleotidesModule.genePredictor.predictor import Predictor
 from step import Step
 import webbrowser
 import pickle
@@ -76,7 +78,8 @@ class PanelWindow(ttk.Frame):
 
         self.labelDescription = ttk.Label(self.tab1, text="Desde este panel puedes revisar y ejecutar el proceso de alineamiento").place(x=10, y=90)
 
-        self.buttonAlign = ttk.Button(self.tab1, text="Evaluar", command=self.evaluateAlign).place(x=10, y=110)
+        self.buttonAlign = ttk.Button(self.tab1, text="Evaluar", command=self.evaluateAlign)
+        self.buttonAlign.place(x=10, y=110)
 
         # self.configButtonAlign = ttk.Button(self.tab1, text="Configurar", command=self.configAlign).place(x=10, y=150)
 
@@ -93,27 +96,30 @@ class PanelWindow(ttk.Frame):
 
         self.labelDescription = ttk.Label(self.tab2, text="Desde este panel puedes revisar y ejecutar el proceso de ensamblaje").place(x=10, y=90)
 
-        self.button = ttk.Button(self.tab2, text="Evaluar").place(x=10, y=110)
+        self.buttonAssemble = ttk.Button(self.tab2, text="Evaluar", command=self.evaluateAssemble).place(x=10, y=110)
 
-        self.progress = ttk.Button(self.tab2, text="Configurar").place(x=10, y=150)
+        # self.configAssemble = ttk.Button(self.tab2, text="Configurar").place(x=10, y=150)
 
-        self.buttonReport = ttk.Button(self.tab2, text="Leer reporte").place(x=10, y=180)
+        self.buttonReportAssemble = ttk.Button(self.tab2, text="Leer reporte", command=self.readAssembleReport, state="disabled")
+        self.buttonReportAssemble.place(x=10, y=180)
 
         self.tab3 = ttk.Frame(tabControl)
-        tabControl.add(self.tab3, text="Homologia")
+        tabControl.add(self.tab3, text="Buscador de Genomas")
 
         if not self.proyect.steps_list[2]:
             tabControl.tab(2, state="disable")
 
-        self.labelStep = ttk.Label(self.tab3, text="Homologia", font=self.titleFont).place(x=10, y=50)
+        self.labelStep = ttk.Label(self.tab3, text="Buscador de Genomas", font=self.titleFont).place(x=10, y=50)
 
-        self.labelDescription = ttk.Label(self.tab3, text="Desde este panel puedes revisar y ejecutar el proceso de Homologia").place(x=10, y=90)
+        self.labelDescription = ttk.Label(self.tab3, text="Desde este panel puedes revisar y ejecutar el proceso de Busqueda de Genomas").place(x=10, y=90)
 
-        self.button = ttk.Button(self.tab3, text="Evaluar").place(x=10, y=110)
+        self.buttonGBrowser = ttk.Button(self.tab3, text="Evaluar", command=self.evaluateGBrowser)
+        self.buttonGBrowser.place(x=10, y=110)
 
-        self.progress = ttk.Button(self.tab3, text="Configurar").place(x=10, y=150)
+        # self.progress = ttk.Button(self.tab3, text="Configurar").place(x=10, y=150)
 
-        self.buttonReport = ttk.Button(self.tab3, text="Leer reporte").place(x=10, y=180)
+        self.buttonReportGBrowser = ttk.Button(self.tab3, text="Leer reporte", command=self.readGBrowserReport)
+        self.buttonReportGBrowser.place(x=10, y=180)
 
         self.tab4 = ttk.Frame(tabControl)
         tabControl.add(self.tab4, text="Predicción")
@@ -125,11 +131,13 @@ class PanelWindow(ttk.Frame):
 
         self.labelDescription = ttk.Label(self.tab4, text="Desde este panel puedes revisar y ejecutar el proceso de predicción").place(x=10, y=90)
 
-        self.button = ttk.Button(self.tab4, text="Evaluar").place(x=10, y=110)
+        self.buttonPrediction = ttk.Button(self.tab4, text="Evaluar", command=self.evaluatePrediction)
+        self.buttonPrediction.place(x=10, y=110)
 
-        self.progress = ttk.Button(self.tab4, text="Configurar").place(x=10, y=150)
+        # self.configPrediction = ttk.Button(self.tab4, text="Configurar").place(x=10, y=150)
 
-        self.buttonReport = ttk.Button(self.tab4, text="Leer reporte").place(x=10, y=180)
+        self.buttonReportPrediction = ttk.Button(self.tab4, text="Leer reporte", command=self.readPredictionReport, state="disabled")
+        self.buttonReportPrediction.place(x=10, y=180)
 
         self.tab5 = ttk.Frame(tabControl)
         tabControl.add(self.tab5, text="Filogenia")
@@ -198,27 +206,42 @@ class PanelWindow(ttk.Frame):
 
     def saveProyectAs(self):
         dirRoute = filedialog.asksaveasfilename()
-        if dirRoute != () and dirRoute != '':
-            os.mkdir(dirRoute)
-            self.proyect.steps = []
-            if self.proyect.steps_list[0]:
-                os.mkdir(dirRoute+"/Ensamblaje")
-                self.proyect.steps += [Step("Ensamblaje", "script", "config", dirRoute+"/Ensamblaje")]
-            if self.proyect.steps_list[1]:
-                os.mkdir(dirRoute+"/Alineamiento")
-                self.proyect.steps += [Step("Alineamiento", "script", "config", dirRoute+"/Alineamiento")]
-            if self.proyect.steps_list[2]:
-                os.mkdir(dirRoute+"/Predictor")
-                self.proyect.steps += [Step("Predictor", "script", "config", dirRoute+"/Predictor")]
-            if self.proyect.steps_list[3]:
-                os.mkdir(dirRoute+"/GenomeBrowser")
-                self.proyect.steps += [Step("GenomeBrowser", "script", "config", dirRoute+"/GenomeBrowser")]
-            if self.proyect.steps_list[4]:
-                os.mkdir(dirRoute+"/Filogenia")
-                self.proyect.steps += [Step("Filogenia", "script", "config", dirRoute+"/Filogenia")]
-            self.proyect.route = dirRoute+"/archivo.bin"
-            with open(self.proyect.route, "bw") as archivo:
-                pickle.dump(self.proyect, archivo)
+        os.mkdir(dirRoute)
+
+        steps = []
+        if self.step1Value.get():
+            os.mkdir(dirRoute + "/Alineamiento")
+            steps += [dirRoute + "/Alineamiento"]
+        if self.step2Value.get():
+            os.mkdir(dirRoute + "/Ensamblaje")
+            steps += [dirRoute + "/Ensamblaje"]
+        if self.step3Value.get():
+            os.mkdir(dirRoute + "/GenomeBrowser")
+            steps += [dirRoute + "/GenomeBrowser"]
+        if self.step4Value.get():
+            os.mkdir(dirRoute + "/Prediccion")
+            steps += [dirRoute + "/Prediccion"]
+        if self.step5Value.get():
+            os.mkdir(dirRoute + "/Filogenia")
+            steps += [dirRoute + "/Filogenia"]
+
+        if self.fileRoute != "":
+            sequenceRoute = self.fileRoute
+            proyect = Proyect(self.proyect.steps_list, steps, dirRoute + "/archivo.bin", sequenceRoute)
+
+            self.build_proyect_window.destroy()
+            new_window = tk.Tk()
+            panelwindow = PanelWindow(new_window, proyect, self.main_window)
+            panelwindow.mainloop()
+        else:
+            self.top = tk.Toplevel(self.build_proyect_window)
+            self.top.title("Alerta")
+            tk.Label(self.top,
+                     text="No ha seleccionado un archivo para analizar, por favor seleccione un archivo").grid(row=0,
+                                                                                                               column=0,
+                                                                                                               columnspan=2)
+            self.button2 = tk.Button(self.top, text="Cancelar", command=self.cancelar)
+            self.button2.grid(row=1, column=0, padx=5, pady=5)
 
     def onClosing(self):
 
@@ -265,3 +288,45 @@ class PanelWindow(ttk.Frame):
         self.alignerTextBox.pack()
         f = open(self.proyect.steps[0] + "/output", "r")
         self.alignerTextBox.insert(tk.INSERT, f.buffer.read())
+
+    def evaluateAssemble(self):
+        assembleTool = Assembler(self.proyect.sequenceRoute, self.proyect.steps[1])
+        assembleTool.ejecutCommand()
+        if assembleTool.fileExist():
+            self.buttonReportAssemble.state(["!disabled"])
+
+    def configAssemble(self):
+        return
+
+    def readAssembleReport(self):
+        self.topAssemble = tk.Toplevel(self.panel_window)
+        self.topAssemble.title("Reporte Ensamblaje")
+
+        self.assembleTextBox = tk.Text(self.topAssemble, height=100, width=100)
+        self.assembleTextBox.pack()
+        f = open(self.proyect.steps[1] + "/output/Sequences", "r")
+        self.assembleTextBox.insert(tk.INSERT, f.buffer.read())
+
+    def evaluateGBrowser(self):
+        return
+
+    def readGBrowserReport(self):
+        return
+
+    def evaluatePrediction(self):
+        predictionTool = Predictor(self.proyect.sequenceRoute, self.proyect.steps[3])
+        predictionTool.ejecutCommand()
+        if predictionTool.fileExist():
+            self.buttonReportPrediction.state(["!disabled"])
+
+    def configPrediction(self):
+        return
+
+    def readPredictionReport(self):
+        self.topPredictor = tk.Toplevel(self.panel_window)
+        self.topPredictor.title("Reporte Prediccion")
+
+        self.predictorTextBox = tk.Text(self.topPredictor, height=100, width=100)
+        self.predictorTextBox.pack()
+        f = open(self.proyect.steps[3] + "/output.detail", "r")
+        self.predictorTextBox.insert(tk.INSERT, f.buffer.read())

@@ -71,7 +71,7 @@ class NewProyectWindow(ttk.Frame):
         self.routeText.place(x=10, y=150)
 
         # botón para añadir la ruta por medio de una ventana
-        self.routeButton = ttk.Button(self, text="...", width=3)
+        self.routeButton = ttk.Button(self, text="...", width=3, command=self.findFileRoute)
         self.routeButton.place(x=150, y=148)
 
         # boton de inicio de proyecto
@@ -118,6 +118,11 @@ class NewProyectWindow(ttk.Frame):
             new_window = tk.Tk()
             panelwindow = PanelWindow(new_window, proyect, self.main_window)
             panelwindow.mainloop()
+
+    def findFileRoute(self):
+        dirRoute = filedialog.askopenfilename()
+        if dirRoute != () and dirRoute != '':
+            self.routeText.insert(0, dirRoute)
 
     def salir(self):
         self.main_window.deiconify()

@@ -122,21 +122,21 @@ class BuildProyectWindow(ttk.Frame):
         os.mkdir(dirRoute)
 
         steps = []
-        if self.step1Value.get():
-            os.mkdir(dirRoute+"/Alineamiento")
-            steps += [dirRoute+"/Alineamiento"]
-        if self.step2Value.get():
-            os.mkdir(dirRoute+"/Ensamblaje")
-            steps += [dirRoute+"/Ensamblaje"]
-        if self.step3Value.get():
-            os.mkdir(dirRoute+"/GenomeBrowser")
-            steps += [dirRoute+"/GenomeBrowser"]
-        if self.step4Value.get():
-            os.mkdir(dirRoute+"/Prediccion")
-            steps += [dirRoute+"/Prediccion"]
-        if self.step5Value.get():
-            os.mkdir(dirRoute+"/Filogenia")
-            steps += [dirRoute+"/Filogenia"]
+        #if self.step1Value.get():
+        os.mkdir(dirRoute+"/Alineamiento")
+        steps += [dirRoute+"/Alineamiento"]
+        #if self.step2Value.get():
+        os.mkdir(dirRoute+"/Ensamblaje")
+        steps += [dirRoute+"/Ensamblaje"]
+        #if self.step3Value.get():
+        os.mkdir(dirRoute+"/GenomeBrowser")
+        steps += [dirRoute+"/GenomeBrowser"]
+        #if self.step4Value.get():
+        os.mkdir(dirRoute+"/Prediccion")
+        steps += [dirRoute+"/Prediccion"]
+        #if self.step5Value.get():
+        os.mkdir(dirRoute+"/Filogenia")
+        steps += [dirRoute+"/Filogenia"]
 
         if self.fileRoute != "":
             sequenceRoute = self.fileRoute
