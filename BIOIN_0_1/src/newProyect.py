@@ -58,7 +58,7 @@ class NewProyectWindow(ttk.Frame):
         self.labelSecond.place(x=10, y=40)
 
         # menu de selección de  tipo de proyecto
-        self.selectionMenu = ttk.Combobox(self, state= "readonly", values=["Análisis de genomas", "Análisis de proteinas"])
+        self.selectionMenu = ttk.Combobox(self, state= "readonly", values=["Análisis de ADN", "Análisis de proteinas"])
         self.selectionMenu.current(0)
         self.selectionMenu.place(x=10, y=70)
 
