@@ -31,7 +31,7 @@ class PanelWindow(ttk.Frame):
         super().__init__(self.panel_window)
 
         # Se guarda el proyecto
-        # self.saveProyect()
+        self.saveProyect()
 
         # menu de la pantalla de inicio
         self.menubar = tk.Menu(self.panel_window)
@@ -80,12 +80,12 @@ class PanelWindow(ttk.Frame):
                                                   text="Desde este panel puedes revisar y ejecutar el proceso de Ensamblaje").place(
                     x=10, y=90)
 
-                self.buttonAssemble = ttk.Button(self.tab1, text="Evaluar", command=self.evaluateAssemble())
+                self.buttonAssemble = ttk.Button(self.tab1, text="Evaluar", command=self.evaluateAssemble)
                 self.buttonAssemble.place(x=10, y=110)
 
                 # self.configButtonAlign = ttk.Button(self.tab1, text="Configurar", command=self.configAlign).place(x=10, y=150)
 
-                self.buttonReportAssemble = ttk.Button(self.tab1, text="Leer Reporte", command=self.readAssembleReport(),
+                self.buttonReportAssemble = ttk.Button(self.tab1, text="Leer Reporte", command=self.readAssembleReport,
                                                     state="disabled")
                 self.buttonReportAssemble.place(x=10, y=180)
 
@@ -98,13 +98,14 @@ class PanelWindow(ttk.Frame):
                                                   text="Desde este panel puedes revisar y ejecutar el proceso de Predicción").place(
                     x=10, y=90)
 
-                self.buttonPrediction = ttk.Button(self.tab2, text="Evaluar", command=self.evaluatePrediction()).place(x=10,
-                                                                                                                 y=110)
+                self.buttonPrediction = ttk.Button(self.tab2, text="Evaluar", command=self.evaluatePrediction)
+                self.buttonPrediction.place(x=10, y=110)
 
                 # self.configAssemble = ttk.Button(self.tab2, text="Configurar").place(x=10, y=150)
 
-                self.buttonReportPrediction = ttk.Button(self.tab2, text="Leer reporte", command=self.readPredictionReport(),
-                                                       state="disabled")
+                self.buttonReportPrediction = ttk.Button(self.tab2, text="Leer reporte",
+                                                         command=self.readPredictionReport,
+                                                         state="disabled")
                 self.buttonReportPrediction.place(x=10, y=180)
 
                 self.tab3 = ttk.Frame(tabControl)
@@ -116,12 +117,13 @@ class PanelWindow(ttk.Frame):
                                                   text="Desde este panel puedes revisar y ejecutar el proceso de Homologia").place(
                     x=10, y=90)
 
-                self.buttonAlign = ttk.Button(self.tab3, text="Evaluar", command=self.evaluateAlign())
+                self.buttonAlign = ttk.Button(self.tab3, text="Evaluar", command=self.evaluateAlign)
                 self.buttonAlign.place(x=10, y=110)
 
                 # self.progress = ttk.Button(self.tab3, text="Configurar").place(x=10, y=150)
 
-                self.buttonReportAlign = ttk.Button(self.tab3, text="Leer reporte", command=self.readAlignReport())
+                self.buttonReportAlign = ttk.Button(self.tab3, text="Leer reporte", command=self.readAlignReport,
+                                                    state="disabled")
                 self.buttonReportAlign.place(x=10, y=180)
 
             if proyect.steps[0] == "Ensamblaje, homologia":
@@ -135,12 +137,12 @@ class PanelWindow(ttk.Frame):
                                                   text="Desde este panel puedes revisar y ejecutar el proceso de Ensamblaje").place(
                     x=10, y=90)
 
-                self.buttonAssemble = ttk.Button(self.tab1, text="Evaluar", command=self.evaluateAssemble())
+                self.buttonAssemble = ttk.Button(self.tab1, text="Evaluar", command=self.evaluateAssemble)
                 self.buttonAssemble.place(x=10, y=110)
 
                 # self.configButtonAlign = ttk.Button(self.tab1, text="Configurar", command=self.configAlign).place(x=10, y=150)
 
-                self.buttonReportAssemble = ttk.Button(self.tab1, text="Leer Reporte", command=self.readAssembleReport(),
+                self.buttonReportAssemble = ttk.Button(self.tab1, text="Leer Reporte", command=self.readAssembleReport,
                                                     state="disabled")
                 self.buttonReportAssemble.place(x=10, y=180)
 
@@ -153,12 +155,12 @@ class PanelWindow(ttk.Frame):
                                                   text="Desde este panel puedes revisar y ejecutar el proceso de Homologia").place(
                     x=10, y=90)
 
-                self.buttonAlign = ttk.Button(self.tab3, text="Evaluar", command=self.evaluateAlign())
+                self.buttonAlign = ttk.Button(self.tab3, text="Evaluar", command=self.evaluateAlign)
                 self.buttonAlign.place(x=10, y=110)
 
                 # self.progress = ttk.Button(self.tab3, text="Configurar").place(x=10, y=150)
 
-                self.buttonReportAlign = ttk.Button(self.tab3, text="Leer reporte", command=self.readAlignReport())
+                self.buttonReportAlign = ttk.Button(self.tab3, text="Leer reporte", command=self.readAlignReport)
                 self.buttonReportAlign.place(x=10, y=180)
 
         elif self.proyect.type == "Análisis de proteinas":
@@ -312,8 +314,8 @@ class PanelWindow(ttk.Frame):
         url = "http://bioinformatica.univalle.edu.co/"
         webbrowser.open(url)
 
-    def evaluateAlign(self, route):
-        alignTool = Aligner(self.proyect.sequenceRoute, route)
+    def evaluateAlign(self):
+        alignTool = Aligner(self.proyect.sequenceRoute, self.proyect.dirRoute + "/Homologia")
         alignTool.ejecutCommand()
         if alignTool.fileExist():
             self.buttonReportAlign.state(["!disabled"])
@@ -321,17 +323,17 @@ class PanelWindow(ttk.Frame):
     def configAlign(self):
         return
 
-    def readAlignReport(self, route):
+    def readAlignReport(self):
         self.topAlign = tk.Toplevel(self.panel_window)
         self.topAlign.title("Reporte Alineamiento")
 
         self.alignerTextBox = tk.Text(self.topAlign, height=100, width=100)
         self.alignerTextBox.pack()
-        f = open(route + "/output", "r")
+        f = open(self.proyect.dirRoute + "/Homologia/output", "r")
         self.alignerTextBox.insert(tk.INSERT, f.buffer.read())
 
-    def evaluateAssemble(self, route):
-        assembleTool = Assembler(self.proyect.sequenceRoute, route)
+    def evaluateAssemble(self):
+        assembleTool = Assembler(self.proyect.sequenceRoute, self.proyect.dirRoute + "/Ensamblaje")
         assembleTool.ejecutCommand()
         if assembleTool.fileExist():
             self.buttonReportAssemble.state(["!disabled"])
@@ -339,13 +341,13 @@ class PanelWindow(ttk.Frame):
     def configAssemble(self):
         return
 
-    def readAssembleReport(self, route):
+    def readAssembleReport(self):
         self.topAssemble = tk.Toplevel(self.panel_window)
         self.topAssemble.title("Reporte Ensamblaje")
 
         self.assembleTextBox = tk.Text(self.topAssemble, height=100, width=100)
         self.assembleTextBox.pack()
-        f = open(route + "/output/Sequences", "r")
+        f = open(self.proyect.dirRoute + "/Ensamblaje/output/Sequences", "r")
         self.assembleTextBox.insert(tk.INSERT, f.buffer.read())
 
     def evaluateGBrowser(self):
@@ -354,8 +356,8 @@ class PanelWindow(ttk.Frame):
     def readGBrowserReport(self):
         return
 
-    def evaluatePrediction(self, route):
-        predictionTool = Predictor(self.proyect.sequenceRoute, route)
+    def evaluatePrediction(self):
+        predictionTool = Predictor(self.proyect.sequenceRoute, self.proyect.dirRoute + "/Prediccion")
         predictionTool.ejecutCommand()
         if predictionTool.fileExist():
             self.buttonReportPrediction.state(["!disabled"])
@@ -363,11 +365,11 @@ class PanelWindow(ttk.Frame):
     def configPrediction(self):
         return
 
-    def readPredictionReport(self, route):
+    def readPredictionReport(self):
         self.topPredictor = tk.Toplevel(self.panel_window)
         self.topPredictor.title("Reporte Prediccion")
 
         self.predictorTextBox = tk.Text(self.topPredictor, height=100, width=100)
         self.predictorTextBox.pack()
-        f = open(route + "/output.detail", "r")
+        f = open(self.proyect.dirRoute + "/Prediccion/output.detail", "r")
         self.predictorTextBox.insert(tk.INSERT, f.buffer.read())
