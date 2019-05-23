@@ -18,8 +18,25 @@ class Assembler:
         self.outputfile = outputfile
 
     def ejecutCommand(self):
+
+        # creamos el archivo manifest para ejecutar mira:
+        f = open(self.outputfile + "/manifest.txt", "w+")
+
+        manifest = '''project = output
+job = genome,denovo,accurate
+parameters = -GE:not=4
+readgroup = SomeUnpaired454ReadsIGotFromTheLab
+data = ruta
+technology = 454'''
+
+        manifest = manifest.replace("ruta", self.inputfile)
+
+        f.write(manifest)
+
+        f.close()
+
         # guardamos en una variable el comando a ejecutar
-        comando = "./nucleotidesModule/assemblers/velveth " + self.outputfile + "/output 1 " + self.inputfile
+        comando = "./nucleotidesModule/assemblers/mira " + self.outputfile + "/manifest.txt"
 
         # convertimos el string en una lista para poder pasar de manera adecuada los comandos desde python
         args = sl.split(comando)

@@ -13,9 +13,8 @@ import os
 
 class Aligner:
 
-    def __init__(self, inputfile, outputfile):
-        self.inputfile = inputfile
-        self.outputfile = outputfile
+    def __init__(self, proyect):
+        self.proyect = proyect
 
     def ejecutCommand(self):
         # guardamos en una variable el comando a ejecutar

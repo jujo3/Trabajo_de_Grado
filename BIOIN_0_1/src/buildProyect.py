@@ -137,6 +137,7 @@ class BuildProyectWindow(ttk.Frame):
 
                 steps = ["Ensamblaje, prediccion, homologia"]
                 os.mkdir(dirRoute+"/Ensamblaje")
+                os.mkdir(dirRoute+"/Ensamblaje/Reads")
                 steps += [dirRoute+"/Ensamblaje"]
 
                 os.mkdir(dirRoute+"/Prediccion")
@@ -146,8 +147,9 @@ class BuildProyectWindow(ttk.Frame):
                 steps += [dirRoute+"/Homologia"]
 
                 if self.fileRoute != "":
-                    sequenceRoute = self.fileRoute
-                    proyect = Proyect(self.proyectType, steps, dirRoute + "/archivo.bin", sequenceRoute, dirRoute)
+                    fileName = self.fileRoute.split("/")[-1]
+                    os.rename(self.fileRoute, dirRoute+"/Ensamblaje/Reads/" + fileName)
+                    proyect = Proyect(self.proyectType, steps, dirRoute + "/archivo.bin", dirRoute+"/Ensamblaje/Reads/" + fileName, dirRoute)
 
                     self.build_proyect_window.destroy()
                     new_window = tk.Tk()

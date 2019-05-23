@@ -315,7 +315,7 @@ class PanelWindow(ttk.Frame):
         webbrowser.open(url)
 
     def evaluateAlign(self):
-        alignTool = Aligner(self.proyect.sequenceRoute, self.proyect.dirRoute + "/Homologia")
+        alignTool = Aligner(self.proyect)
         alignTool.ejecutCommand()
         if alignTool.fileExist():
             self.buttonReportAlign.state(["!disabled"])
@@ -357,7 +357,7 @@ class PanelWindow(ttk.Frame):
         return
 
     def evaluatePrediction(self):
-        predictionTool = Predictor(self.proyect.sequenceRoute, self.proyect.dirRoute + "/Prediccion")
+        predictionTool = Predictor(self.proyect)
         predictionTool.ejecutCommand()
         if predictionTool.fileExist():
             self.buttonReportPrediction.state(["!disabled"])
