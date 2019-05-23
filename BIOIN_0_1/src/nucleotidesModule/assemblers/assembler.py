@@ -23,11 +23,11 @@ class Assembler:
         f = open(self.outputfile + "/manifest.txt", "w+")
 
         manifest = '''project = output
-job = genome,denovo,accurate
-parameters = -GE:not=4
-readgroup = SomeUnpaired454ReadsIGotFromTheLab
+job = genome,denovo,draft
+parameters = -NW:cmrnl=no
+readgroup = project 
 data = ruta
-technology = 454'''
+technology = solexa'''
 
         manifest = manifest.replace("ruta", self.inputfile)
 
@@ -44,6 +44,10 @@ technology = 454'''
         # ejecutamos la función call de subprocess que permite ejecutar comandos desde la temrinal
         sp.call(args)
 
+        # movemos la carpeta resultado al directorio correspondiente:
+
+        os.rename("output_assembly", self.outputfile + "/output_assembly")
+
     def fileExist(self):
-        path = self.outputfile + "/output"
+        path = self.outputfile + "/output_assembly"
         return os.path.exists(path)

@@ -1,0 +1,25 @@
+MIRA warncode: CONCOV_SUSPICIOUS_DISTRIBUTION
+Title: Suspicious distribution of contig coverages
+
+- 0 contig(s) with a total of 0 bases (= -nan% of bases in all non-repetitive
+  large contigs) have an average coverage less than 75% of the average coverage
+  of all non-repetitive large contigs.
+- 0 contig(s) with a total of 0 bases (= -nan% of bases in all non-repetitive
+  contigs) have an average coverage more than 125% of the average coverage of
+  all non-repetitive large contigs.
+- 0 contig(s) with a total of 0 bases (= -nan% of bases in all non-repetitive
+  contigs) have an average coverage 25% above or below the average coverage of
+  all non-repetitive large contigs.
+Summary: found 3 indicator(s) for coverage problem(s).
+
+If the DNA you are assembling is bacterial, this could indicate that you sampled
+and sequenced DNA from exponential or late exponential phase of a bacterial
+population. This leads to a coverage bias toward the origin of replication,
+hence false positive detection of repeats, hence an assembly which is more
+fragmented than it could be or may have misassemblies in regions located toward
+the opposite of the origin of replication.
+Only available countermeasure: for your next sequencing project, do not sample
+in exponential phase but sample in stationary phase (if possible).
+
+
+--------------------------------------------------------------------------------

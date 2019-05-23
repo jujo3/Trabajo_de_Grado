@@ -1,0 +1,21 @@
+Parsing special MIRA parameters: --job=genome,denovo,draft,Solexa -NW:cmrnl=no
+Ok.
+Loading from maf, saving to: caf fasta maf tcs wig fastaqual
+Loading MAF output_out.maf :
+
+Fatal error (may be due to problems of the input data or parameters):
+
+********************************************************************************
+* MAF file output_out.maf not found for loading.                               *
+********************************************************************************
+->Thrown: void MAFParse::load()
+->Caught: int mainConvPro(int argc, char ** argv)
+
+Aborting process, probably due to error in the input data or parametrisation.
+Please check the output log for more information.
+For help, please write a mail to the mira talk mailing list.
+Subscribing / unsubscribing to mira talk, see: http://www.freelists.org/list/mira_talk
+
+CWD: /home/juan/Documents/TESIS/Programa/Trabajo_de_Grado/BIOIN_0_1/src/output_assembly/output_d_results
+Thank you for noticing that this is *NOT* a crash, but a
+controlled program stop.

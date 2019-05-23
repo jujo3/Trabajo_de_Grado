@@ -90,7 +90,7 @@ class PanelWindow(ttk.Frame):
                 self.buttonReportAssemble.place(x=10, y=180)
 
                 self.tab2 = ttk.Frame(tabControl)
-                tabControl.add(self.tab2, text="Alineamiento")
+                tabControl.add(self.tab2, text="Alineamiento", state="disabled")
 
                 self.labelStep = ttk.Label(self.tab2, text="Alineamiento con Genoma de Referencia", font=self.titleFont).place(x=10, y=50)
 
@@ -337,6 +337,7 @@ class PanelWindow(ttk.Frame):
         assembleTool.ejecutCommand()
         if assembleTool.fileExist():
             self.buttonReportAssemble.state(["!disabled"])
+            self.tab2.state(["!disabled"])
 
     def configAssemble(self):
         return
