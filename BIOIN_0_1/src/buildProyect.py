@@ -28,7 +28,7 @@ class BuildProyectWindow(ttk.Frame):
         self.main_window = main_window
         super().__init__(self.build_proyect_window)
         self.build_proyect_window.title("BIOIN - NUEVO PROYECTO")
-        self.build_proyect_window.geometry("300x300")
+        self.build_proyect_window.geometry("400x400")
         self.place(relwidth=1, relheight=1)
         self.build_proyect_window.resizable(0, 0)
         self.build_proyect_window.protocol("WM_DELETE_WINDOW", self.onClosing)
@@ -66,7 +66,7 @@ class BuildProyectWindow(ttk.Frame):
         if self.proyectType == "Análisis de ADN":
             # check buttons
             self.step1Value = tk.BooleanVar(self)
-            self.step1 = ttk.Checkbutton(self, text="Ensamblaje, prediccion y homologia", variable=self.step1Value)
+            self.step1 = ttk.Checkbutton(self, text="Ensamblaje y alineamiento con genoma de referencia", variable=self.step1Value)
             self.step1.place(x=15, y=70)
 
             # botón para añadir la ruta por medio de una ventana
@@ -74,7 +74,7 @@ class BuildProyectWindow(ttk.Frame):
             # self.configButton1.place(x=150, y=68)
 
             self.step2Value = tk.BooleanVar(self)
-            self.step2 = ttk.Checkbutton(self, text="Ensamblaje y homologia", variable=self.step2Value)
+            self.step2 = ttk.Checkbutton(self, text="Ensamblaje y homologia con respecto a una base de datos", variable=self.step2Value)
             self.step2.place(x=15, y=100)
 
             # botón para añadir la ruta por medio de una ventana
@@ -82,7 +82,7 @@ class BuildProyectWindow(ttk.Frame):
             # self.configButton2.place(x=150, y=98)
 
             self.step3Value = tk.BooleanVar(self)
-            self.step3 = ttk.Checkbutton(self, text="Homologia", variable=self.step3Value)
+            self.step3 = ttk.Checkbutton(self, text="Ensamblaje y prediccion", variable=self.step3Value)
             self.step3.place(x=15, y=140)
 
             # botón para añadir la ruta por medio de una ventana
@@ -135,21 +135,23 @@ class BuildProyectWindow(ttk.Frame):
                 dirRoute = filedialog.asksaveasfilename()
                 os.mkdir(dirRoute)
 
-                steps = ["Ensamblaje, prediccion, homologia"]
+                steps = ["Ensamblaje y alineamiento"]
                 os.mkdir(dirRoute+"/Ensamblaje")
                 os.mkdir(dirRoute+"/Ensamblaje/Reads")
                 steps += [dirRoute+"/Ensamblaje"]
 
-                os.mkdir(dirRoute+"/Prediccion")
-                steps += [dirRoute+"/Prediccion"]
-
                 os.mkdir(dirRoute+"/Homologia")
+                os.mkdir(dirRoute+"/Homologia/GR")
                 steps += [dirRoute+"/Homologia"]
 
                 if self.fileRoute != "":
                     fileName = self.fileRoute.split("/")[-1]
                     os.rename(self.fileRoute, dirRoute+"/Ensamblaje/Reads/" + fileName)
-                    proyect = Proyect(self.proyectType, steps, dirRoute + "/archivo.bin", dirRoute+"/Ensamblaje/Reads/" + fileName, dirRoute)
+                    refGenoma = filedialog.askopenfilename()
+                    if refGenoma != () and refGenoma != '':
+                        refGenomaFileName = refGenoma.split("/")[-1]
+                        os.rename(refGenoma, dirRoute+"/Homologia/GR/"+refGenomaFileName)
+                    proyect = Proyect(self.proyectType, steps, dirRoute + "/archivo.bin", dirRoute+"/Ensamblaje/Reads/" + fileName, dirRoute+"/Homologia/GR/"+refGenomaFileName, dirRoute)
 
                     self.build_proyect_window.destroy()
                     new_window = tk.Tk()

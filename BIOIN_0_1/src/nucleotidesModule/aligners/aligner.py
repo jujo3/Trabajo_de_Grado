@@ -31,3 +31,13 @@ class Aligner:
         path = self.outputfile + "/output"
         return os.path.exists(path)
 
+    def ejecutCommandAlignBWA(self):
+        # guardamos en una variable el comando a ejecutar
+        comando = "./nucleotidesModule/aligners/bwa/bwakit/run-bwamem -o " + self.proyect.dirRoute + "/Homologia/output"
+        comando += self.proyect.genomeRefRoute + self.proyect.dirRoute + "/Ensamblaje/output"
+
+        # convertimos el string en una lista para poder pasar de manera adecuada los comandos desde python
+        args = sl.split(comando)
+
+        # ejecutamos la función call de subprocess que permite ejecutar comandos desde la temrinal
+        sp.call(args)

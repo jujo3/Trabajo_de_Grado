@@ -69,7 +69,7 @@ class PanelWindow(ttk.Frame):
 
         if self.proyect.type == "Análisis de ADN":
 
-            if proyect.steps[0] == "Ensamblaje, prediccion, homologia":
+            if proyect.steps[0] == "Ensamblaje y alineamiento":
                 # Implantación de los pasos:
                 self.tab1 = ttk.Frame(tabControl)
                 tabControl.add(self.tab1, text="Ensamblaje")
@@ -90,23 +90,23 @@ class PanelWindow(ttk.Frame):
                 self.buttonReportAssemble.place(x=10, y=180)
 
                 self.tab2 = ttk.Frame(tabControl)
-                tabControl.add(self.tab2, text="Predicción")
+                tabControl.add(self.tab2, text="Alineamiento")
 
-                self.labelStep = ttk.Label(self.tab2, text="Predicción", font=self.titleFont).place(x=10, y=50)
+                self.labelStep = ttk.Label(self.tab2, text="Alineamiento con Genoma de Referencia", font=self.titleFont).place(x=10, y=50)
 
                 self.labelDescription = ttk.Label(self.tab2,
-                                                  text="Desde este panel puedes revisar y ejecutar el proceso de Predicción").place(
+                                                  text="Desde este panel puedes revisar y ejecutar el proceso de Alineamiento").place(
                     x=10, y=90)
 
-                self.buttonPrediction = ttk.Button(self.tab2, text="Evaluar", command=self.evaluatePrediction)
-                self.buttonPrediction.place(x=10, y=110)
+                self.buttonAlign = ttk.Button(self.tab2, text="Evaluar", command=self.evaluateAlign)
+                self.buttonAlign.place(x=10, y=110)
 
                 # self.configAssemble = ttk.Button(self.tab2, text="Configurar").place(x=10, y=150)
 
-                self.buttonReportPrediction = ttk.Button(self.tab2, text="Leer reporte",
-                                                         command=self.readPredictionReport,
+                self.buttonReportAlign = ttk.Button(self.tab2, text="Leer reporte",
+                                                         command=self.readAlignReport,
                                                          state="disabled")
-                self.buttonReportPrediction.place(x=10, y=180)
+                self.buttonReportAlign.place(x=10, y=180)
 
                 self.tab3 = ttk.Frame(tabControl)
                 tabControl.add(self.tab3, text="Homologia")
