@@ -1,164 +1,155 @@
-loadclip:  bad solexa end: T (hard) chrIII:144771-147632C:YCR017C:10:2862:2650:2905:A
-loadclip:  bad solexa end: T (hard) chrIII:151606-151860C:YCR018C-A:3:255:232:359:A
-loadclip:  bad solexa end: A hard chrIII:151606-151860C:YCR018C-A:5:255:346:491:S
-loadclip:  bad solexa end: T (hard) chrIII:162595-162861C:YCR024C-B:2:267:181:349:A
-loadclip:  bad solexa end: T (hard) chrIII:170882-172420C:YCR028C:9:1539:1449:1658:A
-loadclip:  bad solexa end: A hard chrIII:173822-176434C:YCR030C:2:2613:2614:2820:S
-loadclip:  bad solexa end: A hard chrIII:206873-207946C:YCR044C:2:1074:1114:1290:S
-loadclip:  bad solexa end: T (hard) chrIII:233121-236318C:YCR067C:4:3198:3167:3340:A
-loadclip:  bad solexa end: T (hard) chrIII:233121-236318C:YCR067C:6:3198:3263:3437:A
-loadclip:  bad solexa end: T (hard) chrIII:249290-250042C:YCR076C:3:753:644:978:A
-loadclip:  bad solexa end: T (hard) chrIII:250235-252625C:YCR077C:4:2391:2207:2485:A
-loadclip:  bad solexa end: A hard chrIII:293176-293535C:YCR096C:2:360:364:526:S
-loadclip:  bad solexa end: T (hard) chrIII:297046-298602C:YCR098C:6:1557:1562:1691:A
-loadclip:  bad solexa end: T (hard) chrIII:300829-302218C:YCR099C:2:468:379:495:A
-loadclip:  bad solexa end: T (hard) chrIII:300829-302218C:YCR099C:3:468:473:656:A
-loadclip:  bad solexa end: T (hard) chrIII:315994-316185C:YCR108C:2:192:193:343:A
-loadclip:  bad solexa end: T (hard) chrIV:16204-17226W:YDL244W:2:1023:1208:1276:A
-loadclip:  bad solexa end: T (hard) chrIV:18959-19312W:YDL242W:2:354:210:476:A
-loadclip:  bad solexa end: A hard chrIV:65243-65766W:YDL219W:4:453:562:692:S
-loadclip:  poly-base a at end chrIV:65243-65766W:YDL219W:9:453:434:646:S	Mask right: 11
-loadclip:  bad solexa end: T (hard) chrIV:65243-65766W:YDL219W:10:453:516:645:A
-loadclip:  bad solexa end: T (hard) chrIV:84271-85986W:YDL210W:6:1716:1762:1856:A
-loadclip:  bad solexa end: T (hard) chrIV:84271-85986W:YDL210W:10:1716:1744:1967:A
-loadclip:  chrIV:84271-85986W:YDL210W:12:1716:290:470:S: min qual threshold not met, killed
-loadclip:  chrIV:84271-85986W:YDL210W:14:1716:570:690:S: min qual threshold not met, killed
-loadclip:  bad solexa end: T (hard) chrIV:84271-85986W:YDL210W:16:1716:1918:2000:A
-loadclip:  bad solexa end: T (hard) chrIV:84271-85986W:YDL210W:25:1716:1688:1795:A
-loadclip:  chrIV:84271-85986W:YDL210W:26:1716:560:830:A: min qual threshold not met, killed
-loadclip:  bad solexa end: T (hard) chrIV:84271-85986W:YDL210W:28:1716:1652:1899:A
-loadclip:  bad solexa end: A hard chrIV:84271-85986W:YDL210W:36:1716:1757:1822:S
-loadclip:  bad solexa end: A hard chrIV:84271-85986W:YDL210W:46:1716:1720:1955:S
-loadclip:  chrIV:84271-85986W:YDL210W:55:1716:1777:1986:A: min qual threshold not met, killed
-loadclip:  bad solexa end: A hard chrIV:84271-85986W:YDL210W:59:1716:1712:1860:S
-loadclip:  bad solexa end: A hard chrIV:84271-85986W:YDL210W:62:1716:1859:2007:S
-loadclip:  bad solexa end: T (hard) chrIV:84271-85986W:YDL210W:65:1716:1809:1859:A
-loadclip:  bad solexa end: T (hard) chrIV:111581-114235W:YDL194W:5:2655:2615:2798:A
-loadclip:  chrIV:126788-130003W:YDL185W:3:3216:543:795:A: min qual threshold not met, killed
-loadclip:  bad solexa end: T (hard) chrIV:133438-134724W:YDL182W:2:1287:1281:1454:A
-loadclip:  bad solexa end: A hard chrIV:139523-141115W:YDL178W:2:1593:1591:1735:S
-loadclip:  bad solexa end: A hard chrIV:166957-167259W:YDL163W:5:303:322:522:S
-loadclip:  bad solexa end: A hard chrIV:172183-172314W:YDL159W-A:2:132:206:325:S
-loadclip:  bad solexa end: T (hard) chrIV:172183-172314W:YDL159W-A:5:132:-18:227:A
-loadclip:  bad solexa end: T (hard) chrIV:172482-174029W:YDL159W:6:1548:1543:1743:A
-loadclip:  bad solexa end: A hard chrIV:178335-181040W:YDL154W:2:2706:2801:2934:S
-loadclip:  bad solexa end: T (hard) chrIV:182823-183188W:YDL152W:9:366:238:521:A
-loadclip:  bad solexa end: T (hard) chrIV:184926-187919W:YDL149W:6:2994:2978:3144:A
-loadclip:  bad solexa end: T (hard) chrIV:199997-201583W:YDL143W:8:1587:1715:1865:A
-loadclip:  bad solexa end: A hard chrIV:203040-205112W:YDL141W:5:2073:2096:2318:S
-loadclip:  bad solexa end: T (hard) chrIV:229171-229431W:YDL130W-A:2:261:198:419:A
-loadclip:  bad solexa end: T (hard) chrIV:341619-343985W:YDL060W:2:2367:2416:2622:A
-loadclip:  bad solexa end: A hard chrIV:351434-352420W:YDL057W:2:987:987:1238:S
-loadclip:  bad solexa end: T (hard) chrIV:394215-397202W:YDL031W:3:2988:2964:3193:A
-loadclip:  chrIV:447982-449274W:YDL001W:2:1293:1249:1336:A: min qual threshold not met, killed
-loadclip:  bad solexa end: T (hard) chrIV:454120-454752W:YDR003W:4:633:776:865:A
-loadclip:  bad solexa end: T (hard) chrIV:471851-472939W:YDR012W:2:1089:1118:1249:A
-loadclip:  bad solexa end: T (hard) chrIV:477795-478283W:YDR014W-A:2:489:404:605:A
-loadclip:  bad solexa end: T (hard) chrIV:486802-488001W:YDR021W:2:1200:1136:1433:A
-loadclip:  bad solexa end: T (hard) chrIV:491015-491500W:YDR024W:2:486:493:734:A
-loadclip:  bad solexa end: A hard chrIV:521312-521467W:YDR034W-B:2:156:195:449:S
-loadclip:  chrIV:525438-527213W:YDR037W:3:1776:1176:1386:S: min qual threshold not met, killed
-loadclip:  bad solexa end: T (hard) chrIV:539801-540412W:YDR041W:2:612:469:682:A
-loadclip:  bad solexa end: T (hard) chrIV:574162-575781W:YDR061W:4:1620:1599:1785:A
-loadclip:  bad solexa end: T (hard) chrIV:597154-598080W:YDR075W:7:927:793:963:A
-loadclip:  bad solexa end: T (hard) chrIV:652779-654426W:YDR099W:2:1565:1438:1722:A
-loadclip:  bad solexa end: A hard chrIV:691012-691212W:YDR119W-A:4:201:322:423:S
-loadclip:  bad solexa end: T (hard) chrIV:691012-691212W:YDR119W-A:8:201:160:296:A
-loadclip:  bad solexa end: A hard chrIV:691012-691212W:YDR119W-A:9:201:235:408:S
-loadclip:  bad solexa end: T (hard) chrIV:704482-709248W:YDR127W:3:4767:4621:4898:A
-loadclip:  poly-base a at end chrIV:709547-712993W:YDR128W:4:3447:3426:3605:S	Mask right: 19
-loadclip:  poly-base a at end chrIV:781421-781948W:YDR163W:2:528:522:572:S	Mask right: 0
-loadclip:  bad solexa end: T (hard) chrIV:790326-791846W:YDR168W:2:1521:1317:1586:A
-loadclip:  bad solexa end: T (hard) chrIV:803193-804515W:YDR170W-A:6:1323:1277:1428:A
-loadclip:  bad solexa end: T (hard) chrIV:816876-817523W:YDR177W:2:648:531:742:A
-loadclip:  bad solexa end: T (hard) chrIV:829149-829352W:YDR182W-A:3:204:232:398:A
-loadclip:  bad solexa end: T (hard) chrIV:829149-829352W:YDR182W-A:6:204:384:486:A
-loadclip:  bad solexa end: T (hard) chrIV:829149-829352W:YDR182W-A:8:204:99:459:A
-loadclip:  bad solexa end: T (hard) chrIV:836419-838059W:YDR188W:3:1641:1430:1706:A
-loadclip:  bad solexa end: T (hard) chrIV:889749-892490W:YDR213W:2:2742:2737:2919:A
-loadclip:  bad solexa end: T (hard) chrIV:889749-892490W:YDR213W:5:2742:2694:2778:A
-loadclip:  bad solexa end: A hard chrIV:917568-921644W:YDR227W:3:4077:4179:4357:S
-loadclip:  bad solexa end: A hard chrIV:924782-926143W:YDR229W:2:1362:1426:1622:S
-loadclip:  bad solexa end: T (hard) chrIV:927449-929095W:YDR232W:2:1647:1674:1792:A
-loadclip:  bad solexa end: A hard chrIV:927449-929095W:YDR232W:4:1647:1810:1933:S
-loadclip:  bad solexa end: T (hard) chrIV:927449-929095W:YDR232W:9:1647:1668:1814:A
-loadclip:  bad solexa end: T (hard) chrIV:931126-933207W:YDR234W:2:2082:2112:2370:A
-loadclip:  chrIV:933501-935135W:YDR235W:2:1635:357:636:S: min qual threshold not met, killed
-loadclip:  chrIV:954285-954944W:YDR246W:2:660:608:844:S: min qual threshold not met, killed
-loadclip:  bad solexa end: A hard chrIV:954285-954944W:YDR246W:3:660:682:842:S
-loadclip:  bad solexa end: A hard chrIV:1019365-1020417W:YDR279W:2:1053:1124:1268:S
-loadclip:  bad solexa end: A hard chrIV:1039367-1039696W:YDR290W:2:330:385:619:S
-loadclip:  bad solexa end: T (hard) chrIV:1039367-1039696W:YDR290W:3:330:400:524:A
-loadclip:  bad solexa end: T (hard) chrIV:1039367-1039696W:YDR290W:5:330:300:567:A
-loadclip:  bad solexa end: A hard chrIV:1059624-1061228W:YDR299W:14:1605:1686:1841:S
-loadclip:  bad solexa end: T (hard) chrIV:1067728-1068387W:YDR302W:2:660:611:734:A
-loadclip:  bad solexa end: T (hard) chrIV:1103756-1104945W:YDR318W:3:1107:989:1159:A
-loadclip:  bad solexa end: T (soft) chrIV:1127868-1129370W:YDR330W:5:1503:1551:1741:A
-loadclip:  bad solexa end: T (hard) chrIV:1129584-1130819W:YDR331W:3:1236:1118:1407:A
-loadclip:  bad solexa end: T (hard) chrIV:1186101-1188935W:YDR356W:4:2835:2838:3133:A
-loadclip:  bad solexa end: T (hard) chrIV:1206990-1212258W:YDR365W-B:12:5269:5223:5464:A
-loadclip:  chrIV:1206990-1212258W:YDR365W-B:25:5269:2810:2907:A: min qual threshold not met, killed
-loadclip:  bad solexa end: T (hard) chrIV:1259894-1261264W:YDR393W:2:1371:1023:1407:A
-loadclip:  bad solexa end: T (hard) chrIV:1267464-1269395W:YDR398W:2:1932:1877:2071:A
-loadclip:  chrIV:1298425-1301004W:YDR416W:3:2580:782:905:A: min qual threshold not met, killed
-loadclip:  bad solexa end: A hard chrIV:1298425-1301004W:YDR416W:4:2580:2576:2687:S
-loadclip:  bad solexa end: A hard chrIV:1331230-1332834W:YDR434W:2:1605:1671:1853:S
-loadclip:  bad solexa end: T (hard) chrIV:1337345-1337767W:YDR437W:2:423:413:634:A
-loadclip:  bad solexa end: A hard chrIV:1339669-1340712W:YDR439W:3:1044:1196:1292:S
-loadclip:  bad solexa end: T (hard) chrIV:1369783-1379589W:YDR457W:12:9807:9833:10027:A
-loadclip:  chrIV:1386809-1388368W:YDR463W:2:1560:546:784:A: min qual threshold not met, killed
-loadclip:  bad solexa end: T (hard) chrIV:1422756-1424681W:YDR484W:5:1926:1810:1968:A
-loadclip:  bad solexa end: A hard chrIV:1473422-1474765W:YDR515W:2:1344:1397:1504:S
-loadclip:  bad solexa end: T (hard) chrIV:26403-28775C:YDL239C:3:2373:2228:2529:A
-loadclip:  bad solexa end: A hard chrIV:26403-28775C:YDL239C:8:2373:2477:2580:S
-loadclip:  chrIV:26403-28775C:YDL239C:21:2373:1775:1908:A: min qual threshold not met, killed
-loadclip:  bad solexa end: T (hard) chrIV:26403-28775C:YDL239C:22:2373:2320:2439:A
-loadclip:  bad solexa end: A hard chrIV:45278-45919C:YDL228C:2:642:808:941:S
-loadclip:  chrIV:57266-60406C:YDL223C:4:3141:1513:1672:S: min qual threshold not met, killed
-loadclip:  bad solexa end: T (hard) chrIV:60873-61802C:YDL222C:3:930:989:1217:A
-loadclip:  bad solexa end: T (hard) chrIV:86208-87227C:YDL209C:2:1020:940:1134:A
-loadclip:  bad solexa end: A hard chrIV:96083-97954C:YDL203C:2:1872:1896:2101:S
-loadclip:  bad solexa end: T (hard) chrIV:126609-126836C:YDL185C-A:2:228:228:419:A
-loadclip:  bad solexa end: T (hard) chrIV:148608-149087C:YDL172C:2:480:630:711:A
-loadclip:  bad solexa end: T (hard) chrIV:167360-167716C:YDL162C:2:357:193:437:A
-loadclip:  bad solexa end: A hard chrIV:205361-210562C:YDL140C:10:5202:5299:5448:S
-loadclip:  bad solexa end: A hard chrIV:245133-245582C:YDL121C:3:450:499:739:S
-loadclip:  chrIV:256633-258555C:YDL113C:2:1923:1172:1316:A: min qual threshold not met, killed
-loadclip:  bad solexa end: A hard chrIV:275148-276581C:YDL103C:4:1434:1421:1626:S
-loadclip:  chrIV:289572-290081C:YDL094C:2:510:207:281:A: min qual threshold not met, killed
-loadclip:  bad solexa end: T (hard) chrIV:289572-290081C:YDL094C:3:510:418:642:A
-loadclip:  bad solexa end: A hard chrIV:312951-314748C:YDL079C:4:1506:1537:1749:S
-loadclip:  bad solexa end: A hard chrIV:344237-344953C:YDL059C:2:717:737:868:S
-loadclip:  bad solexa end: T (hard) chrIV:375677-376477C:YDL043C:2:801:801:982:A
-loadclip:  bad solexa end: T (hard) chrIV:384599-385585C:YDL037C:3:987:672:1029:A
-loadclip:  bad solexa end: A hard chrIV:392657-393910C:YDL033C:2:1254:1441:1543:S
-loadclip:  bad solexa end: A hard chrIV:403693-404955C:YDL027C:2:1263:1306:1474:S
-loadclip:  bad solexa end: T (hard) chrIV:403693-404955C:YDL027C:8:1263:1260:1351:A
-loadclip:  bad solexa end: T (hard) chrIV:403693-404955C:YDL027C:11:1263:1262:1413:A
-loadclip:  bad solexa end: A hard chrIV:403693-404955C:YDL027C:16:1263:1345:1557:S
-loadclip:  bad solexa end: T (hard) chrIV:408449-410054C:YDL022C-A:3:249:56:391:A
-loadclip:  bad solexa end: T (hard) chrIV:408449-410054C:YDL022C-A:5:249:170:341:A
-loadclip:  bad solexa end: T (hard) chrIV:408449-410054C:YDL022C-A:6:249:361:525:A
-loadclip:  bad solexa end: T (hard) chrIV:408449-410054C:YDL022C-A:8:249:271:308:A
-loadclip:  bad solexa end: T (hard) chrIV:408449-410054C:YDL022C-A:9:249:369:495:A
-loadclip:  bad solexa end: T (hard) chrIV:408449-410054C:YDL022C-A:10:249:254:446:A
-loadclip:  bad solexa end: T (hard) chrIV:408449-410054C:YDL022C-A:11:249:114:337:A
-loadclip:  bad solexa end: T (hard) chrIV:408449-410054C:YDL022C-A:12:249:-20:290:A
-loadclip:  bad solexa end: T (hard) chrIV:408449-410054C:YDL022C-A:13:249:44:443:A
-loadclip:  bad solexa end: T (hard) chrIV:415111-416706C:YDL020C:2:1596:1557:1786:A
-loadclip:  chrIV:417661-421512C:YDL019C:11:3852:691:948:S: min qual threshold not met, killed
-loadclip:  chrIV:417661-421512C:YDL019C:13:3852:1366:1529:S: min qual threshold not met, killed
-loadclip:  bad solexa end: A hard chrIV:417661-421512C:YDL019C:25:3852:3847:3983:S
-loadclip:  bad solexa end: A hard chrIV:417661-421512C:YDL019C:31:3852:3904:4074:S
-loadclip:  bad solexa end: T (hard) chrIV:465049-465381C:YDR010C:3:333:512:599:A
-loadclip:  bad solexa end: T (soft) chrIV:477958-478197C:YDR015C:3:240:285:525:A
-loadclip:  bad solexa end: T (hard) chrIV:484161-485363C:YDR019C:2:1203:1278:1439:A
-loadclip:  bad solexa end: T (hard) chrIV:485744-486442C:YDR020C:2:699:665:828:A
-loadclip:  bad solexa end: A hard chrIV:497833-500877C:YDR028C:3:3045:3107:3215:S
-loadclip:  bad solexa end: T (hard) chrIV:501751-503271C:YDR030C:7:1521:1368:1600:A
-loadclip:  bad solexa end: T (hard) chrIV:582790-583464C:YDR067C:2:675:701:894:A
-loadclip:  bad solexa end: T (hard) chrIV:582790-583464C:YDR067C:4:675:799:938:A
-loadclip:  bad solexa end: T (hard) chrIV:618495-619643C:YDR088C:2:1149:951:1252:A
+loadclip:  bad solexa end: A hard 2micron:252-1523W:R0010W:3:1272:1372:1482:S
+loadclip:  bad solexa end: T (hard) 2micron:3271-3816W:R0030W:2:546:457:723:A
+loadclip:  bad solexa end: T (hard) chrI:335-792W:YAL069W:2:315:246:452:A
+loadclip:  bad solexa end: T (hard) chrI:35156-36304W:YAL060W:2:1149:1189:1440:A
+loadclip:  bad solexa end: A hard chrI:48565-51708W:YAL051W:2:3144:3199:3401:S
+loadclip:  bad solexa end: T (hard) chrI:114251-114820W:YAL019W-A:2:570:598:857:A
+loadclip:  bad solexa end: T (hard) chrI:120226-124296W:YAL017W:5:4071:4101:4304:A
+loadclip:  chrI:132202-134079W:YAL011W:2:1878:47:208:S: min qual threshold not met, killed
+loadclip:  bad solexa end: A hard chrI:132202-134079W:YAL011W:3:1878:1936:2153:S
+loadclip:  bad solexa end: T (hard) chrI:140762-141409W:YAL004W:3:648:540:917:A
+loadclip:  bad solexa end: T (hard) chrI:155007-156287W:YAR003W:2:1281:1193:1324:A
+loadclip:  bad solexa end: T (hard) chrI:184886-185590W:YAR028W:3:705:823:996:A
+loadclip:  bad solexa end: T (hard) chrI:208358-208654W:YAR053W:3:297:361:513:A
+loadclip:  bad solexa end: A hard chrI:218540-219136W:YAR062W:2:597:645:802:S
+loadclip:  bad solexa end: A hard chrI:1807-2169C:YAL068C:2:363:461:515:S
+loadclip:  chrI:7236-9017C:YAL067C:2:1782:1468:1656:A: min qual threshold not met, killed
+loadclip:  bad solexa end: T (hard) chrI:95387-99698C:YAL026C:5:4068:4031:4274:A
+loadclip:  chrI:95387-99698C:YAL026C:7:4068:1784:1957:A: min qual threshold not met, killed
+loadclip:  bad solexa end: T (hard) chrI:108878-110431C:YAL022C:4:1554:1489:1675:A
+loadclip:  bad solexa end: T (hard) chrI:110847-113360C:YAL021C:2:2514:2293:2541:A
+loadclip:  bad solexa end: T (hard) chrI:124756-125070C:YAL016C-A:2:315:183:471:A
+loadclip:  bad solexa end: T (hard) chrI:147596-151168C:YAL001C:2:3483:3471:3609:A
+loadclip:  bad solexa end: T (hard) chrII:8177-8482W:YBL108W:2:306:430:567:A
+loadclip:  bad solexa end: T (hard) chrII:29932-35245W:YBL100W-B:15:5314:5286:5404:A
+loadclip:  bad solexa end: T (hard) chrII:45642-46367W:YBL092W:2:726:619:793:A
+loadclip:  bad solexa end: T (hard) chrII:113765-115171W:YBL056W:2:1407:1385:1627:A
+loadclip:  bad solexa end: T (hard) chrII:141250-141975W:YBL041W:2:726:572:790:A
+loadclip:  bad solexa end: T (hard) chrII:146190-146888W:YBL038W:3:699:649:843:A
+loadclip:  bad solexa end: T (hard) chrII:172537-174591W:YBL024W:2:2055:2164:2342:A
+loadclip:  chrII:192454-193515W:YBL016W:3:1062:680:853:S: min qual threshold not met, killed
+loadclip:  bad solexa end: A hard chrII:203541-205820W:YBL011W:9:2280:2295:2492:S
+loadclip:  bad solexa end: T (hard) chrII:203541-205820W:YBL011W:16:2280:2200:2555:A
+loadclip:  bad solexa end: T (hard) chrII:203541-205820W:YBL011W:38:2280:2259:2562:A
+loadclip:  chrII:203541-205820W:YBL011W:47:2280:2001:2220:S: min qual threshold not met, killed
+loadclip:  bad solexa end: T (hard) chrII:203541-205820W:YBL011W:59:2280:2359:2396:A
+loadclip:  bad solexa end: T (hard) chrII:203541-205820W:YBL011W:62:2280:2209:2434:A
+loadclip:  bad solexa end: T (hard) chrII:216714-216863W:YBL006W-A:2:150:15:178:A
+loadclip:  chrII:216714-216863W:YBL006W-A:3:150:268:371:A: min qual threshold not met, killed
+loadclip:  bad solexa end: T (hard) chrII:216714-216863W:YBL006W-A:4:150:196:359:A
+loadclip:  bad solexa end: T (hard) chrII:300166-301254W:YBR031W:2:1089:1088:1224:A
+loadclip:  bad solexa end: A hard chrII:301944-304703W:YBR033W:3:2760:2783:3003:S
+loadclip:  bad solexa end: T (hard) chrII:315575-316510W:YBR039W:3:936:924:1035:A
+loadclip:  chrII:316968-317864W:YBR040W:3:897:834:1007:S: min qual threshold not met, killed
+loadclip:  bad solexa end: T (hard) chrII:386281-389211W:YBR074W:2:2931:2830:3005:A
+loadclip:  bad solexa end: T (hard) chrII:390369-391388W:YBR076W:5:1020:902:1111:A
+loadclip:  bad solexa end: A hard chrII:390369-391388W:YBR076W:6:1020:1097:1271:S
+loadclip:  bad solexa end: T (soft) chrII:390369-391388W:YBR076W:7:1020:1093:1268:A
+loadclip:  bad solexa end: A hard chrII:393118-394854W:YBR078W:2:1407:1390:1538:S
+loadclip:  bad solexa end: T (hard) chrII:436015-436707W:YBR096W:3:693:556:739:A
+loadclip:  poly-base t at end chrII:465560-466042W:YBR113W:2:483:377:475:A	Mask right: 9
+loadclip:  bad solexa end: T (hard) chrII:490844-491064W:YBR126W-A:2:207:90:310:A
+loadclip:  bad solexa end: T (hard) chrII:505662-512768W:YBR136W:6:7107:7058:7206:A
+loadclip:  bad solexa end: T (hard) chrII:528311-530632W:YBR142W:2:2322:2168:2377:A
+loadclip:  bad solexa end: A hard chrII:528311-530632W:YBR142W:3:2322:2309:2531:S
+loadclip:  bad solexa end: A hard chrII:556543-558192W:YBR158W:2:1650:1733:1929:S
+loadclip:  bad solexa end: A hard chrII:556543-558192W:YBR158W:19:1650:1664:1890:S
+loadclip:  bad solexa end: T (hard) chrII:561629-562759W:YBR161W:2:1131:1115:1333:A
+loadclip:  bad solexa end: T (hard) chrII:565226-565423W:YBR162W-A:6:198:345:480:A
+loadclip:  bad solexa end: T (hard) chrII:578359-578979W:YBR171W:2:621:618:842:A
+loadclip:  bad solexa end: T (hard) chrII:578359-578979W:YBR171W:7:621:650:870:A
+loadclip:  bad solexa end: T (hard) chrII:578359-578979W:YBR171W:8:621:592:707:A
+loadclip:  bad solexa end: A hard chrII:604503-605503W:YBR189W:2:588:675:830:S
+loadclip:  bad solexa end: T (hard) chrII:605961-607135W:YBR191W:2:483:384:635:A
+loadclip:  bad solexa end: T (hard) chrII:623572-624207W:YBR201W:5:636:762:933:A
+loadclip:  bad solexa end: A hard chrII:675308-676222W:YBR228W:18:915:1034:1169:S
+loadclip:  bad solexa end: A hard chrII:683423-684664W:YBR233W:2:1242:1254:1520:S
+loadclip:  bad solexa end: T (hard) chrII:749589-751172W:YBR274W:3:1584:1740:1792:A
+loadclip:  bad solexa end: T (hard) chrII:749589-751172W:YBR274W:4:1584:1370:1613:A
+loadclip:  bad solexa end: T (hard) chrII:773918-774352W:YBR285W:2:435:260:478:A
+loadclip:  bad solexa end: T (hard) chrII:805345-807099W:YBR299W:2:1755:1650:1793:A
+loadclip:  bad solexa end: T (hard) chrII:809051-809413W:YBR301W:2:363:366:597:A
+loadclip:  bad solexa end: A hard chrII:24946-28299C:YBL101C:4:3354:3403:3514:S
+loadclip:  bad solexa end: A hard chrII:36986-37300C:YBL100C:3:315:360:477:S
+loadclip:  bad solexa end: T (hard) chrII:51016-59379C:YBL088C:13:8364:8263:8500:A
+loadclip:  bad solexa end: T (hard) chrII:80375-80728C:YBL078C:2:354:315:485:A
+loadclip:  bad solexa end: T (hard) chrII:90221-90529C:YBL071C:2:309:174:360:A
+loadclip:  bad solexa end: T (hard) chrII:138344-140263C:YBL042C:4:1920:1762:1989:A
+loadclip:  chrII:153851-158392C:YBL034C:2:4542:1856:2025:A: min qual threshold not met, killed
+loadclip:  bad solexa end: A hard chrII:158659-159696C:YBL033C:4:1038:1032:1251:S
+loadclip:  bad solexa end: A hard chrII:174923-177529C:YBL023C:5:2607:2636:2781:S
+loadclip:  bad solexa end: T (hard) chrII:186001-186477C:YBL018C:2:402:480:683:A
+loadclip:  bad solexa end: A hard chrII:252564-254210C:YBR008C:2:1647:1630:1698:S
+loadclip:  bad solexa end: T (hard) chrII:257110-257973C:YBR011C:2:864:978:1129:A
+loadclip:  bad solexa end: A hard chrII:290681-291865C:YBR025C:3:1185:1291:1386:S
+loadclip:  bad solexa end: T (hard) chrII:310564-311451C:YBR037C:4:888:978:1152:A
+loadclip:  bad solexa end: A hard chrII:356322-356564C:YBR058C-A:2:243:444:538:S
+loadclip:  bad solexa end: T (hard) chrII:366968-368182C:YBR063C:4:1215:1032:1308:A
+loadclip:  bad solexa end: A hard chrII:395377-398271C:YBR079C:3:2895:2931:3085:S
+loadclip:  bad solexa end: A hard chrII:395377-398271C:YBR079C:8:2895:2979:3175:S
+loadclip:  bad solexa end: T (hard) chrII:395377-398271C:YBR079C:11:2895:2811:3015:A
+loadclip:  chrII:395377-398271C:YBR079C:21:2895:939:1197:A: min qual threshold not met, killed
+loadclip:  bad solexa end: T (hard) chrII:395377-398271C:YBR079C:26:2895:2774:2939:A
+loadclip:  bad solexa end: T (hard) chrII:414180-415255C:YBR084C-A:3:570:462:786:A
+loadclip:  bad solexa end: T (hard) chrII:427692-429095C:YBR092C:2:1404:1483:1611:A
+loadclip:  bad solexa end: T (hard) chrII:443815-444687C:YBR101C:2:873:722:914:A
+loadclip:  bad solexa end: T (hard) chrII:449314-449457C:YBR103C-A:2:144:-30:169:A
+loadclip:  bad solexa end: T (hard) chrII:481358-483361C:YBR121C-A:2:159:264:413:A
+loadclip:  poly-base a at end chrII:494347-495333C:YBR129C:2:987:964:1175:S	Mask right: 18
+loadclip:  bad solexa end: T (hard) chrII:533229-533543C:YBR144C:2:315:343:539:A
+loadclip:  bad solexa end: T (hard) chrII:553537-554304C:YBR157C:2:768:949:984:A
+loadclip:  bad solexa end: T (hard) chrII:573910-575991C:YBR169C:2:2082:2159:2375:A
+loadclip:  bad solexa end: T (hard) chrII:573910-575991C:YBR169C:3:2082:2018:2235:A
+loadclip:  bad solexa end: T (hard) chrII:573910-575991C:YBR169C:6:2082:2168:2326:A
+loadclip:  bad solexa end: T (hard) chrII:579145-581367C:YBR172C:4:2223:2185:2357:A
+loadclip:  bad solexa end: A hard chrII:610609-611877C:YBR195C:2:1269:1391:1542:S
+loadclip:  chrII:610609-611877C:YBR195C:5:1269:661:909:S: min qual threshold not met, killed
+loadclip:  bad solexa end: T (hard) chrII:614521-614625C:YBR196C-B:2:105:289:389:A
+loadclip:  bad solexa end: T (hard) chrII:614521-614625C:YBR196C-B:3:105:271:389:A
+loadclip:  chrII:632249-633376C:YBR204C:3:1128:749:980:S: min qual threshold not met, killed
+loadclip:  bad solexa end: A hard chrII:673150-673560C:YBR226C:2:411:442:647:S
+loadclip:  bad solexa end: T (hard) chrII:679544-680045C:YBR230C:2:405:310:553:A
+loadclip:  bad solexa end: T (hard) chrII:685433-686587C:YBR234C:2:1155:997:1217:A
+loadclip:  bad solexa end: T (hard) chrII:690378-691688C:YBR236C:2:1311:1252:1472:A
+loadclip:  bad solexa end: T (hard) chrII:714802-716460C:YBR248C:2:1659:1584:1779:A
+loadclip:  bad solexa end: T (hard) chrII:726613-727069C:YBR255C-A:2:363:262:510:A
+loadclip:  bad solexa end: T (hard) chrII:727381-728097C:YBR256C:3:717:613:850:A
+loadclip:  bad solexa end: T (hard) chrII:764966-767602C:YBR281C:2:2637:2692:2859:A
+loadclip:  bad solexa end: A hard chrII:802625-804469C:YBR298C:3:1845:1932:2070:S
+loadclip:  bad solexa end: T (hard) chrIII:13282-14119W:YCL065W:2:369:346:448:A
+loadclip:  bad solexa end: A hard chrIII:17290-18561W:YCL063W:2:1272:1294:1523:S
+loadclip:  bad solexa end: T (hard) chrIII:23584-23925W:YCL058W-A:5:342:162:370:A
+loadclip:  bad solexa end: T (hard) chrIII:27929-28936W:YCL055W:4:1008:1136:1268:A
+loadclip:  bad solexa end: A hard chrIII:27929-28936W:YCL055W:8:1008:1021:1179:S
+loadclip:  bad solexa end: T (hard) chrIII:27929-28936W:YCL055W:10:1008:1102:1208:A
+loadclip:  bad solexa end: T (hard) chrIII:35865-37616W:YCL051W:2:1752:1592:1778:A
+loadclip:  bad solexa end: A hard chrIII:42165-43556W:YCL048W:2:1392:1454:1578:S
+loadclip:  bad solexa end: T (hard) chrIII:52645-54882W:YCL039W:5:2238:2214:2427:A
+loadclip:  bad solexa end: A hard chrIII:52645-54882W:YCL039W:7:2238:2332:2486:S
+loadclip:  bad solexa end: T (hard) chrIII:85102-90415W:YCL019W:6:5314:5105:5388:A
+loadclip:  bad solexa end: A hard chrIII:107023-107417W:YCL005W-A:2:222:281:370:S
+loadclip:  bad solexa end: T (hard) chrIII:113768-114022W:YCL001W-B:2:255:60:331:A
+loadclip:  chrIII:216693-218237W:YCR053W:3:1545:1227:1327:S: min qual threshold not met, killed
+loadclip:  bad solexa end: T (hard) chrIII:216693-218237W:YCR053W:5:1545:1588:1697:A
+loadclip:  bad solexa end: T (hard) chrIII:216693-218237W:YCR053W:10:1545:1374:1603:A
+loadclip:  bad solexa end: A hard chrIII:228314-228787W:YCR063W:3:474:583:667:S
+loadclip:  bad solexa end: T (hard) chrIII:265065-266843W:YCR088W:3:1779:1566:1820:A
+loadclip:  bad solexa end: A hard chrIII:15798-16880C:YCL064C:2:1083:1067:1249:S
+loadclip:  bad solexa end: A hard chrIII:22429-23379C:YCL059C:2:951:970:1188:S
+loadclip:  bad solexa end: T (hard) chrIII:26925-27359C:YCL056C:2:435:311:489:A
+loadclip:  bad solexa end: T (hard) chrIII:37836-38801C:YCL050C:2:966:955:1240:A
+loadclip:  bad solexa end: T (hard) chrIII:47111-48364C:YCL044C:6:1254:1145:1469:A
+loadclip:  bad solexa end: A hard chrIII:48653-50627C:YCL043C:2:1569:1633:1728:S
+loadclip:  bad solexa end: A hard chrIII:68599-69921C:YCL029C:2:1323:1314:1553:S
+loadclip:  bad solexa end: T (hard) chrIII:68599-69921C:YCL029C:3:1323:1179:1398:A
+loadclip:  bad solexa end: T (hard) chrIII:68599-69921C:YCL029C:8:1323:1387:1555:A
+loadclip:  bad solexa end: T (hard) chrIII:74704-75285C:YCL026C-A:6:582:752:876:A
+loadclip:  bad solexa end: T (hard) chrIII:74704-75285C:YCL026C-A:7:582:428:630:A
+loadclip:  bad solexa end: T (hard) chrIII:74704-75285C:YCL026C-A:9:582:456:619:A
+loadclip:  bad solexa end: A hard chrIII:76018-77919C:YCL025C:2:1902:1903:2046:S
+loadclip:  bad solexa end: A hard chrIII:126009-126728C:YCR007C:2:720:825:896:S
+loadclip:  bad solexa end: T (hard) chrIII:138400-139047C:YCR013C:3:648:686:933:A
+loadclip:  bad solexa end: T (hard) chrIII:144771-147632C:YCR017C:4:2862:2879:2987:A
 loadclip:  bad solexa end: T (hard) chrX:298455-298871C:YJL075C:2:417:413:559:A
 loadclip:  bad solexa end: A hard chrX:305216-305857C:YJL072C:12:642:765:904:S
 loadclip:  bad solexa end: A hard chrX:305216-305857C:YJL072C:14:642:740:926:S

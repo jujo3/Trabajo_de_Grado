@@ -21,7 +21,6 @@ class Assembler:
 
         # creamos el archivo manifest para ejecutar mira:
         f = open(self.outputfile + "/manifest.txt", "w+")
-
         manifest = '''project = output
 job = genome,denovo,draft
 parameters = -NW:cmrnl=no
@@ -30,9 +29,7 @@ data = ruta
 technology = solexa'''
 
         manifest = manifest.replace("ruta", self.inputfile)
-
         f.write(manifest)
-
         f.close()
 
         # guardamos en una variable el comando a ejecutar
@@ -45,7 +42,6 @@ technology = solexa'''
         sp.call(args)
 
         # movemos la carpeta resultado al directorio correspondiente:
-
         os.rename("output_assembly", self.outputfile + "/output_assembly")
 
     def fileExist(self):
