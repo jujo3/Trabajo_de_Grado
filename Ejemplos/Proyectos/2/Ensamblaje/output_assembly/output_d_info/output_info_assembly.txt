@@ -1,9 +1,9 @@
-Localtime: Fri May 24 16:47:34 2019
+Localtime: Fri May 24 20:22:22 2019
 
 Assembly information:
 =====================
 
-Localtime: Fri May 24 16:47:34 2019
+Localtime: Fri May 24 20:22:22 2019
 MIRA version: 4.0.2 
 
 Num. reads assembled: 0

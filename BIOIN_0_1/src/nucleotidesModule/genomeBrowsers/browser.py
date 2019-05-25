@@ -12,15 +12,12 @@ import shlex as sl
 
 class Browser:
 
-    def __init__(self, name, script, config, route):
-        self.name = name
-        self.script = script
-        self.config = config
-        self.route = route
+    def __init__(self, project):
+        self.project = project
 
     def ejecutCommand(self):
         # guardamos en una variable el comando a ejecutar
-        comando = "sudo"
+        comando = "./nucleotidesModule/genomeBrowsers/JBrowse-1.16.4-desktop-linux-x64/JBrowse-1.16.4-desktop"
 
         # convertimos el string en una lista para poder pasar de manera adecuada los comandos desde python
         args = sl.split(comando)

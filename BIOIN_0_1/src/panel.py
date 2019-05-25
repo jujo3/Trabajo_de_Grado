@@ -13,6 +13,7 @@ from proyect import Proyect
 from nucleotidesModule.aligners.aligner import Aligner
 from nucleotidesModule.assemblers.assembler import Assembler
 from nucleotidesModule.genePredictor.predictor import Predictor
+from nucleotidesModule.genomeBrowsers.browser import Browser
 from step import Step
 import webbrowser
 import pickle
@@ -85,7 +86,7 @@ class PanelWindow(ttk.Frame):
 
                 # self.configButtonAlign = ttk.Button(self.tab1, text="Configurar", command=self.configAlign).place(x=10, y=150)
 
-                self.buttonReportAssemble = ttk.Button(self.tab1, text="Leer Reporte", command=self.readAssembleReport,
+                self.buttonReportAssemble = ttk.Button(self.tab1, text="Leer reporte", command=self.readAssembleReport,
                                                     state="disabled")
                 self.buttonReportAssemble.place(x=10, y=180)
 
@@ -330,7 +331,7 @@ class PanelWindow(ttk.Frame):
 
         self.alignerTextBox = tk.Text(self.topAlign, height=100, width=100)
         self.alignerTextBox.pack()
-        f = open(self.proyect.dirRoute + "/Homologia/output.txt", "r")
+        f = open(self.proyect.dirRoute + "/Homologia/output.sam", "r")
         self.alignerTextBox.insert(tk.INSERT, f.buffer.read())
 
     def evaluateAssemble(self):
@@ -349,11 +350,12 @@ class PanelWindow(ttk.Frame):
 
         self.assembleTextBox = tk.Text(self.topAssemble, height=100, width=100)
         self.assembleTextBox.pack()
-        f = open(self.proyect.dirRoute + "/Ensamblaje/output/Sequences", "r")
+        f = open(self.proyect.dirRoute + "/Ensamblaje/output_assembly/output_d_results/output_LargeContigs_out.fasta", "r")
         self.assembleTextBox.insert(tk.INSERT, f.buffer.read())
 
     def evaluateVisual(self):
-        return
+        visualTool = Browser(self.proyect)
+        visualTool.ejecutCommand()
 
     def readGBrowserReport(self):
         return

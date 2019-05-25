@@ -19,7 +19,7 @@ class Aligner:
     def ejecutCommand(self):
         # guardamos en una variable el comando a ejecutar
         comando = "./nucleotidesModule/aligners/blastn -query " + self.proyect.genomeRefRoute + \
-                  " -subject " + self.proyect.genomeRefRoute + " -out " + self.proyect.dirRoute + "/Homologia/output.txt"
+                  " -subject " + self.proyect.genomeRefRoute + " -out " + self.proyect.dirRoute + "/Homologia/output.sam -outfmt 17"
 
         # convertimos el string en una lista para poder pasar de manera adecuada los comandos desde python
         args = sl.split(comando)
@@ -28,7 +28,7 @@ class Aligner:
         sp.call(args)
 
     def fileExist(self):
-        path = self.proyect.dirRoute + "/Homologia/output.txt"
+        path = self.proyect.dirRoute + "/Homologia/output.sam"
         return os.path.exists(path)
 
     def ejecutCommandAlignBWA(self):
