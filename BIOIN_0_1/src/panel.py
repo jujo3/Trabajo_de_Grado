@@ -71,6 +71,12 @@ class PanelWindow(ttk.Frame):
         if self.proyect.type == "Análisis de ADN":
 
             if proyect.steps[0] == "Ensamblaje y alineamiento":
+                # Creacion de objetos:
+                self.alignTool = Aligner(self.proyect)
+                self.assembleTool = Assembler(self.proyect.sequenceRoute, self.proyect.dirRoute + "/Ensamblaje")
+                self.visualTool = Browser(self.proyect)
+                self.predictionTool = Predictor(self.proyect)
+
                 # Implantación de los pasos:
                 self.tab1 = ttk.Frame(tabControl)
                 tabControl.add(self.tab1, text="Ensamblaje")
@@ -84,11 +90,13 @@ class PanelWindow(ttk.Frame):
                 self.buttonAssemble = ttk.Button(self.tab1, text="Evaluar", command=self.evaluateAssemble)
                 self.buttonAssemble.place(x=10, y=110)
 
-                # self.configButtonAlign = ttk.Button(self.tab1, text="Configurar", command=self.configAlign).place(x=10, y=150)
+                # self.configButtonAlign = ttk.Button(self.tab1, text="Configurar", command=self.configAlign)
+                # .place(x=10, y=150)
 
-                self.buttonReportAssemble = ttk.Button(self.tab1, text="Leer reporte", command=self.readAssembleReport,
-                                                    state="disabled")
+                self.buttonReportAssemble = ttk.Button(self.tab1, text="Leer reporte", command=self.readAssembleReport)
                 self.buttonReportAssemble.place(x=10, y=180)
+                if not self.assembleTool.fileExist():
+                    self.buttonReportAssemble.state(["disabled"])
 
                 self.tab2 = ttk.Frame(tabControl)
                 tabControl.add(self.tab2, text="Alineamiento")
@@ -99,14 +107,17 @@ class PanelWindow(ttk.Frame):
                                                   text="Desde este panel puedes revisar y ejecutar el proceso de Alineamiento").place(
                     x=10, y=90)
 
-                self.buttonAlign = ttk.Button(self.tab2, text="Evaluar", command=self.evaluateAlign, state="disabled")
+                self.buttonAlign = ttk.Button(self.tab2, text="Evaluar", command=self.evaluateAlign)
                 self.buttonAlign.place(x=10, y=110)
+                if not self.assembleTool.fileExist():
+                    self.buttonAlign.state(["disabled"])
 
                 # self.configAssemble = ttk.Button(self.tab2, text="Configurar").place(x=10, y=150)
 
                 self.buttonReportAlign = ttk.Button(self.tab2, text="Leer reporte",
-                                                         command=self.readAlignReport,
-                                                         state="disabled")
+                                                         command=self.readAlignReport)
+                if not self.alignTool.fileExist():
+                    self.buttonReportAlign.state(["disabled"])
                 self.buttonReportAlign.place(x=10, y=180)
 
                 self.tab3 = ttk.Frame(tabControl)
@@ -118,8 +129,10 @@ class PanelWindow(ttk.Frame):
                                                   text="Desde este panel puedes revisar y ejecutar el proceso de visualizacion").place(
                     x=10, y=90)
 
-                self.buttonVisual = ttk.Button(self.tab3, text="Evaluar", command=self.evaluateVisual, state="disabled")
+                self.buttonVisual = ttk.Button(self.tab3, text="Evaluar", command=self.evaluateVisual)
                 self.buttonVisual.place(x=10, y=110)
+                if not self.alignTool.fileExist():
+                    self.buttonVisual.state(["disabled"])
 
                 # self.progress = ttk.Button(self.tab3, text="Configurar").place(x=10, y=150)
 
@@ -316,9 +329,8 @@ class PanelWindow(ttk.Frame):
         webbrowser.open(url)
 
     def evaluateAlign(self):
-        alignTool = Aligner(self.proyect)
-        alignTool.ejecutCommand()
-        if alignTool.fileExist():
+        self.alignTool.ejecutCommand()
+        if self.alignTool.fileExist():
             self.buttonReportAlign.state(["!disabled"])
             self.buttonVisual.state(["!disabled"])
 
@@ -335,9 +347,8 @@ class PanelWindow(ttk.Frame):
         self.alignerTextBox.insert(tk.INSERT, f.buffer.read())
 
     def evaluateAssemble(self):
-        assembleTool = Assembler(self.proyect.sequenceRoute, self.proyect.dirRoute + "/Ensamblaje")
-        assembleTool.ejecutCommand()
-        if assembleTool.fileExist():
+        self.assembleTool.ejecutCommand()
+        if self.assembleTool.fileExist():
             self.buttonReportAssemble.state(["!disabled"])
             self.buttonAlign.state(["!disabled"])
 
@@ -354,16 +365,14 @@ class PanelWindow(ttk.Frame):
         self.assembleTextBox.insert(tk.INSERT, f.buffer.read())
 
     def evaluateVisual(self):
-        visualTool = Browser(self.proyect)
-        visualTool.ejecutCommand()
+        self.visualTool.ejecutCommand()
 
     def readGBrowserReport(self):
         return
 
     def evaluatePrediction(self):
-        predictionTool = Predictor(self.proyect)
-        predictionTool.ejecutCommand()
-        if predictionTool.fileExist():
+        self.predictionTool.ejecutCommand()
+        if self.predictionTool.fileExist():
             self.buttonReportPrediction.state(["!disabled"])
 
     def configPrediction(self):

@@ -13,13 +13,12 @@ import os
 
 class Predictor:
 
-    def __init__(self, inputfile, outputfile):
-        self.inputfile = inputfile
-        self.outputfile = outputfile
+    def __init__(self, project):
+        self.project = project
 
     def ejecutCommand(self):
         # guardamos en una variable el comando a ejecutar
-        comando = "./nucleotidesModule/genePredictor/glimmer3.02/scripts/g3-iterated.csh " + self.inputfile + " " + self.outputfile + "/output"
+        comando = ""#"./nucleotidesModule/genePredictor/glimmer3.02/scripts/g3-iterated.csh " + self.inputfile + " " + self.outputfile + "/output"
 
         # convertimos el string en una lista para poder pasar de manera adecuada los comandos desde python
         args = sl.split(comando)

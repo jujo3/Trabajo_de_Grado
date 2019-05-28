@@ -18,8 +18,9 @@ class Aligner:
 
     def ejecutCommand(self):
         # guardamos en una variable el comando a ejecutar
-        comando = "./nucleotidesModule/aligners/blastn -query " + self.proyect.genomeRefRoute + \
-                  " -subject " + self.proyect.genomeRefRoute + " -out " + self.proyect.dirRoute + "/Homologia/output.sam -outfmt 17"
+        comando = "./nucleotidesModule/aligners/blastn -query " + self.proyect.dirRoute + \
+                  "/Ensamblaje/output_assembly/output_d_results/output_out.padded.fasta -subject " + \
+                  self.proyect.genomeRefRoute + " -out " + self.proyect.dirRoute + "/Homologia/output.xml -outfmt 5"
 
         # convertimos el string en una lista para poder pasar de manera adecuada los comandos desde python
         args = sl.split(comando)
@@ -27,8 +28,13 @@ class Aligner:
         # ejecutamos la función call de subprocess que permite ejecutar comandos desde la temrinal
         sp.call(args)
 
+        comando2 = "java -jar /nucleotidesModule/aligners/picard.jar CreateSequenceDictionary -R " + \
+                   self.proyect.genomeRefRoute
+        args2 = sl.split(comando2)
+        sp.call(args2)
+
     def fileExist(self):
-        path = self.proyect.dirRoute + "/Homologia/output.sam"
+        path = self.proyect.dirRoute + "/Homologia/output.xml"
         return os.path.exists(path)
 
     def ejecutCommandAlignBWA(self):

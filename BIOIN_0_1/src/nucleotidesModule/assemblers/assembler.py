@@ -45,5 +45,5 @@ technology = solexa'''
         os.rename("output_assembly", self.outputfile + "/output_assembly")
 
     def fileExist(self):
-        path = self.outputfile + "/output_assembly"
+        path = self.outputfile + "/output_assembly/output_d_results/output_out.padded.fasta"
         return os.path.exists(path)
