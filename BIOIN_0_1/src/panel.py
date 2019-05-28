@@ -129,7 +129,7 @@ class PanelWindow(ttk.Frame):
                                                   text="Desde este panel puedes revisar y ejecutar el proceso de visualizacion").place(
                     x=10, y=90)
 
-                self.buttonVisual = ttk.Button(self.tab3, text="Evaluar", command=self.evaluateVisual)
+                self.buttonVisual = ttk.Button(self.tab3, text="Abrir Visualizador (Kablammo)", command=self.evaluateVisual)
                 self.buttonVisual.place(x=10, y=110)
                 if not self.alignTool.fileExist():
                     self.buttonVisual.state(["disabled"])
