@@ -1,6 +1,0 @@
-project = output
-job = genome,denovo,draft
-parameters = -NW:cmrnl=no
-readgroup = project 
-data = /home/juan/Documents/TESIS/Programa/Trabajo_de_Grado/Ejemplos/Proyectos/2/Ensamblaje/Reads/1.fastq
-technology = solexa

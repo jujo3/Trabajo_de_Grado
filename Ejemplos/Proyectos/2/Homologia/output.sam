@@ -1,8 +1,0 @@
-@HD	VN:1.2	SO:coordinate	GO:reference
-@SQ	SN:Query_1	LN:6318
-@PG	ID:0	VN:2.9.0+	CL:./nucleotidesModule/aligners/blastn -query /home/juan/Documents/TESIS/Programa/Trabajo_de_Grado/Ejemplos/Proyectos/2/Homologia/GR/1.fa -subject /home/juan/Documents/TESIS/Programa/Trabajo_de_Grado/Ejemplos/Proyectos/2/Homologia/GR/1.fa -out /home/juan/Documents/TESIS/Programa/Trabajo_de_Grado/Ejemplos/Proyectos/2/Homologia/output.sam -outfmt 17 	PN:blastn
-Subject_1	0	Query_1	1	255	6318M	*	0	0	*	*	AS:i:6318	EV:f:0	NM:i:0	PI:f:100.00	BS:f:11668.3
-Subject_1	16	Query_1	1341	255	1006H599M4713H	*	0	0	*	*	AS:i:599	EV:f:0	NM:i:0	PI:f:100.00	BS:f:1107.26
-Subject_1	0	Query_1	3967	255	4090H20M1I158M1D20M2029H	*	0	0	*	*	AS:i:151	EV:f:2.09478e-77	NM:i:2	PI:f:92.93	BS:f:279.964
-Subject_1	0	Query_1	4091	255	3966H20M1D158M1I20M2153H	*	0	0	*	*	AS:i:151	EV:f:2.09478e-77	NM:i:2	PI:f:92.93	BS:f:279.964
-Subject_1	16	Query_1	4714	255	4379H599M1340H	*	0	0	*	*	AS:i:599	EV:f:0	NM:i:0	PI:f:100.00	BS:f:1107.26
