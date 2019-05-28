@@ -19,16 +19,17 @@ import pickle
 
 class BuildProyectWindow(ttk.Frame):
 
-    def __init__(self, build_proyect_window, proyectType, fileRoute, main_window):
+    def __init__(self, build_proyect_window, proyectType, fileRoute, file2route, main_window):
 
         # Intancias y configuraciones de la ventana
         self.build_proyect_window = build_proyect_window
         self.proyectType = proyectType
         self.fileRoute = fileRoute
+        self.file2route = file2route
         self.main_window = main_window
         super().__init__(self.build_proyect_window)
         self.build_proyect_window.title("BIOIN - NUEVO PROYECTO")
-        self.build_proyect_window.geometry("400x400")
+        self.build_proyect_window.geometry("400x250")
         self.place(relwidth=1, relheight=1)
         self.build_proyect_window.resizable(0, 0)
         self.build_proyect_window.protocol("WM_DELETE_WINDOW", self.onClosing)
@@ -83,7 +84,7 @@ class BuildProyectWindow(ttk.Frame):
 
             self.step3Value = tk.BooleanVar(self)
             self.step3 = ttk.Checkbutton(self, text="Ensamblaje y prediccion", variable=self.step3Value)
-            self.step3.place(x=15, y=140)
+            self.step3.place(x=15, y=130)
 
             # botón para añadir la ruta por medio de una ventana
             # self.configButton3 = ttk.Button(self, text="...", width=3)
@@ -109,7 +110,7 @@ class BuildProyectWindow(ttk.Frame):
 
             self.step6Value = tk.BooleanVar(self)
             self.step6 = ttk.Checkbutton(self, text="Proteina 3", variable=self.step6Value)
-            self.step6.place(x=15, y=140)
+            self.step6.place(x=15, y=130)
 
             # botón para añadir la ruta por medio de una ventana
             # self.configButton3 = ttk.Button(self, text="...", width=3)
@@ -117,11 +118,11 @@ class BuildProyectWindow(ttk.Frame):
 
         # boton de inicio de proyecto
         self.confirmButton = ttk.Button(self, text="Iniciar Proyecto", command=self.onStartProyect)
-        self.confirmButton.place(x=10, y=250)
+        self.confirmButton.place(x=10, y=160)
 
         # boton de regreso
         self.confirmButton = ttk.Button(self, text="Regresar", command=self.onClosing)
-        self.confirmButton.place(x=200, y=250)
+        self.confirmButton.place(x=200, y=160)
 
     def onStartProyect(self):
 
@@ -144,15 +145,13 @@ class BuildProyectWindow(ttk.Frame):
                 os.mkdir(dirRoute+"/Homologia/GR")
                 steps += [dirRoute+"/Homologia"]
 
-                if self.fileRoute != "":
+                if self.fileRoute != "" and self.file2route != "":
                     fileName = self.fileRoute.split("/")[-1]
                     os.rename(self.fileRoute, dirRoute+"/Ensamblaje/Reads/" + fileName)
-                    refGenoma = filedialog.askopenfilename()
-                    if refGenoma != () and refGenoma != '':
-                        refGenomaFileName = refGenoma.split("/")[-1]
-                        os.rename(refGenoma, dirRoute+"/Homologia/GR/"+refGenomaFileName)
-                    proyect = Proyect(self.proyectType, steps, dirRoute + "/archivo.bin", dirRoute+"/Ensamblaje/Reads/" + fileName, dirRoute+"/Homologia/GR/"+refGenomaFileName, dirRoute)
-
+                    refGenomaFileName = self.file2route.split("/")[-1]
+                    os.rename(self.file2route, dirRoute+"/Homologia/GR/"+refGenomaFileName)
+                    proyect = Proyect(self.proyectType, steps, dirRoute + "/archivo.bin", dirRoute+"/Ensamblaje/Reads/"
+                                      + fileName, dirRoute+"/Homologia/GR/"+refGenomaFileName, dirRoute)
                     self.build_proyect_window.destroy()
                     new_window = tk.Tk()
                     panelwindow = PanelWindow(new_window, proyect, self.main_window)

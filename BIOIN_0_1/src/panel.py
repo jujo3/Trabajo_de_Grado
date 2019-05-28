@@ -343,7 +343,7 @@ class PanelWindow(ttk.Frame):
 
         self.alignerTextBox = tk.Text(self.topAlign, height=100, width=100)
         self.alignerTextBox.pack()
-        f = open(self.proyect.dirRoute + "/Homologia/output.sam", "r")
+        f = open(self.proyect.dirRoute + "/Homologia/output.xml", "r")
         self.alignerTextBox.insert(tk.INSERT, f.buffer.read())
 
     def evaluateAssemble(self):
@@ -361,7 +361,7 @@ class PanelWindow(ttk.Frame):
 
         self.assembleTextBox = tk.Text(self.topAssemble, height=100, width=100)
         self.assembleTextBox.pack()
-        f = open(self.proyect.dirRoute + "/Ensamblaje/output_assembly/output_d_results/output_LargeContigs_out.fasta", "r")
+        f = open(self.proyect.dirRoute + "/Ensamblaje/output_assembly/output_d_results/output_out.padded.fasta", "r")
         self.assembleTextBox.insert(tk.INSERT, f.buffer.read())
 
     def evaluateVisual(self):

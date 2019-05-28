@@ -24,7 +24,7 @@ class NewProyectWindow(ttk.Frame):
         self.main_window = main_window
         super().__init__(self.build_proyect_window)
         self.build_proyect_window.title("BIOIN - NUEVO PROYECTO")
-        self.build_proyect_window.geometry("300x250")
+        self.build_proyect_window.geometry("350x350")
         self.place(relwidth=1, relheight=1)
         self.build_proyect_window.resizable(0, 0)
         self.build_proyect_window.protocol("WM_DELETE_WINDOW", self.onClosing)
@@ -63,7 +63,7 @@ class NewProyectWindow(ttk.Frame):
         self.selectionMenu.place(x=10, y=70)
 
         # label terciario
-        self.labelThird = ttk.Label(self, text="Cargar archivo:")
+        self.labelThird = ttk.Label(self, text="Cargar archivo raw (formato FASTQ):")
         self.labelThird.place(x=10, y=120)
 
         # text para definir la ruta de carga de archivos
@@ -74,21 +74,35 @@ class NewProyectWindow(ttk.Frame):
         self.routeButton = ttk.Button(self, text="...", width=3, command=self.findFileRoute)
         self.routeButton.place(x=150, y=148)
 
+
+        # label terciario
+        self.labelFourth = ttk.Label(self, text="Cargar archivo de referencia (formato FASTA):")
+        self.labelFourth.place(x=10, y=200)
+
+        # text para definir la ruta de carga de archivos
+        self.routeText2 = ttk.Entry(self)
+        self.routeText2.place(x=10, y=230)
+
+        # botón para añadir la ruta por medio de una ventana
+        self.routeButton2 = ttk.Button(self, text="...", width=3, command=self.findFileRoute2)
+        self.routeButton2.place(x=150, y=228)
+
         # boton de inicio de proyecto
         self.confirmButton = ttk.Button(self, text="Continuar", command=self.onStartProyect)
-        self.confirmButton.place(x=10, y=200)
+        self.confirmButton.place(x=10, y=280)
 
         # boton de regreso
         self.returnButton = ttk.Button(self, text="Regresar", command=self.onClosing)
-        self.returnButton.place(x=200, y=200)
+        self.returnButton.place(x=200, y=280)
 
     def onStartProyect(self):
         proyectType= self.selectionMenu.get()
         fileRoute= self.routeText.get()
-        if proyectType != "" and fileRoute != "":
+        file2route = self.routeText2.get()
+        if proyectType != "" and fileRoute != "" and file2route != "":
             self.build_proyect_window.destroy()
             new_window = tk.Tk()
-            buildProyect = BuildProyectWindow(new_window, proyectType, fileRoute, self.main_window)
+            buildProyect = BuildProyectWindow(new_window, proyectType, fileRoute, file2route, self.main_window)
             buildProyect.mainloop()
         else:
             self.top = tk.Toplevel(self.build_proyect_window)
@@ -123,6 +137,11 @@ class NewProyectWindow(ttk.Frame):
         dirRoute = filedialog.askopenfilename()
         if dirRoute != () and dirRoute != '':
             self.routeText.insert(0, dirRoute)
+
+    def findFileRoute2(self):
+        dirRoute = filedialog.askopenfilename()
+        if dirRoute != () and dirRoute != '':
+            self.routeText2.insert(0, dirRoute)
 
     def salir(self):
         self.main_window.deiconify()

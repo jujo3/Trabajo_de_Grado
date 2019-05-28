@@ -28,11 +28,6 @@ class Aligner:
         # ejecutamos la función call de subprocess que permite ejecutar comandos desde la temrinal
         sp.call(args)
 
-        comando2 = "java -jar /nucleotidesModule/aligners/picard.jar CreateSequenceDictionary -R " + \
-                   self.proyect.genomeRefRoute
-        args2 = sl.split(comando2)
-        sp.call(args2)
-
     def fileExist(self):
         path = self.proyect.dirRoute + "/Homologia/output.xml"
         return os.path.exists(path)
