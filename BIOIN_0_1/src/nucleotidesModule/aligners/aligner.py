@@ -32,20 +32,11 @@ class Aligner:
         path = self.proyect.dirRoute + "/Homologia/output.xml"
         return os.path.exists(path)
 
-    def ejecutCommandAlignBWA(self):
+    def ejecutCommand2(self):
         # guardamos en una variable el comando a ejecutar
-        comando = "./nucleotidesModule/aligners/bwa/bwa index -p " + self.proyect.genomeRefRoute + " " + self.proyect.genomeRefRoute
-        # comando += self.proyect.genomeRefRoute + " " +   # self.proyect.dirRoute + "/Ensamblaje/output"
-
-        # convertimos el string en una lista para poder pasar de manera adecuada los comandos desde python
-        args = sl.split(comando)
-
-        # ejecutamos la función call de subprocess que permite ejecutar comandos desde la temrinal
-        sp.call(args)
-
-        # guardamos en una variable el comando a ejecutar
-        comando = "./nucleotidesModule/aligners/bwa/bwakit/run-bwamem -o " + self.proyect.dirRoute + "/Homologia/output "
-        comando += self.proyect.genomeRefRoute + " " + self.proyect.genomeRefRoute#self.proyect.dirRoute + "/Ensamblaje/output"
+        comando = "./nucleotidesModule/aligners/blastn -query " + self.proyect.dirRoute + \
+                  "/ORFoma/output.fasta -db nt -remote -out " + \
+                  self.proyect.dirRoute + "/Homologia/output.xml -outfmt 5"
 
         # convertimos el string en una lista para poder pasar de manera adecuada los comandos desde python
         args = sl.split(comando)

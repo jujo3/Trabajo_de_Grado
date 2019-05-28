@@ -14,6 +14,7 @@ from nucleotidesModule.aligners.aligner import Aligner
 from nucleotidesModule.assemblers.assembler import Assembler
 from nucleotidesModule.genePredictor.predictor import Predictor
 from nucleotidesModule.genomeBrowsers.browser import Browser
+from nucleotidesModule.orfFinder.orfFinder import OrfFinder
 from step import Step
 import webbrowser
 import pickle
@@ -141,6 +142,12 @@ class PanelWindow(ttk.Frame):
                 # self.buttonReportAlign.place(x=10, y=180)
 
             if proyect.steps[0] == "Ensamblaje, homologia":
+                # Creacion de objetos:
+                self.alignTool = Aligner(self.proyect)
+                self.assembleTool = Assembler(self.proyect.sequenceRoute, self.proyect.dirRoute + "/Ensamblaje")
+                self.visualTool = Browser(self.proyect)
+                self.orfTool = OrfFinder(self.proyect)
+
                 # Implantación de los pasos:
                 self.tab1 = ttk.Frame(tabControl)
                 tabControl.add(self.tab1, text="Ensamblaje")
@@ -156,9 +163,31 @@ class PanelWindow(ttk.Frame):
 
                 # self.configButtonAlign = ttk.Button(self.tab1, text="Configurar", command=self.configAlign).place(x=10, y=150)
 
-                self.buttonReportAssemble = ttk.Button(self.tab1, text="Leer reporte", command=self.readAssembleReport,
-                                                    state="disabled")
+                self.buttonReportAssemble = ttk.Button(self.tab1, text="Leer reporte", command=self.readAssembleReport)
                 self.buttonReportAssemble.place(x=10, y=180)
+                if not self.assembleTool.fileExist():
+                    self.buttonReportAssemble.state(["disabled"])
+
+                self.tab3 = ttk.Frame(tabControl)
+                tabControl.add(self.tab3, text="ORFoma")
+
+                self.labelStep = ttk.Label(self.tab3, text="ORFoma", font=self.titleFont).place(x=10, y=50)
+
+                self.labelDescription = ttk.Label(self.tab3,
+                                                  text="Desde este panel puedes revisar y ejecutar el proceso de encontrar ORFs").place(
+                    x=10, y=90)
+
+                self.buttonORF = ttk.Button(self.tab3, text="Evaluar", command=self.evaluateORFoma)
+                self.buttonORF.place(x=10, y=110)
+                if not self.assembleTool.fileExist():
+                    self.buttonORF.state(["disabled"])
+
+                # self.progress = ttk.Button(self.tab3, text="Configurar").place(x=10, y=150)
+
+                self.buttonReportORF = ttk.Button(self.tab3, text="Leer reporte", command=self.readORFReport)
+                self.buttonReportORF.place(x=10, y=180)
+                if not self.orfTool.fileExist():
+                    self.buttonReportORF.state(["disabled"])
 
                 self.tab3 = ttk.Frame(tabControl)
                 tabControl.add(self.tab3, text="Homologia")
@@ -169,13 +198,31 @@ class PanelWindow(ttk.Frame):
                                                   text="Desde este panel puedes revisar y ejecutar el proceso de Homologia").place(
                     x=10, y=90)
 
-                self.buttonAlign = ttk.Button(self.tab3, text="Evaluar", command=self.evaluateAlign)
+                self.buttonAlign = ttk.Button(self.tab3, text="Evaluar", command=self.evaluateAlign2)
                 self.buttonAlign.place(x=10, y=110)
+                if not self.orfTool.fileExist():
+                    self.buttonAlign.state(["disabled"])
 
                 # self.progress = ttk.Button(self.tab3, text="Configurar").place(x=10, y=150)
 
                 self.buttonReportAlign = ttk.Button(self.tab3, text="Leer reporte", command=self.readAlignReport)
                 self.buttonReportAlign.place(x=10, y=180)
+                if not self.alignTool.fileExist():
+                    self.buttonReportAlign.state(["disabled"])
+
+                self.tab3 = ttk.Frame(tabControl)
+                tabControl.add(self.tab3, text="Visualizacion")
+
+                self.labelStep = ttk.Label(self.tab3, text="Visualizacion", font=self.titleFont).place(x=10, y=50)
+
+                self.labelDescription = ttk.Label(self.tab3,
+                                                  text="Desde este panel puedes revisar y ejecutar el proceso de visualizacion").place(
+                    x=10, y=90)
+
+                self.buttonVisual = ttk.Button(self.tab3, text="Abrir Visualizador (Kablammo)", command=self.evaluateVisual)
+                self.buttonVisual.place(x=10, y=110)
+                if not self.alignTool.fileExist():
+                    self.buttonVisual.state(["disabled"])
 
         elif self.proyect.type == "Análisis de proteinas":
 
@@ -334,6 +381,12 @@ class PanelWindow(ttk.Frame):
             self.buttonReportAlign.state(["!disabled"])
             self.buttonVisual.state(["!disabled"])
 
+    def evaluateAlign2(self):
+        self.alignTool.ejecutCommand2()
+        if self.alignTool.fileExist():
+            self.buttonReportAlign.state(["!disabled"])
+            self.buttonVisual.state(["!disabled"])
+
     def configAlign(self):
         return
 
@@ -386,3 +439,18 @@ class PanelWindow(ttk.Frame):
         self.predictorTextBox.pack()
         f = open(self.proyect.dirRoute + "/Prediccion/output.detail", "r")
         self.predictorTextBox.insert(tk.INSERT, f.buffer.read())
+
+    def evaluateORFoma(self):
+        self.orfTool.ejecutCommand()
+        if self.orfTool.fileExist():
+            self.buttonReportORF.state(["!disabled"])
+            self.buttonAlign.state(["!disabled"])
+
+    def readORFReport(self):
+        self.topORF = tk.Toplevel(self.panel_window)
+        self.topORF.title("Reporte ORFoma")
+
+        self.orfTextBox = tk.Text(self.topORF, height=100, width=100)
+        self.orfTextBox.pack()
+        f = open(self.proyect.dirRoute + "/ORFoma/output.fasta", "r")
+        self.orfTextBox.insert(tk.INSERT, f.buffer.read())
