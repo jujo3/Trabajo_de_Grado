@@ -17,10 +17,10 @@ class Predictor:
         self.project = project
 
     def ejecutCommand(self):
-        comando2 = "./nucleotidesModule/genePredictor/glimmer3.02/bin/build-icm " + self.project.genomeRefRoute
-        print(comando2)
-        args2 = sl.split(comando2)
-        sp.call(args2)
+        # comando2 = "./nucleotidesModule/genePredictor/glimmer3.02/bin/build-icm " + self.project.genomeRefRoute
+        # print(comando2)
+        # args2 = sl.split(comando2)
+        # sp.call(args2)
 
         # guardamos en una variable el comando a ejecutar
         comando = "./nucleotidesModule/genePredictor/glimmer3.02/bin/glimmer3 " + self.project.dirRoute +\

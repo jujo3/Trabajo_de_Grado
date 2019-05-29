@@ -39,3 +39,13 @@ class Browser:
 
         # ejecutamos la función call de subprocess que permite ejecutar comandos desde la temrinal
         # sp.call(args)
+
+    def ejecutCommand2(self):
+        # guardamos en una variable el comando a ejecutar
+        comando = "./nucleotidesModule/genomeBrowsers/JBrowse-1.16.4-desktop-linux-x64/JBrowse-1.16.4-desktop"
+
+        # convertimos el string en una lista para poder pasar de manera adecuada los comandos desde python
+        args = sl.split(comando)
+
+        # ejecutamos la función call de subprocess que permite ejecutar comandos desde la temrinal
+        sp.call(args)
