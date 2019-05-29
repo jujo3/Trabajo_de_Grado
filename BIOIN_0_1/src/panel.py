@@ -63,7 +63,8 @@ class PanelWindow(ttk.Frame):
         # self.labelPrincipal.place(x=10, y=10)
 
         # label secundario
-        # self.labelSecond = ttk.Label(self, text="Desde este panel puede revisar y chequear el progreso de su proyecto:")
+        # self.labelSecond = ttk.Label(self, text="Desde este panel puede revisar
+        # y chequear el progreso de su proyecto:")
         # self.labelSecond.place(x=10, y=40)
 
         # Creacion de Tabs
@@ -237,18 +238,22 @@ class PanelWindow(ttk.Frame):
                 self.labelStep = ttk.Label(self.tab1, text="Ensamblaje", font=self.titleFont).place(x=10, y=50)
 
                 self.labelDescription = ttk.Label(self.tab1,
-                                                  text="Desde este panel puedes revisar y ejecutar el proceso de Ensamblaje").place(
+                                                  text="Desde este panel puedes revisar y "
+                                                       "ejecutar el proceso de Ensamblaje").place(
                     x=10, y=90)
 
                 self.buttonAssemble = ttk.Button(self.tab1, text="Evaluar", command=self.evaluateAssemble)
                 self.buttonAssemble.place(x=10, y=110)
 
-                # self.configButtonAlign = ttk.Button(self.tab1, text="Configurar", command=self.configAlign).place(x=10, y=150)
+                # self.configButtonAlign = ttk.Button(self.tab1, text="Configurar", command=self.configAlign)
+                # .place(x=10, y=150)
 
                 self.buttonReportAssemble = ttk.Button(self.tab1, text="Leer reporte", command=self.readAssembleReport)
                 self.buttonReportAssemble.place(x=10, y=180)
                 if not self.assembleTool.fileExist():
                     self.buttonReportAssemble.state(["disabled"])
+
+                # -----------------------------------------------------------------------------------------------------
 
                 self.tab3 = ttk.Frame(tabControl)
                 tabControl.add(self.tab3, text="Prediccion")
@@ -256,7 +261,8 @@ class PanelWindow(ttk.Frame):
                 self.labelStep = ttk.Label(self.tab3, text="Prediccion", font=self.titleFont).place(x=10, y=50)
 
                 self.labelDescription = ttk.Label(self.tab3,
-                                                  text="Desde este panel puedes revisar y ejecutar el proceso de Prediccion").place(
+                                                  text="Desde este panel puedes revisar y ejecutar"
+                                                       " el proceso de Prediccion de genes").place(
                     x=10, y=90)
 
                 self.buttonPrediction = ttk.Button(self.tab3, text="Evaluar", command=self.evaluatePrediction)
@@ -266,10 +272,13 @@ class PanelWindow(ttk.Frame):
 
                 # self.progress = ttk.Button(self.tab3, text="Configurar").place(x=10, y=150)
 
-                self.buttonReportPrediction = ttk.Button(self.tab3, text="Leer reporte", command=self.readPredictionReport)
+                self.buttonReportPrediction = ttk.Button(self.tab3, text="Leer reporte",
+                                                         command=self.readPredictionReport)
                 self.buttonReportPrediction.place(x=10, y=180)
                 if not self.predictionTool.fileExist():
                     self.buttonReportPrediction.state(["disabled"])
+
+                # -----------------------------------------------------------------------------------------------------
 
                 self.tab3 = ttk.Frame(tabControl)
                 tabControl.add(self.tab3, text="Visualizacion")
@@ -277,22 +286,20 @@ class PanelWindow(ttk.Frame):
                 self.labelStep = ttk.Label(self.tab3, text="Visualizacion", font=self.titleFont).place(x=10, y=50)
 
                 self.labelDescription = ttk.Label(self.tab3,
-                                                  text="Desde este panel puedes revisar y ejecutar el proceso de visualizacion").place(
+                                                  text="Desde este panel puedes revisar y "
+                                                       "ejecutar el proceso de visualizacion").place(
                     x=10, y=90)
 
-                self.buttonVisual = ttk.Button(self.tab3, text="Abrir Visualizador (JBrowser)", command=self.evaluateVisual2)
+                self.buttonVisual = ttk.Button(self.tab3, text="Abrir Visualizador (JBrowser)",
+                                               command=self.evaluateVisual2)
                 self.buttonVisual.place(x=10, y=110)
                 if not self.predictionTool.fileExist():
                     self.buttonVisual.state(["disabled"])
 
         elif self.proyect.type == "Análisis de proteinas":
 
-
-            if proyect.steps[0] == "Ensamblaje y alineamiento":
+            if proyect.steps[0] == "Proteina1":
                 # Creacion de objetos:
-                self.alignTool = Aligner(self.proyect)
-                self.assembleTool = Assembler(self.proyect.sequenceRoute, self.proyect.dirRoute + "/Ensamblaje")
-                self.visualTool = Browser(self.proyect)
 
                 # Implantación de los pasos:
                 self.tab1 = ttk.Frame(tabControl)
@@ -470,10 +477,10 @@ class PanelWindow(ttk.Frame):
         else:
             self.top = tk.Toplevel(self.build_proyect_window)
             self.top.title("Alerta")
-            tk.Label(self.top,
-                     text="No ha seleccionado un archivo para analizar, por favor seleccione un archivo").grid(row=0,
-                                                                                                               column=0,
-                                                                                                               columnspan=2)
+            tk.Label(self.top, text="No ha seleccionado un archivo para "
+                                    "analizar, por favor seleccione un archivo").grid(row=0,
+                                                                                      column=0,
+                                                                                      columnspan=2)
             self.button2 = tk.Button(self.top, text="Cancelar", command=self.cancelar)
             self.button2.grid(row=1, column=0, padx=5, pady=5)
 
@@ -570,7 +577,7 @@ class PanelWindow(ttk.Frame):
 
         self.predictorTextBox = tk.Text(self.topPredictor, height=100, width=100)
         self.predictorTextBox.pack()
-        f = open(self.proyect.dirRoute + "/Prediccion/output.detail", "r")
+        f = open(self.proyect.dirRoute + "/Prediccion/output.fasta", "r")
         self.predictorTextBox.insert(tk.INSERT, f.buffer.read())
 
     def evaluateORFoma(self):

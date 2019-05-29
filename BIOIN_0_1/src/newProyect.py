@@ -99,18 +99,27 @@ class NewProyectWindow(ttk.Frame):
         proyectType= self.selectionMenu.get()
         fileRoute= self.routeText.get()
         file2route = self.routeText2.get()
-        if proyectType != "" and fileRoute != "" and file2route != "":
+        if proyectType == "Análisis de ADN" and fileRoute != "" and file2route != "":
             self.build_proyect_window.destroy()
             new_window = tk.Tk()
             buildProyect = BuildProyectWindow(new_window, proyectType, fileRoute, file2route, self.main_window)
             buildProyect.mainloop()
+        elif proyectType == "":
+            self.top = tk.Toplevel(self.build_proyect_window)
+            self.top.title("Alerta")
+            tk.Label(self.top,
+                     text="Analisis de proteinas vendra en versiones proximas").grid(row=0,
+                                                                                     column=0,
+                                                                                     columnspan=2)
+            self.button2 = tk.Button(self.top, text="Cancelar", command=self.cancelar)
+            self.button2.grid(row=1, column=0, padx=5, pady=5)
+
         else:
             self.top = tk.Toplevel(self.build_proyect_window)
             self.top.title("Alerta")
             tk.Label(self.top, text="No ha seleccionado un archivo para analizar, por favor seleccione un archivo").grid(row=0, column=0, columnspan=2)
             self.button2 = tk.Button(self.top, text="Cancelar", command=self.cancelar)
             self.button2.grid(row=1, column=0, padx=5, pady=5)
-
 
     def onClosing(self):
         self.top = tk.Toplevel(self.build_proyect_window)
