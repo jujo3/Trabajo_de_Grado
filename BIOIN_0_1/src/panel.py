@@ -254,7 +254,7 @@ class PanelWindow(ttk.Frame):
                 self.tab3 = ttk.Frame(tabControl)
                 tabControl.add(self.tab3, text="Prediccion")
 
-                self.labelStep = ttk.Label(self.tab3, text="ORFoma", font=self.titleFont).place(x=10, y=50)
+                self.labelStep = ttk.Label(self.tab3, text="Prediccion", font=self.titleFont).place(x=10, y=50)
 
                 self.labelDescription = ttk.Label(self.tab3,
                                                   text="Desde este panel puedes revisar y ejecutar el proceso de Prediccion").place(
@@ -273,27 +273,6 @@ class PanelWindow(ttk.Frame):
                     self.buttonReportPrediction.state(["disabled"])
 
                 self.tab3 = ttk.Frame(tabControl)
-                tabControl.add(self.tab3, text="Homologia")
-
-                self.labelStep = ttk.Label(self.tab3, text="Homologia", font=self.titleFont).place(x=10, y=50)
-
-                self.labelDescription = ttk.Label(self.tab3,
-                                                  text="Desde este panel puedes revisar y ejecutar el proceso de Homologia").place(
-                    x=10, y=90)
-
-                self.buttonAlign = ttk.Button(self.tab3, text="Evaluar", command=self.evaluateAlign2)
-                self.buttonAlign.place(x=10, y=110)
-                if not self.predictionTool.fileExist():
-                    self.buttonAlign.state(["disabled"])
-
-                # self.progress = ttk.Button(self.tab3, text="Configurar").place(x=10, y=150)
-
-                self.buttonReportAlign = ttk.Button(self.tab3, text="Leer reporte", command=self.readAlignReport)
-                self.buttonReportAlign.place(x=10, y=180)
-                if not self.alignTool.fileExist():
-                    self.buttonReportAlign.state(["disabled"])
-
-                self.tab3 = ttk.Frame(tabControl)
                 tabControl.add(self.tab3, text="Visualizacion")
 
                 self.labelStep = ttk.Label(self.tab3, text="Visualizacion", font=self.titleFont).place(x=10, y=50)
@@ -302,9 +281,9 @@ class PanelWindow(ttk.Frame):
                                                   text="Desde este panel puedes revisar y ejecutar el proceso de visualizacion").place(
                     x=10, y=90)
 
-                self.buttonVisual = ttk.Button(self.tab3, text="Abrir Visualizador (Kablammo)", command=self.evaluateVisual)
+                self.buttonVisual = ttk.Button(self.tab3, text="Abrir Visualizador (Kablammo)", command=self.evaluateVisual2)
                 self.buttonVisual.place(x=10, y=110)
-                if not self.alignTool.fileExist():
+                if not self.predictionTool.fileExist():
                     self.buttonVisual.state(["disabled"])
 
         elif self.proyect.type == "Análisis de proteinas":
@@ -501,6 +480,9 @@ class PanelWindow(ttk.Frame):
         self.assembleTextBox.insert(tk.INSERT, f.buffer.read())
 
     def evaluateVisual(self):
+        self.visualTool.ejecutCommand()
+
+    def evaluateVisual2(self):
         self.visualTool.ejecutCommand()
 
     def readGBrowserReport(self):
