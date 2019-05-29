@@ -229,7 +229,12 @@ class BuildProyectWindow(ttk.Frame):
 
                 if self.fileRoute != "":
                     sequenceRoute = self.fileRoute
-                    proyect = Proyect(self.proyectType, steps, dirRoute + "/archivo.bin", sequenceRoute, dirRoute)
+                    fileName = self.fileRoute.split("/")[-1]
+                    os.rename(self.fileRoute, dirRoute + "/Ensamblaje/Reads/" + fileName)
+                    refGenomaFileName = self.file2route.split("/")[-1]
+                    os.rename(self.file2route, dirRoute + "/Homologia/GR/" + refGenomaFileName)
+                    proyect = Proyect(self.proyectType, steps, dirRoute + "/archivo.bin", sequenceRoute,
+                                      dirRoute+"/Homologia/GR/" + refGenomaFileName, dirRoute)
 
                     self.build_proyect_window.destroy()
                     new_window = tk.Tk()

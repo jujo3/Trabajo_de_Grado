@@ -76,7 +76,6 @@ class PanelWindow(ttk.Frame):
                 self.alignTool = Aligner(self.proyect)
                 self.assembleTool = Assembler(self.proyect.sequenceRoute, self.proyect.dirRoute + "/Ensamblaje")
                 self.visualTool = Browser(self.proyect)
-                self.predictionTool = Predictor(self.proyect)
 
                 # Implantación de los pasos:
                 self.tab1 = ttk.Frame(tabControl)
@@ -201,6 +200,90 @@ class PanelWindow(ttk.Frame):
                 self.buttonAlign = ttk.Button(self.tab3, text="Evaluar", command=self.evaluateAlign2)
                 self.buttonAlign.place(x=10, y=110)
                 if not self.orfTool.fileExist():
+                    self.buttonAlign.state(["disabled"])
+
+                # self.progress = ttk.Button(self.tab3, text="Configurar").place(x=10, y=150)
+
+                self.buttonReportAlign = ttk.Button(self.tab3, text="Leer reporte", command=self.readAlignReport)
+                self.buttonReportAlign.place(x=10, y=180)
+                if not self.alignTool.fileExist():
+                    self.buttonReportAlign.state(["disabled"])
+
+                self.tab3 = ttk.Frame(tabControl)
+                tabControl.add(self.tab3, text="Visualizacion")
+
+                self.labelStep = ttk.Label(self.tab3, text="Visualizacion", font=self.titleFont).place(x=10, y=50)
+
+                self.labelDescription = ttk.Label(self.tab3,
+                                                  text="Desde este panel puedes revisar y ejecutar el proceso de visualizacion").place(
+                    x=10, y=90)
+
+                self.buttonVisual = ttk.Button(self.tab3, text="Abrir Visualizador (Kablammo)", command=self.evaluateVisual)
+                self.buttonVisual.place(x=10, y=110)
+                if not self.alignTool.fileExist():
+                    self.buttonVisual.state(["disabled"])
+
+
+            if proyect.steps[0] == "otro":
+                # Creacion de objetos:
+                self.alignTool = Aligner(self.proyect)
+                self.assembleTool = Assembler(self.proyect.sequenceRoute, self.proyect.dirRoute + "/Ensamblaje")
+                self.visualTool = Browser(self.proyect)
+                self.predictionTool = Predictor(self.proyect)
+
+                # Implantación de los pasos:
+                self.tab1 = ttk.Frame(tabControl)
+                tabControl.add(self.tab1, text="Ensamblaje")
+
+                self.labelStep = ttk.Label(self.tab1, text="Ensamblaje", font=self.titleFont).place(x=10, y=50)
+
+                self.labelDescription = ttk.Label(self.tab1,
+                                                  text="Desde este panel puedes revisar y ejecutar el proceso de Ensamblaje").place(
+                    x=10, y=90)
+
+                self.buttonAssemble = ttk.Button(self.tab1, text="Evaluar", command=self.evaluateAssemble)
+                self.buttonAssemble.place(x=10, y=110)
+
+                # self.configButtonAlign = ttk.Button(self.tab1, text="Configurar", command=self.configAlign).place(x=10, y=150)
+
+                self.buttonReportAssemble = ttk.Button(self.tab1, text="Leer reporte", command=self.readAssembleReport)
+                self.buttonReportAssemble.place(x=10, y=180)
+                if not self.assembleTool.fileExist():
+                    self.buttonReportAssemble.state(["disabled"])
+
+                self.tab3 = ttk.Frame(tabControl)
+                tabControl.add(self.tab3, text="Prediccion")
+
+                self.labelStep = ttk.Label(self.tab3, text="ORFoma", font=self.titleFont).place(x=10, y=50)
+
+                self.labelDescription = ttk.Label(self.tab3,
+                                                  text="Desde este panel puedes revisar y ejecutar el proceso de Prediccion").place(
+                    x=10, y=90)
+
+                self.buttonPrediction = ttk.Button(self.tab3, text="Evaluar", command=self.evaluatePrediction)
+                self.buttonPrediction.place(x=10, y=110)
+                if not self.assembleTool.fileExist():
+                    self.buttonPrediction.state(["disabled"])
+
+                # self.progress = ttk.Button(self.tab3, text="Configurar").place(x=10, y=150)
+
+                self.buttonReportPrediction = ttk.Button(self.tab3, text="Leer reporte", command=self.readPredictionReport)
+                self.buttonReportPrediction.place(x=10, y=180)
+                if not self.predictionTool.fileExist():
+                    self.buttonReportPrediction.state(["disabled"])
+
+                self.tab3 = ttk.Frame(tabControl)
+                tabControl.add(self.tab3, text="Homologia")
+
+                self.labelStep = ttk.Label(self.tab3, text="Homologia", font=self.titleFont).place(x=10, y=50)
+
+                self.labelDescription = ttk.Label(self.tab3,
+                                                  text="Desde este panel puedes revisar y ejecutar el proceso de Homologia").place(
+                    x=10, y=90)
+
+                self.buttonAlign = ttk.Button(self.tab3, text="Evaluar", command=self.evaluateAlign2)
+                self.buttonAlign.place(x=10, y=110)
+                if not self.predictionTool.fileExist():
                     self.buttonAlign.state(["disabled"])
 
                 # self.progress = ttk.Button(self.tab3, text="Configurar").place(x=10, y=150)
