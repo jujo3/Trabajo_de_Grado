@@ -99,6 +99,8 @@ class PanelWindow(ttk.Frame):
                 if not self.assembleTool.fileExist():
                     self.buttonReportAssemble.state(["disabled"])
 
+                # -----------------------------------------------------------------------------------------------------
+
                 self.tab2 = ttk.Frame(tabControl)
                 tabControl.add(self.tab2, text="Alineamiento")
 
@@ -120,6 +122,8 @@ class PanelWindow(ttk.Frame):
                 if not self.alignTool.fileExist():
                     self.buttonReportAlign.state(["disabled"])
                 self.buttonReportAlign.place(x=10, y=180)
+
+                # -----------------------------------------------------------------------------------------------------
 
                 self.tab3 = ttk.Frame(tabControl)
                 tabControl.add(self.tab3, text="Visualizacion")
@@ -168,6 +172,8 @@ class PanelWindow(ttk.Frame):
                 if not self.assembleTool.fileExist():
                     self.buttonReportAssemble.state(["disabled"])
 
+                # -----------------------------------------------------------------------------------------------------
+
                 self.tab3 = ttk.Frame(tabControl)
                 tabControl.add(self.tab3, text="ORFoma")
 
@@ -189,6 +195,8 @@ class PanelWindow(ttk.Frame):
                 if not self.orfTool.fileExist():
                     self.buttonReportORF.state(["disabled"])
 
+                # -----------------------------------------------------------------------------------------------------
+
                 self.tab3 = ttk.Frame(tabControl)
                 tabControl.add(self.tab3, text="Homologia")
 
@@ -209,6 +217,8 @@ class PanelWindow(ttk.Frame):
                 self.buttonReportAlign.place(x=10, y=180)
                 if not self.alignTool.fileExist():
                     self.buttonReportAlign.state(["disabled"])
+
+                # -----------------------------------------------------------------------------------------------------
 
                 self.tab3 = ttk.Frame(tabControl)
                 tabControl.add(self.tab3, text="Visualizacion")
@@ -281,6 +291,30 @@ class PanelWindow(ttk.Frame):
                 # -----------------------------------------------------------------------------------------------------
 
                 self.tab3 = ttk.Frame(tabControl)
+                tabControl.add(self.tab3, text="Homologia")
+
+                self.labelStep = ttk.Label(self.tab3, text="Homologia", font=self.titleFont).place(x=10, y=50)
+
+                self.labelDescription = ttk.Label(self.tab3,
+                                                  text="Desde este panel puedes revisar y "
+                                                       "ejecutar el proceso de Homologia").place(
+                    x=10, y=90)
+
+                self.buttonAlign = ttk.Button(self.tab3, text="Evaluar", command=self.evaluateAlign3)
+                self.buttonAlign.place(x=10, y=110)
+                if not self.predictionTool.fileExist():
+                    self.buttonAlign.state(["disabled"])
+
+                # self.progress = ttk.Button(self.tab3, text="Configurar").place(x=10, y=150)
+
+                self.buttonReportAlign = ttk.Button(self.tab3, text="Leer reporte", command=self.readAlignReport)
+                self.buttonReportAlign.place(x=10, y=180)
+                if not self.alignTool.fileExist():
+                    self.buttonReportAlign.state(["disabled"])
+
+                # -----------------------------------------------------------------------------------------------------
+
+                self.tab3 = ttk.Frame(tabControl)
                 tabControl.add(self.tab3, text="Visualizacion")
 
                 self.labelStep = ttk.Label(self.tab3, text="Visualizacion", font=self.titleFont).place(x=10, y=50)
@@ -290,10 +324,10 @@ class PanelWindow(ttk.Frame):
                                                        "ejecutar el proceso de visualizacion").place(
                     x=10, y=90)
 
-                self.buttonVisual = ttk.Button(self.tab3, text="Abrir Visualizador (JBrowser)",
-                                               command=self.evaluateVisual2)
+                self.buttonVisual = ttk.Button(self.tab3, text="Abrir Visualizador (Kablammo)",
+                                               command=self.evaluateVisual)
                 self.buttonVisual.place(x=10, y=110)
-                if not self.predictionTool.fileExist():
+                if not self.alignTool.fileExist():
                     self.buttonVisual.state(["disabled"])
 
         elif self.proyect.type == "Análisis de proteinas":
@@ -446,41 +480,249 @@ class PanelWindow(ttk.Frame):
             pickle.dump(self.proyect, archivo)
 
     def saveProyectAs(self):
-        dirRoute = filedialog.asksaveasfilename()
-        os.mkdir(dirRoute)
 
-        steps = []
-        if self.step1Value.get():
-            os.mkdir(dirRoute + "/Alineamiento")
-            steps += [dirRoute + "/Alineamiento"]
-        if self.step2Value.get():
-            os.mkdir(dirRoute + "/Ensamblaje")
-            steps += [dirRoute + "/Ensamblaje"]
-        if self.step3Value.get():
-            os.mkdir(dirRoute + "/GenomeBrowser")
-            steps += [dirRoute + "/GenomeBrowser"]
-        if self.step4Value.get():
-            os.mkdir(dirRoute + "/Prediccion")
-            steps += [dirRoute + "/Prediccion"]
-        if self.step5Value.get():
-            os.mkdir(dirRoute + "/Filogenia")
-            steps += [dirRoute + "/Filogenia"]
+        if self.proyect.type == "Análisis de ADN":
 
-        if self.fileRoute != "":
-            sequenceRoute = self.fileRoute
-            proyect = Proyect(self.proyect.steps_list, steps, dirRoute + "/archivo.bin", sequenceRoute)
+            if self.proyect.steps[0] == "Ensamblaje y alineamiento":
 
-            self.build_proyect_window.destroy()
-            new_window = tk.Tk()
-            panelwindow = PanelWindow(new_window, proyect, self.main_window)
-            panelwindow.mainloop()
+                dirRoute = filedialog.asksaveasfilename()
+                os.mkdir(dirRoute)
+
+                steps = ["Ensamblaje y alineamiento"]
+                os.mkdir(dirRoute+"/Ensamblaje")
+                os.mkdir(dirRoute+"/Ensamblaje/Reads")
+                steps += [dirRoute+"/Ensamblaje"]
+
+                os.mkdir(dirRoute+"/Homologia")
+                os.mkdir(dirRoute+"/Homologia/GR")
+                steps += [dirRoute+"/Homologia"]
+
+                if self.proyect.sequenceRoute != "" and self.proyect.genomeRefRoute != "":
+                    fileName = self.proyect.sequenceRoute.split("/")[-1]
+                    os.rename(self.proyect.sequenceRoute, dirRoute+"/Ensamblaje/Reads/" + fileName)
+                    refGenomaFileName = self.proyect.genomeRefRoute.split("/")[-1]
+                    os.rename(self.proyect.genomeRefRoute, dirRoute+"/Homologia/GR/"+refGenomaFileName)
+                    proyect = Proyect(self.proyect.type, steps, dirRoute + "/archivo.bin", dirRoute+"/Ensamblaje/Reads/"
+                                      + fileName, dirRoute+"/Homologia/GR/"+refGenomaFileName, dirRoute)
+                    self.panel_window.destroy()
+                    new_window = tk.Tk()
+                    panelwindow = PanelWindow(new_window, proyect, self.main_window)
+                    panelwindow.mainloop()
+
+                else:
+                    self.top = tk.Toplevel(self.panel_window)
+                    self.top.title("Alerta")
+                    tk.Label(self.top,
+                             text="No ha seleccionado un archivo para analizar, por favor seleccione un archivo").grid(
+                        row=0,
+                        column=0,
+                        columnspan=2)
+                    self.button2 = tk.Button(self.top, text="Cancelar", command=self.cancelar)
+                    self.button2.grid(row=1, column=0, padx=5, pady=5)
+
+            elif self.proyect.steps[0] == "Ensamblaje, homologia":
+
+                dirRoute = filedialog.asksaveasfilename()
+                os.mkdir(dirRoute)
+
+                steps = ["Ensamblaje, homologia"]
+                os.mkdir(dirRoute + "/Ensamblaje")
+                os.mkdir(dirRoute+"/Ensamblaje/Reads")
+                steps += [dirRoute + "/Ensamblaje"]
+
+                os.mkdir(dirRoute+"/ORFoma")
+                steps += [dirRoute + "/ORFoma"]
+
+                os.mkdir(dirRoute + "/Homologia")
+                os.mkdir(dirRoute+"/Homologia/GR")
+                steps += [dirRoute + "/Homologia"]
+
+                if self.proyect.sequenceRoute != "" and self.proyect.genomeRefRoute != "":
+                    fileName = self.proyect.sequenceRoute.split("/")[-1]
+                    os.rename(self.proyect.sequenceRoute, dirRoute + "/Ensamblaje/Reads/" + fileName)
+                    refGenomaFileName = self.proyect.genomeRefRoute.split("/")[-1]
+                    os.rename(self.proyect.genomeRefRoute, dirRoute + "/Homologia/GR/" + refGenomaFileName)
+                    proyect = Proyect(self.proyect.type, steps, dirRoute + "/archivo.bin",
+                                      dirRoute + "/Ensamblaje/Reads/"
+                                      + fileName, dirRoute + "/Homologia/GR/" + refGenomaFileName, dirRoute)
+                    self.panel_window.destroy()
+                    new_window = tk.Tk()
+                    panelwindow = PanelWindow(new_window, proyect, self.main_window)
+                    panelwindow.mainloop()
+
+                else:
+                    self.top = tk.Toplevel(self.panel_window)
+                    self.top.title("Alerta")
+                    tk.Label(self.top,
+                             text="No ha seleccionado un archivo para analizar, por favor seleccione un archivo").grid(
+                        row=0,
+                        column=0,
+                        columnspan=2)
+                    self.button2 = tk.Button(self.top, text="Cancelar", command=self.cancelar)
+                    self.button2.grid(row=1, column=0, padx=5, pady=5)
+
+            elif self.proyect.steps[0] == "otro":
+
+                dirRoute = filedialog.asksaveasfilename()
+                os.mkdir(dirRoute)
+
+                steps = ["otro"]
+                os.mkdir(dirRoute + "/Ensamblaje")
+                os.mkdir(dirRoute+"/Ensamblaje/Reads")
+                steps += [dirRoute + "/Ensamblaje"]
+
+                os.mkdir(dirRoute + "/Prediccion")
+                steps += [dirRoute + "/Prediccion"]
+
+                os.mkdir(dirRoute + "/Homologia")
+                os.mkdir(dirRoute+"/Homologia/GR")
+                steps += [dirRoute + "/Homologia"]
+
+                if self.proyect.sequenceRoute != "" and self.proyect.genomeRefRoute != "":
+                    fileName = self.proyect.sequenceRoute.split("/")[-1]
+                    os.rename(self.proyect.sequenceRoute, dirRoute + "/Ensamblaje/Reads/" + fileName)
+                    refGenomaFileName = self.proyect.genomeRefRoute.split("/")[-1]
+                    os.rename(self.proyect.genomeRefRoute, dirRoute + "/Homologia/GR/" + refGenomaFileName)
+                    proyect = Proyect(self.proyect.type, steps, dirRoute + "/archivo.bin",
+                                      dirRoute + "/Ensamblaje/Reads/"
+                                      + fileName, dirRoute + "/Homologia/GR/" + refGenomaFileName, dirRoute)
+                    self.panel_window.destroy()
+                    new_window = tk.Tk()
+                    panelwindow = PanelWindow(new_window, proyect, self.main_window)
+                    panelwindow.mainloop()
+
+                else:
+                    self.top = tk.Toplevel(self.panel_window)
+                    self.top.title("Alerta")
+                    tk.Label(self.top,
+                             text="No ha seleccionado un archivo para analizar, por favor seleccione un archivo").grid(
+                        row=0,
+                        column=0,
+                        columnspan=2)
+                    self.button2 = tk.Button(self.top, text="Cancelar", command=self.cancelar)
+                    self.button2.grid(row=1, column=0, padx=5, pady=5)
+
+        if self.proyect.type == "Análisis de proteinas":
+
+            if self.proyect.steps[0] == "Proteina1":
+
+                dirRoute = filedialog.asksaveasfilename()
+                os.mkdir(dirRoute)
+
+                steps = ["Proteina1"]
+                os.mkdir(dirRoute+"/Ensamblaje")
+                steps += [dirRoute+"/Ensamblaje"]
+
+                os.mkdir(dirRoute+"/Prediccion")
+                steps += [dirRoute+"/Prediccion"]
+
+                os.mkdir(dirRoute+"/Homologia")
+                steps += [dirRoute+"/Homologia"]
+
+                if self.proyect.sequenceRoute != "" and self.proyect.genomeRefRoute != "":
+                    fileName = self.proyect.sequenceRoute.split("/")[-1]
+                    os.rename(self.proyect.sequenceRoute, dirRoute + "/Ensamblaje/Reads/" + fileName)
+                    refGenomaFileName = self.proyect.genomeRefRoute.split("/")[-1]
+                    os.rename(self.proyect.genomeRefRoute, dirRoute + "/Homologia/GR/" + refGenomaFileName)
+                    proyect = Proyect(self.proyect.type, steps, dirRoute + "/archivo.bin",
+                                      dirRoute + "/Ensamblaje/Reads/"
+                                      + fileName, dirRoute + "/Homologia/GR/" + refGenomaFileName, dirRoute)
+                    self.panel_window.destroy()
+                    new_window = tk.Tk()
+                    panelwindow = PanelWindow(new_window, proyect, self.main_window)
+                    panelwindow.mainloop()
+
+                else:
+                    self.top = tk.Toplevel(self.panel_window)
+                    self.top.title("Alerta")
+                    tk.Label(self.top,
+                             text="No ha seleccionado un archivo para analizar, por favor seleccione un archivo").grid(
+                        row=0,
+                        column=0,
+                        columnspan=2)
+                    self.button2 = tk.Button(self.top, text="Cancelar", command=self.cancelar)
+                    self.button2.grid(row=1, column=0, padx=5, pady=5)
+
+            elif self.proyect.steps[0] == "Proteina2":
+
+                dirRoute = filedialog.asksaveasfilename()
+                os.mkdir(dirRoute)
+
+                steps = ["Proteina2"]
+                os.mkdir(dirRoute + "/Ensamblaje")
+                steps += [dirRoute + "/Ensamblaje"]
+
+                os.mkdir(dirRoute + "/Homologia")
+                steps += [dirRoute + "/Homologia"]
+
+                if self.proyect.sequenceRoute != "" and self.proyect.genomeRefRoute != "":
+                    fileName = self.proyect.sequenceRoute.split("/")[-1]
+                    os.rename(self.proyect.sequenceRoute, dirRoute + "/Ensamblaje/Reads/" + fileName)
+                    refGenomaFileName = self.proyect.genomeRefRoute.split("/")[-1]
+                    os.rename(self.proyect.genomeRefRoute, dirRoute + "/Homologia/GR/" + refGenomaFileName)
+                    proyect = Proyect(self.proyect.type, steps, dirRoute + "/archivo.bin",
+                                      dirRoute + "/Ensamblaje/Reads/"
+                                      + fileName, dirRoute + "/Homologia/GR/" + refGenomaFileName, dirRoute)
+                    self.panel_window.destroy()
+                    new_window = tk.Tk()
+                    panelwindow = PanelWindow(new_window, proyect, self.main_window)
+                    panelwindow.mainloop()
+
+                else:
+                    self.top = tk.Toplevel(self.panel_window)
+                    self.top.title("Alerta")
+                    tk.Label(self.top,
+                             text="No ha seleccionado un archivo para analizar, por favor seleccione un archivo").grid(
+                        row=0,
+                        column=0,
+                        columnspan=2)
+                    self.button2 = tk.Button(self.top, text="Cancelar", command=self.cancelar)
+                    self.button2.grid(row=1, column=0, padx=5, pady=5)
+
+            elif self.proyect.steps[0] == "Proteina3":
+
+                dirRoute = filedialog.asksaveasfilename()
+                os.mkdir(dirRoute)
+
+                steps = ["Proteina3"]
+                os.mkdir(dirRoute + "/Ensamblaje")
+                steps += [dirRoute + "/Ensamblaje"]
+
+                os.mkdir(dirRoute + "/Prediccion")
+                steps += [dirRoute + "/Prediccion"]
+
+                os.mkdir(dirRoute + "/Homologia")
+                steps += [dirRoute + "/Homologia"]
+
+                if self.proyect.sequenceRoute != "" and self.proyect.genomeRefRoute != "":
+                    fileName = self.proyect.sequenceRoute.split("/")[-1]
+                    os.rename(self.proyect.sequenceRoute, dirRoute + "/Ensamblaje/Reads/" + fileName)
+                    refGenomaFileName = self.proyect.genomeRefRoute.split("/")[-1]
+                    os.rename(self.proyect.genomeRefRoute, dirRoute + "/Homologia/GR/" + refGenomaFileName)
+                    proyect = Proyect(self.proyect.type, steps, dirRoute + "/archivo.bin",
+                                      dirRoute + "/Ensamblaje/Reads/"
+                                      + fileName, dirRoute + "/Homologia/GR/" + refGenomaFileName, dirRoute)
+                    self.panel_window.destroy()
+                    new_window = tk.Tk()
+                    panelwindow = PanelWindow(new_window, proyect, self.main_window)
+                    panelwindow.mainloop()
+
+                else:
+                    self.top = tk.Toplevel(self.panel_window)
+                    self.top.title("Alerta")
+                    tk.Label(self.top,
+                             text="No ha seleccionado un archivo para analizar, por favor seleccione un archivo").grid(
+                        row=0,
+                        column=0,
+                        columnspan=2)
+                    self.button2 = tk.Button(self.top, text="Cancelar", command=self.cancelar)
+                    self.button2.grid(row=1, column=0, padx=5, pady=5)
+
         else:
-            self.top = tk.Toplevel(self.build_proyect_window)
+            self.top = tk.Toplevel(self.panel_window)
             self.top.title("Alerta")
-            tk.Label(self.top, text="No ha seleccionado un archivo para "
-                                    "analizar, por favor seleccione un archivo").grid(row=0,
-                                                                                      column=0,
-                                                                                      columnspan=2)
+            tk.Label(self.top,
+                     text="Porfavor seleccione un solo grupo de pasos").grid(row=0, column=0, columnspan=2)
             self.button2 = tk.Button(self.top, text="Cancelar", command=self.cancelar)
             self.button2.grid(row=1, column=0, padx=5, pady=5)
 
@@ -505,11 +747,11 @@ class PanelWindow(ttk.Frame):
         self.top.destroy()
 
     def openWeb(self):
-        url = "http://bioinformatica.univalle.edu.co/"
+        url = "https://bioin.innovarweb.com/"
         webbrowser.open(url)
 
     def openWebHelp(self):
-        url = "http://bioinformatica.univalle.edu.co/"
+        url = "https://bioin.innovarweb.com/"
         webbrowser.open(url)
 
     def evaluateAlign(self):
@@ -520,6 +762,12 @@ class PanelWindow(ttk.Frame):
 
     def evaluateAlign2(self):
         self.alignTool.ejecutCommand2()
+        if self.alignTool.fileExist():
+            self.buttonReportAlign.state(["!disabled"])
+            self.buttonVisual.state(["!disabled"])
+
+    def evaluateAlign3(self):
+        self.alignTool.ejecutCommand3()
         if self.alignTool.fileExist():
             self.buttonReportAlign.state(["!disabled"])
             self.buttonVisual.state(["!disabled"])
@@ -556,9 +804,6 @@ class PanelWindow(ttk.Frame):
 
     def evaluateVisual(self):
         self.visualTool.ejecutCommand()
-
-    def evaluateVisual2(self):
-        self.visualTool.ejecutCommand2()
 
     def readGBrowserReport(self):
         return

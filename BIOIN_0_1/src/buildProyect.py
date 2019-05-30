@@ -394,9 +394,9 @@ class BuildProyectWindow(ttk.Frame):
         self.top.destroy()
 
     def openWeb(self):
-        url = "http://bioinformatica.univalle.edu.co/"
+        url = "https://bioin.innovarweb.com/"
         webbrowser.open(url)
 
     def openWebHelp(self):
-        url = "http://bioinformatica.univalle.edu.co/"
+        url = "https://bioin.innovarweb.com/"
         webbrowser.open(url)
