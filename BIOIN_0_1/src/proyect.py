@@ -8,7 +8,10 @@
 
 class Proyect:
 
-    def __init__(self, steps_list, steps, route):
-        self.steps_list = steps_list
+    def __init__(self, type, steps, route, sequenceRoute, genomeRefRoute, dirRoute):
+        self.type = type
         self.route = route
         self.steps = steps
+        self.sequenceRoute = sequenceRoute
+        self.genomeRefRoute = genomeRefRoute
+        self.dirRoute = dirRoute
