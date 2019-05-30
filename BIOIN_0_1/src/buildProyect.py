@@ -83,7 +83,7 @@ class BuildProyectWindow(ttk.Frame):
             # self.configButton2.place(x=150, y=98)
 
             self.step3Value = tk.BooleanVar(self)
-            self.step3 = ttk.Checkbutton(self, text="Ensamblaje y prediccion genes", variable=self.step3Value)
+            self.step3 = ttk.Checkbutton(self, text="Ensamblaje y prediccion de genes", variable=self.step3Value)
             self.step3.place(x=15, y=130)
 
             # botón para añadir la ruta por medio de una ventana
