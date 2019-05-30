@@ -8,19 +8,35 @@
 # librerias a importar
 import subprocess as sp
 import shlex as sl
+import os
 
 
 class Aligner:
 
-    def __init__(self, name, script, config, route):
-        self.name = name
-        self.script = script
-        self.config = config
-        self.route = route
+    def __init__(self, proyect):
+        self.proyect = proyect
 
     def ejecutCommand(self):
         # guardamos en una variable el comando a ejecutar
-        comando = "./blastp -query /home/juan/1.fasta -db nr -remote"
+        comando = "./proteinsModule/aligners/blastp -query " + self.proyect.sequenceRoute + \
+                  " -subject " + \
+                  self.proyect.genomeRefRoute + " -out " + self.proyect.dirRoute + "/Homologia/output.xml -outfmt 5"
+
+        # convertimos el string en una lista para poder pasar de manera adecuada los comandos desde python
+        args = sl.split(comando)
+
+        # ejecutamos la función call de subprocess que permite ejecutar comandos desde la temrinal
+        sp.call(args)
+
+    def fileExist(self):
+        path = self.proyect.dirRoute + "/Homologia/output.xml"
+        return os.path.exists(path)
+
+    def ejecutCommand2(self):
+        # guardamos en una variable el comando a ejecutar
+        comando = "./nucleotidesModule/aligners/blastp -query " + self.proyect.dirRoute + \
+                  "/ORFoma/output.fasta -db nr -remote -out " + \
+                  self.proyect.dirRoute + "/Homologia/output.xml -outfmt 5"
 
         # convertimos el string en una lista para poder pasar de manera adecuada los comandos desde python
         args = sl.split(comando)

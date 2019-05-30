@@ -100,17 +100,17 @@ class BuildProyectWindow(ttk.Frame):
             # self.configButton1 = ttk.Button(self, text="...", width=3)
             # self.configButton1.place(x=150, y=68)
 
-            self.step5Value = tk.BooleanVar(self)
-            self.step5 = ttk.Checkbutton(self, text="Proteina 2", variable=self.step5Value)
-            self.step5.place(x=15, y=100)
+            # self.step5Value = tk.BooleanVar(self)
+            # self.step5 = ttk.Checkbutton(self, text="Proteina 2", variable=self.step5Value)
+            # self.step5.place(x=15, y=100)
 
             # botón para añadir la ruta por medio de una ventana
             # self.configButton2 = ttk.Button(self, text="...", width=3)
             # self.configButton2.place(x=150, y=98)
 
-            self.step6Value = tk.BooleanVar(self)
-            self.step6 = ttk.Checkbutton(self, text="Proteina 3", variable=self.step6Value)
-            self.step6.place(x=15, y=130)
+            # self.step6Value = tk.BooleanVar(self)
+            # self.step6 = ttk.Checkbutton(self, text="Proteina 3", variable=self.step6Value)
+            # self.step6.place(x=15, y=130)
 
             # botón para añadir la ruta por medio de una ventana
             # self.configButton3 = ttk.Button(self, text="...", width=3)
@@ -254,25 +254,25 @@ class BuildProyectWindow(ttk.Frame):
 
         if self.proyectType == "Análisis de proteinas":
 
-            if self.step4Value.get() and not self.step5Value.get() and not self.step6Value.get():
+            if self.step4Value.get():  # and not self.step5Value.get() and not self.step6Value.get():
 
                 dirRoute = filedialog.asksaveasfilename()
                 os.mkdir(dirRoute)
 
                 steps = ["Proteina1"]
-                os.mkdir(dirRoute+"/Ensamblaje")
-                steps += [dirRoute+"/Ensamblaje"]
-
-                os.mkdir(dirRoute+"/Prediccion")
-                steps += [dirRoute+"/Prediccion"]
-
+                os.mkdir(dirRoute+"/Sujeto")
                 os.mkdir(dirRoute+"/Homologia")
+                os.mkdir(dirRoute+"/Homologia/GR")
                 steps += [dirRoute+"/Homologia"]
 
-                if self.fileRoute != "":
-                    sequenceRoute = self.fileRoute
-                    proyect = Proyect(self.proyectType, steps, dirRoute + "/archivo.bin", sequenceRoute, dirRoute)
-
+                if self.fileRoute != "" and self.file2route != "":
+                    fileName = self.fileRoute.split("/")[-1]
+                    os.rename(self.fileRoute, dirRoute + "/Sujeto/" + fileName)
+                    refGenomaFileName = self.file2route.split("/")[-1]
+                    os.rename(self.file2route, dirRoute + "/Homologia/GR/" + refGenomaFileName)
+                    proyect = Proyect(self.proyectType, steps, dirRoute + "/archivo.bin",
+                                      dirRoute + "/Sujeto/"
+                                      + fileName, dirRoute + "/Homologia/GR/" + refGenomaFileName, dirRoute)
                     self.build_proyect_window.destroy()
                     new_window = tk.Tk()
                     panelwindow = PanelWindow(new_window, proyect, self.main_window)
@@ -289,72 +289,72 @@ class BuildProyectWindow(ttk.Frame):
                     self.button2 = tk.Button(self.top, text="Cancelar", command=self.cancelar)
                     self.button2.grid(row=1, column=0, padx=5, pady=5)
 
-            elif self.step5Value.get() and not self.step4Value.get() and not self.step6Value.get():
-
-                dirRoute = filedialog.asksaveasfilename()
-                os.mkdir(dirRoute)
-
-                steps = ["Proteina2"]
-                os.mkdir(dirRoute + "/Ensamblaje")
-                steps += [dirRoute + "/Ensamblaje"]
-
-                os.mkdir(dirRoute + "/Homologia")
-                steps += [dirRoute + "/Homologia"]
-
-                if self.fileRoute != "":
-                    sequenceRoute = self.fileRoute
-                    proyect = Proyect(self.proyectType, steps, dirRoute + "/archivo.bin", sequenceRoute, dirRoute)
-
-                    self.build_proyect_window.destroy()
-                    new_window = tk.Tk()
-                    panelwindow = PanelWindow(new_window, proyect, self.main_window)
-                    panelwindow.mainloop()
-
-                else:
-                    self.top = tk.Toplevel(self.build_proyect_window)
-                    self.top.title("Alerta")
-                    tk.Label(self.top,
-                             text="No ha seleccionado un archivo para analizar, por favor seleccione un archivo").grid(
-                        row=0,
-                        column=0,
-                        columnspan=2)
-                    self.button2 = tk.Button(self.top, text="Cancelar", command=self.cancelar)
-                    self.button2.grid(row=1, column=0, padx=5, pady=5)
-
-            elif self.step6Value.get() and not self.step4Value.get() and not self.step5Value.get():
-
-                dirRoute = filedialog.asksaveasfilename()
-                os.mkdir(dirRoute)
-
-                steps = ["Proteina3"]
-                os.mkdir(dirRoute + "/Ensamblaje")
-                steps += [dirRoute + "/Ensamblaje"]
-
-                os.mkdir(dirRoute + "/Prediccion")
-                steps += [dirRoute + "/Prediccion"]
-
-                os.mkdir(dirRoute + "/Homologia")
-                steps += [dirRoute + "/Homologia"]
-
-                if self.fileRoute != "":
-                    sequenceRoute = self.fileRoute
-                    proyect = Proyect(self.proyectType, steps, dirRoute + "/archivo.bin", sequenceRoute, dirRoute)
-
-                    self.build_proyect_window.destroy()
-                    new_window = tk.Tk()
-                    panelwindow = PanelWindow(new_window, proyect, self.main_window)
-                    panelwindow.mainloop()
-
-                else:
-                    self.top = tk.Toplevel(self.build_proyect_window)
-                    self.top.title("Alerta")
-                    tk.Label(self.top,
-                             text="No ha seleccionado un archivo para analizar, por favor seleccione un archivo").grid(
-                        row=0,
-                        column=0,
-                        columnspan=2)
-                    self.button2 = tk.Button(self.top, text="Cancelar", command=self.cancelar)
-                    self.button2.grid(row=1, column=0, padx=5, pady=5)
+            # elif self.step5Value.get() and not self.step4Value.get() and not self.step6Value.get():
+            #
+            #     dirRoute = filedialog.asksaveasfilename()
+            #     os.mkdir(dirRoute)
+            #
+            #     steps = ["Proteina2"]
+            #     os.mkdir(dirRoute + "/Ensamblaje")
+            #     steps += [dirRoute + "/Ensamblaje"]
+            #
+            #     os.mkdir(dirRoute + "/Homologia")
+            #     steps += [dirRoute + "/Homologia"]
+            #
+            #     if self.fileRoute != "":
+            #         sequenceRoute = self.fileRoute
+            #         proyect = Proyect(self.proyectType, steps, dirRoute + "/archivo.bin", sequenceRoute, dirRoute)
+            #
+            #         self.build_proyect_window.destroy()
+            #         new_window = tk.Tk()
+            #         panelwindow = PanelWindow(new_window, proyect, self.main_window)
+            #         panelwindow.mainloop()
+            #
+            #     else:
+            #         self.top = tk.Toplevel(self.build_proyect_window)
+            #         self.top.title("Alerta")
+            #         tk.Label(self.top,
+            #                  text="No ha seleccionado un archivo para analizar, por favor seleccione un archivo").grid(
+            #             row=0,
+            #             column=0,
+            #             columnspan=2)
+            #         self.button2 = tk.Button(self.top, text="Cancelar", command=self.cancelar)
+            #         self.button2.grid(row=1, column=0, padx=5, pady=5)
+            #
+            # elif self.step6Value.get() and not self.step4Value.get() and not self.step5Value.get():
+            #
+            #     dirRoute = filedialog.asksaveasfilename()
+            #     os.mkdir(dirRoute)
+            #
+            #     steps = ["Proteina3"]
+            #     os.mkdir(dirRoute + "/Ensamblaje")
+            #     steps += [dirRoute + "/Ensamblaje"]
+            #
+            #     os.mkdir(dirRoute + "/Prediccion")
+            #     steps += [dirRoute + "/Prediccion"]
+            #
+            #     os.mkdir(dirRoute + "/Homologia")
+            #     steps += [dirRoute + "/Homologia"]
+            #
+            #     if self.fileRoute != "":
+            #         sequenceRoute = self.fileRoute
+            #         proyect = Proyect(self.proyectType, steps, dirRoute + "/archivo.bin", sequenceRoute, dirRoute)
+            #
+            #         self.build_proyect_window.destroy()
+            #         new_window = tk.Tk()
+            #         panelwindow = PanelWindow(new_window, proyect, self.main_window)
+            #         panelwindow.mainloop()
+            #
+            #     else:
+            #         self.top = tk.Toplevel(self.build_proyect_window)
+            #         self.top.title("Alerta")
+            #         tk.Label(self.top,
+            #                  text="No ha seleccionado un archivo para analizar, por favor seleccione un archivo").grid(
+            #             row=0,
+            #             column=0,
+            #             columnspan=2)
+            #         self.button2 = tk.Button(self.top, text="Cancelar", command=self.cancelar)
+            #         self.button2.grid(row=1, column=0, padx=5, pady=5)
 
         else:
             self.top = tk.Toplevel(self.build_proyect_window)

@@ -15,6 +15,7 @@ from nucleotidesModule.assemblers.assembler import Assembler
 from nucleotidesModule.genePredictor.predictor import Predictor
 from nucleotidesModule.genomeBrowsers.browser import Browser
 from nucleotidesModule.orfFinder.orfFinder import OrfFinder
+from proteinsModule.aligners.aligner import Aligner as AlignerProtein
 from step import Step
 import webbrowser
 import pickle
@@ -339,49 +340,33 @@ class PanelWindow(ttk.Frame):
 
             if proyect.steps[0] == "Proteina1":
                 # Creacion de objetos:
+                self.alignToolProteina = AlignerProtein(self.proyect)
+                self.visualTool = Browser(self.proyect)
 
                 # Implantación de los pasos:
-                self.tab1 = ttk.Frame(tabControl)
-                tabControl.add(self.tab1, text="Ensamblaje")
-
-                self.labelStep = ttk.Label(self.tab1, text="Ensamblaje", font=self.titleFont).place(x=10, y=50)
-
-                self.labelDescription = ttk.Label(self.tab1,
-                                                  text="Desde este panel puedes revisar y ejecutar el proceso de Ensamblaje").place(
-                    x=10, y=90)
-
-                self.buttonAssemble = ttk.Button(self.tab1, text="Evaluar", command=self.evaluateAssemble)
-                self.buttonAssemble.place(x=10, y=110)
-
-                # self.configButtonAlign = ttk.Button(self.tab1, text="Configurar", command=self.configAlign)
-                # .place(x=10, y=150)
-
-                self.buttonReportAssemble = ttk.Button(self.tab1, text="Leer reporte", command=self.readAssembleReport)
-                self.buttonReportAssemble.place(x=10, y=180)
-                if not self.assembleTool.fileExist():
-                    self.buttonReportAssemble.state(["disabled"])
-
                 self.tab2 = ttk.Frame(tabControl)
                 tabControl.add(self.tab2, text="Alineamiento")
 
-                self.labelStep = ttk.Label(self.tab2, text="Alineamiento con Genoma de Referencia", font=self.titleFont).place(x=10, y=50)
+                self.labelStep = ttk.Label(self.tab2, text="Alineamiento con Genoma de Referencia",
+                                           font=self.titleFont).place(x=10, y=50)
 
                 self.labelDescription = ttk.Label(self.tab2,
-                                                  text="Desde este panel puedes revisar y ejecutar el proceso de Alineamiento").place(
+                                                  text="Desde este panel puedes revisar y "
+                                                       "ejecutar el proceso de Alineamiento").place(
                     x=10, y=90)
 
-                self.buttonAlign = ttk.Button(self.tab2, text="Evaluar", command=self.evaluateAlign)
+                self.buttonAlign = ttk.Button(self.tab2, text="Evaluar", command=self.evaluateAlignProteina)
                 self.buttonAlign.place(x=10, y=110)
-                if not self.assembleTool.fileExist():
-                    self.buttonAlign.state(["disabled"])
 
                 # self.configAssemble = ttk.Button(self.tab2, text="Configurar").place(x=10, y=150)
 
                 self.buttonReportAlign = ttk.Button(self.tab2, text="Leer reporte",
                                                          command=self.readAlignReport)
-                if not self.alignTool.fileExist():
+                if not self.alignToolProteina.fileExist():
                     self.buttonReportAlign.state(["disabled"])
                 self.buttonReportAlign.place(x=10, y=180)
+
+                # ------------------------------------------------------------------------------------------------------
 
                 self.tab3 = ttk.Frame(tabControl)
                 tabControl.add(self.tab3, text="Visualizacion")
@@ -389,12 +374,13 @@ class PanelWindow(ttk.Frame):
                 self.labelStep = ttk.Label(self.tab3, text="Visualizacion", font=self.titleFont).place(x=10, y=50)
 
                 self.labelDescription = ttk.Label(self.tab3,
-                                                  text="Desde este panel puedes revisar y ejecutar el proceso de visualizacion").place(
-                    x=10, y=90)
+                                                  text="Desde este panel puedes revisar y "
+                                                       "ejecutar el proceso de visualizacion").place(x=10, y=90)
 
-                self.buttonVisual = ttk.Button(self.tab3, text="Abrir Visualizador (Kablammo)", command=self.evaluateVisual)
+                self.buttonVisual = ttk.Button(self.tab3, text="Abrir Visualizador (Kablammo)",
+                                               command=self.evaluateVisual)
                 self.buttonVisual.place(x=10, y=110)
-                if not self.alignTool.fileExist():
+                if not self.alignToolProteina.fileExist():
                     self.buttonVisual.state(["disabled"])
 
                 # self.progress = ttk.Button(self.tab3, text="Configurar").place(x=10, y=150)
@@ -402,47 +388,6 @@ class PanelWindow(ttk.Frame):
                 # self.buttonReportAlign = ttk.Button(self.tab3, text="Leer reporte", command=self.readAlignReport,
                 #                                    state="disabled")
                 # self.buttonReportAlign.place(x=10, y=180)
-            self.tab4 = ttk.Frame(tabControl)
-            tabControl.add(self.tab4, text="Predicción")
-
-            self.labelStep = ttk.Label(self.tab4, text="Predicción", font=self.titleFont).place(x=10, y=50)
-
-            self.labelDescription = ttk.Label(self.tab4,
-                                              text="Desde este panel puedes revisar y ejecutar el proceso de predicción").place(
-                x=10, y=90)
-
-            self.buttonPrediction = ttk.Button(self.tab4, text="Evaluar", command=self.evaluatePrediction)
-            self.buttonPrediction.place(x=10, y=110)
-
-            # self.configPrediction = ttk.Button(self.tab4, text="Configurar").place(x=10, y=150)
-
-            self.buttonReportPrediction = ttk.Button(self.tab4, text="Leer reporte", command=self.readPredictionReport,
-                                                     state="disabled")
-            self.buttonReportPrediction.place(x=10, y=180)
-
-            self.tab5 = ttk.Frame(tabControl)
-            tabControl.add(self.tab5, text="Filogenia")
-
-            self.labelStep = ttk.Label(self.tab5, text="Filogenia", font=self.titleFont).place(x=10, y=50)
-
-            self.labelDescription = ttk.Label(self.tab5,
-                                              text="Desde este panel puedes revisar y ejecutar el proceso de filogenia").place(
-                x=10, y=90)
-
-            self.button = ttk.Button(self.tab5, text="Evaluar").place(x=10, y=110)
-
-            self.progress = ttk.Button(self.tab5, text="Configurar").place(x=10, y=150)
-
-            self.buttonReport = ttk.Button(self.tab5, text="Leer reporte").place(x=10, y=180)
-
-            self.tab6 = ttk.Frame(tabControl)
-            tabControl.add(self.tab6, text="Reporte Final")
-
-            self.labelStep = ttk.Label(self.tab6, text="Progreso general", font=self.titleFont).place(x=10, y=50)
-
-            self.progress = ttk.Progressbar(self.tab6).place(x=10, y=110, width=450)
-
-            self.buttonReport = ttk.Button(self.tab6, text="Leer reporte").place(x=10, y=150)
 
         # Ajustes de pantalla
         tabControl.pack(expan=1, fill="both")
@@ -615,18 +560,14 @@ class PanelWindow(ttk.Frame):
                 os.mkdir(dirRoute)
 
                 steps = ["Proteina1"]
-                os.mkdir(dirRoute+"/Ensamblaje")
-                steps += [dirRoute+"/Ensamblaje"]
-
-                os.mkdir(dirRoute+"/Prediccion")
-                steps += [dirRoute+"/Prediccion"]
-
+                os.mkdir(dirRoute+"/Sujeto")
                 os.mkdir(dirRoute+"/Homologia")
+                os.mkdir(dirRoute+"/Homologia/GR")
                 steps += [dirRoute+"/Homologia"]
 
                 if self.proyect.sequenceRoute != "" and self.proyect.genomeRefRoute != "":
                     fileName = self.proyect.sequenceRoute.split("/")[-1]
-                    os.rename(self.proyect.sequenceRoute, dirRoute + "/Ensamblaje/Reads/" + fileName)
+                    os.rename(self.proyect.sequenceRoute, dirRoute + "/Sujeto/" + fileName)
                     refGenomaFileName = self.proyect.genomeRefRoute.split("/")[-1]
                     os.rename(self.proyect.genomeRefRoute, dirRoute + "/Homologia/GR/" + refGenomaFileName)
                     proyect = Proyect(self.proyect.type, steps, dirRoute + "/archivo.bin",
@@ -774,6 +715,12 @@ class PanelWindow(ttk.Frame):
     def evaluateAlign3(self):
         self.alignTool.ejecutCommand3()
         if self.alignTool.fileExist():
+            self.buttonReportAlign.state(["!disabled"])
+            self.buttonVisual.state(["!disabled"])
+
+    def evaluateAlignProteina(self):
+        self.alignToolProteina.ejecutCommand()
+        if self.alignToolProteina.fileExist():
             self.buttonReportAlign.state(["!disabled"])
             self.buttonVisual.state(["!disabled"])
 

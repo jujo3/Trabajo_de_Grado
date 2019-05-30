@@ -104,15 +104,11 @@ class NewProyectWindow(ttk.Frame):
             new_window = tk.Tk()
             buildProyect = BuildProyectWindow(new_window, proyectType, fileRoute, file2route, self.main_window)
             buildProyect.mainloop()
-        elif proyectType == "":
-            self.top = tk.Toplevel(self.build_proyect_window)
-            self.top.title("Alerta")
-            tk.Label(self.top,
-                     text="Analisis de proteinas vendra en versiones proximas").grid(row=0,
-                                                                                     column=0,
-                                                                                     columnspan=2)
-            self.button2 = tk.Button(self.top, text="Cancelar", command=self.cancelar)
-            self.button2.grid(row=1, column=0, padx=5, pady=5)
+        elif proyectType == "Análisis de proteinas" and fileRoute != "" and file2route != "":
+            self.build_proyect_window.destroy()
+            new_window = tk.Tk()
+            buildProyect = BuildProyectWindow(new_window, proyectType, fileRoute, file2route, self.main_window)
+            buildProyect.mainloop()
 
         else:
             self.top = tk.Toplevel(self.build_proyect_window)
