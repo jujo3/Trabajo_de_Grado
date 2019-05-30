@@ -34,8 +34,8 @@ class Aligner:
 
     def ejecutCommand2(self):
         # guardamos en una variable el comando a ejecutar
-        comando = "./nucleotidesModule/aligners/blastn -query " + self.proyect.dirRoute + \
-                  "/ORFoma/output.fasta -db nt -remote -out " + \
+        comando = "./nucleotidesModule/aligners/blastp -query " + self.proyect.dirRoute + \
+                  "/ORFoma/output.fasta -db nr -remote -out " + \
                   self.proyect.dirRoute + "/Homologia/output.xml -outfmt 5"
 
         # convertimos el string en una lista para poder pasar de manera adecuada los comandos desde python

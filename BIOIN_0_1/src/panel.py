@@ -85,8 +85,8 @@ class PanelWindow(ttk.Frame):
                 self.labelStep = ttk.Label(self.tab1, text="Ensamblaje", font=self.titleFont).place(x=10, y=50)
 
                 self.labelDescription = ttk.Label(self.tab1,
-                                                  text="Desde este panel puedes revisar y ejecutar el proceso de Ensamblaje").place(
-                    x=10, y=90)
+                                                  text="Desde este panel puedes revisar y "
+                                                       "ejecutar el proceso de Ensamblaje").place(x=10, y=90)
 
                 self.buttonAssemble = ttk.Button(self.tab1, text="Evaluar", command=self.evaluateAssemble)
                 self.buttonAssemble.place(x=10, y=110)
@@ -104,11 +104,12 @@ class PanelWindow(ttk.Frame):
                 self.tab2 = ttk.Frame(tabControl)
                 tabControl.add(self.tab2, text="Alineamiento")
 
-                self.labelStep = ttk.Label(self.tab2, text="Alineamiento con Genoma de Referencia", font=self.titleFont).place(x=10, y=50)
+                self.labelStep = ttk.Label(self.tab2, text="Alineamiento con Genoma de Referencia",
+                                           font=self.titleFont).place(x=10, y=50)
 
                 self.labelDescription = ttk.Label(self.tab2,
-                                                  text="Desde este panel puedes revisar y ejecutar el proceso de Alineamiento").place(
-                    x=10, y=90)
+                                                  text="Desde este panel puedes revisar y "
+                                                       "ejecutar el proceso de Alineamiento").place(x=10, y=90)
 
                 self.buttonAlign = ttk.Button(self.tab2, text="Evaluar", command=self.evaluateAlign)
                 self.buttonAlign.place(x=10, y=110)
@@ -131,10 +132,11 @@ class PanelWindow(ttk.Frame):
                 self.labelStep = ttk.Label(self.tab3, text="Visualizacion", font=self.titleFont).place(x=10, y=50)
 
                 self.labelDescription = ttk.Label(self.tab3,
-                                                  text="Desde este panel puedes revisar y ejecutar el proceso de visualizacion").place(
-                    x=10, y=90)
+                                                  text="Desde este panel puedes revisar y "
+                                                       "ejecutar el proceso de visualizacion").place(x=10, y=90)
 
-                self.buttonVisual = ttk.Button(self.tab3, text="Abrir Visualizador (Kablammo)", command=self.evaluateVisual)
+                self.buttonVisual = ttk.Button(self.tab3, text="Abrir Visualizador (Kablammo)",
+                                               command=self.evaluateVisual)
                 self.buttonVisual.place(x=10, y=110)
                 if not self.alignTool.fileExist():
                     self.buttonVisual.state(["disabled"])
@@ -159,13 +161,14 @@ class PanelWindow(ttk.Frame):
                 self.labelStep = ttk.Label(self.tab1, text="Ensamblaje", font=self.titleFont).place(x=10, y=50)
 
                 self.labelDescription = ttk.Label(self.tab1,
-                                                  text="Desde este panel puedes revisar y ejecutar el proceso de Ensamblaje").place(
-                    x=10, y=90)
+                                                  text="Desde este panel puedes revisar y "
+                                                       "ejecutar el proceso de Ensamblaje").place(x=10, y=90)
 
                 self.buttonAssemble = ttk.Button(self.tab1, text="Evaluar", command=self.evaluateAssemble)
                 self.buttonAssemble.place(x=10, y=110)
 
-                # self.configButtonAlign = ttk.Button(self.tab1, text="Configurar", command=self.configAlign).place(x=10, y=150)
+                # self.configButtonAlign = ttk.Button(self.tab1, text="Configurar", command=self.configAlign)
+                # .place(x=10, y=150)
 
                 self.buttonReportAssemble = ttk.Button(self.tab1, text="Leer reporte", command=self.readAssembleReport)
                 self.buttonReportAssemble.place(x=10, y=180)
@@ -180,8 +183,8 @@ class PanelWindow(ttk.Frame):
                 self.labelStep = ttk.Label(self.tab3, text="ORFoma", font=self.titleFont).place(x=10, y=50)
 
                 self.labelDescription = ttk.Label(self.tab3,
-                                                  text="Desde este panel puedes revisar y ejecutar el proceso de encontrar ORFs").place(
-                    x=10, y=90)
+                                                  text="Desde este panel puedes revisar y "
+                                                       "ejecutar el proceso de encontrar ORFs").place(x=10, y=90)
 
                 self.buttonORF = ttk.Button(self.tab3, text="Evaluar", command=self.evaluateORFoma)
                 self.buttonORF.place(x=10, y=110)
@@ -203,8 +206,8 @@ class PanelWindow(ttk.Frame):
                 self.labelStep = ttk.Label(self.tab3, text="Homologia", font=self.titleFont).place(x=10, y=50)
 
                 self.labelDescription = ttk.Label(self.tab3,
-                                                  text="Desde este panel puedes revisar y ejecutar el proceso de Homologia").place(
-                    x=10, y=90)
+                                                  text="Desde este panel puedes revisar y "
+                                                       "ejecutar el proceso de Homologia").place(x=10, y=90)
 
                 self.buttonAlign = ttk.Button(self.tab3, text="Evaluar", command=self.evaluateAlign2)
                 self.buttonAlign.place(x=10, y=110)
@@ -226,10 +229,12 @@ class PanelWindow(ttk.Frame):
                 self.labelStep = ttk.Label(self.tab3, text="Visualizacion", font=self.titleFont).place(x=10, y=50)
 
                 self.labelDescription = ttk.Label(self.tab3,
-                                                  text="Desde este panel puedes revisar y ejecutar el proceso de visualizacion").place(
+                                                  text="Desde este panel puedes revisar y "
+                                                       "ejecutar el proceso de visualizacion").place(
                     x=10, y=90)
 
-                self.buttonVisual = ttk.Button(self.tab3, text="Abrir Visualizador (Kablammo)", command=self.evaluateVisual)
+                self.buttonVisual = ttk.Button(self.tab3, text="Abrir Visualizador (Kablammo)",
+                                               command=self.evaluateVisual)
                 self.buttonVisual.place(x=10, y=110)
                 if not self.alignTool.fileExist():
                     self.buttonVisual.state(["disabled"])
